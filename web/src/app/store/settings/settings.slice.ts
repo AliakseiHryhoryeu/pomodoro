@@ -10,18 +10,18 @@ const LocalStorage_settings = JSON.parse(
 )
 
 const initialState: ISettingsState = {
-	durations: LocalStorage_settings.durations || {
+	durations: {
 		pomodoroCount: 4,
 		pomodoroTime: 2500,
 		shortTime: 500,
 		longTime: 2000,
 	},
-	breaks: LocalStorage_settings.breaks || {
+	breaks: {
 		short: true,
 		long: true,
 		autoStart: true,
 	},
-	timerTime: LocalStorage_settings.timerTime || 2500,
+	timerTime: 2500,
 }
 
 export const settingsSlice = createSlice({

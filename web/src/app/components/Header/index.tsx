@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import classNames from 'classnames'
 
 import { useActions } from 'app/hooks/useActions'
-import { Settings, Lists } from 'app/components'
+import { Settings } from 'app/components'
 import { RootState } from 'app/store'
 
 import { useTypedSelector } from 'app/hooks/useAppSelector'
@@ -21,13 +21,13 @@ export const Header: FC = () => {
 	const dispatch = useDispatch()
 
 	const allActions = useActions()
-
-	const { isAuth, username, userEmail, settingsVisible } = useTypedSelector(
+	const [isAuth, setAuth] = useState(false)
+	const { username, userEmail, settingsVisible } = useTypedSelector(
 		(state: RootState) => {
 			return {
 				userEmail: state.user.activeUser.email,
 				username: state.user.activeUser.username,
-				isAuth: !state.user.trialMode,
+				// isAuth: !state.user.trialMode,
 				settingsVisible: state.user.settingsVisible,
 			}
 		}
@@ -77,12 +77,12 @@ export const Header: FC = () => {
 											Sign Up
 										</Link>
 									</li>
-									<Lists />
+									{/* <Lists /> */}
 								</ul>
 							</nav>
 						)}
 
-						{isAuth && (
+						{/* {isAuth && (
 							<nav
 								className={classNames('header__nav', {
 									'header__nav-active': isActiveHeaderBurger,
@@ -167,7 +167,7 @@ export const Header: FC = () => {
 									<Lists />
 								</ul>
 							</nav>
-						)}
+						)} */}
 					</div>
 				</header>
 			</header>

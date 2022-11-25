@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { Alert, Header, Lists, Tasks } from 'app/components'
+import { Header } from 'app/components'
 import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { RootState } from 'app/store'
 
@@ -13,14 +13,10 @@ export const Main: FC = () => {
 			<Header />
 			<div className='main__wrapper'>
 				<div className='main__menu'>
-					<div className='main__menu__wrapper'>
-						<Lists />
-					</div>
+					<div className='main__menu__wrapper'></div>
 				</div>
 				<div className='main__tasks'>
-					<div className='main__tasks__wrapper'>
-						<Tasks />
-					</div>
+					<div className='main__tasks__wrapper'></div>
 				</div>
 			</div>
 		</div>
