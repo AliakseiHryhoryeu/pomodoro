@@ -1,0 +1,150 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	&__wrapper {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		flex-grow: 5;
+	}
+	&__menu {
+		display: none;
+	}
+	&__tasks {
+		background: var(--tasklist-color);
+		flex-grow: 5;
+		&__wrapper {
+			padding: var(--mb-2) var(--mb-1);
+		}
+	}
+}
+
+.todo {
+	display: flex;
+	min-width: 90vw;
+	min-height: 99vh;
+	box-shadow: 1px 2px 20px #f3f3f3;
+	border-radius: 10px;
+	border: 1px solid #f1f1f1;
+	font-size: 14px;
+	&__sidebar {
+		background-color: #ecf2f5;
+		width: 200px;
+		min-height: 100%;
+		border-right: 1px solid #f1f1f1;
+		padding-top: 60px;
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+	&__tasks {
+		flex: 1;
+		background-color: #f4f6f8;
+		padding-top: 60px;
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+	overflow-y: hidden;
+}
+.hide-left-sidebar {
+	width: 100px;
+}
+.button {
+	background: #4dd599;
+	border-radius: 4px;
+	color: #fff;
+	border: 0;
+	padding: 10px 20px;
+	cursor: pointer;
+	&:hover {
+		background: darken(#4dd599, 6%);
+	}
+	&:active {
+		background: darken(#4dd599, 10%);
+	}
+}
+
+.field {
+	background: #ffffff;
+	border: 1px solid #efefef;
+	box-sizing: border-box;
+	border-radius: 4px;
+	padding: 8px 12px;
+	&:focus {
+		border-color: #dbdbdb;
+	}
+}
+
+@media (min-width: 760px) {
+	.main {
+		&__menu {
+			display: flex;
+			background: var(--menulist-color);
+			flex-grow: 3;
+			max-width: 300px;
+
+			&__wrapper {
+				padding: var(--mb-2) var(--mb-1);
+				width: 100%;
+			}
+		}
+		&__tasks {
+			flex-grow: 7;
+		}
+	}
+
+	.todo {
+		display: flex;
+		min-width: 90vw;
+		min-height: 99vh;
+		box-shadow: 1px 2px 20px #f3f3f3;
+		border-radius: 10px;
+		border: 1px solid #f1f1f1;
+		font-size: 14px;
+		&__sidebar {
+			background-color: #ecf2f5;
+			width: 200px;
+			min-height: 100%;
+			border-right: 1px solid #f1f1f1;
+			padding-top: 60px;
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+		&__tasks {
+			flex: 1;
+			background-color: #f4f6f8;
+			padding-top: 60px;
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+		overflow-y: hidden;
+	}
+	.hide-left-sidebar {
+		width: 100px;
+	}
+	.button {
+		background: #4dd599;
+		border-radius: 4px;
+		color: #fff;
+		border: 0;
+		padding: 10px 20px;
+		cursor: pointer;
+		&:hover {
+			background: darken(#4dd599, 6%);
+		}
+		&:active {
+			background: darken(#4dd599, 10%);
+		}
+	}
+
+	.field {
+		background: #ffffff;
+		border: 1px solid #efefef;
+		box-sizing: border-box;
+		border-radius: 4px;
+		padding: 8px 12px;
+		&:focus {
+			border-color: #dbdbdb;
+		}
+	}
+}
