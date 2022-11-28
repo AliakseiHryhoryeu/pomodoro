@@ -14,20 +14,20 @@ import mainLogo from 'assets/img/favicon.svg'
 import settingsIcon from 'assets/img/settingsIcon.svg'
 import exitIcon from 'assets/img/exitIcon.svg'
 import themeIcon from 'assets/img/Theme-icon.svg'
-
+import menuBurgerIcon from 'assets/img/hamburger_button_menu_icon_155296.svg'
 import './Header.scss'
 
 export const Header: FC = () => {
 	const dispatch = useDispatch()
 
 	const allActions = useActions()
-	const [isAuth, setAuth] = useState(false)
-	const { username, userEmail, settingsVisible } = useTypedSelector(
+
+	const { isAuth, username, userEmail, settingsVisible } = useTypedSelector(
 		(state: RootState) => {
 			return {
 				userEmail: state.user.activeUser.email,
 				username: state.user.activeUser.username,
-				// isAuth: !state.user.trialMode,
+				isAuth: !state.user.trialMode,
 				settingsVisible: state.user.settingsVisible,
 			}
 		}
@@ -41,20 +41,19 @@ export const Header: FC = () => {
 	const toggleClassActiveUsername = () => {
 		setActiveUsername(!isActiveUsername)
 	}
-
 	return (
 		<>
 			<header className='header__wrapper'>
 				<header className='header'>
 					<div className='header__container'>
-						<div
-							className={classNames('header__burger', {
-								'header__burger-active': isActiveHeaderBurger,
-							})}
-							onClick={toggleClassActiveHeaderBurger}
-						>
-							<span></span>
-						</div>
+						<img
+							className='header__menuburger'
+							src={menuBurgerIcon}
+							alt='menu-burger'
+							height='40px'
+							width='40px'
+						/>
+
 						<Link to='/' className='header__link'>
 							<img className='header__mainLogo' src={mainLogo} alt='mainLogo' />
 							To do list
@@ -77,12 +76,11 @@ export const Header: FC = () => {
 											Sign Up
 										</Link>
 									</li>
-									{/* <Lists /> */}
 								</ul>
 							</nav>
 						)}
 
-						{/* {isAuth && (
+						{isAuth && (
 							<nav
 								className={classNames('header__nav', {
 									'header__nav-active': isActiveHeaderBurger,
@@ -164,10 +162,10 @@ export const Header: FC = () => {
 									</li>
 								</ul>
 								<ul className='header__nav__list header__nav__list-tasks'>
-									<Lists />
+									{/* <Lists /> */}
 								</ul>
 							</nav>
-						)} */}
+						)}
 					</div>
 				</header>
 			</header>

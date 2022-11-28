@@ -6,10 +6,7 @@
 	width: 100%;
 	padding: 0px 10px;
 	height: 60px;
-	&__wrapper {
-		content: '';
-		height: 60px;
-	}
+
 	&:before {
 		content: '';
 		position: absolute;
@@ -18,6 +15,13 @@
 		width: 100%;
 		height: 100%;
 		background-color: var(--header-color);
+	}
+	&__wrapper {
+		content: '';
+		height: 60px;
+	}
+	&__menuburger {
+		cursor: pointer;
 	}
 	&__container {
 		position: relative;

@@ -1,7 +1,5 @@
 import React, { FC } from 'react'
 
-import { MainSettings } from './MainSettings'
-
 import accountIcon from 'assets/img/Account-icon.svg'
 import ThemeIcon from 'assets/img/Theme-icon.svg'
 
@@ -42,7 +40,6 @@ export const Settings: FC = props => {
 							onClick={() => dispatch(allActions.settingsHide())}
 						/>
 					</div>
-					<MainSettings />
 				</div>
 			</div>
 			<div
