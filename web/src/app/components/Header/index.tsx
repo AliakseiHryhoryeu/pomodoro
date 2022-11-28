@@ -56,116 +56,32 @@ export const Header: FC = () => {
 
 						<Link to='/' className='header__link'>
 							<img className='header__mainLogo' src={mainLogo} alt='mainLogo' />
-							To do list
+							Pomodoro
 						</Link>
 
-						{!isAuth && (
-							<nav
-								className={classNames('header__nav', {
-									'header__nav-active': isActiveHeaderBurger,
-								})}
-							>
-								<ul className='header__nav__list'>
-									<li className='header__nav__item header__login'>
-										<Link to='/login' className='header__nav__link '>
-											Log in
-										</Link>
-									</li>
-									<li className='header__nav__item header__signup'>
-										<Link to='/signup' className='header__nav__link '>
-											Sign Up
-										</Link>
-									</li>
-								</ul>
-							</nav>
-						)}
-
-						{isAuth && (
-							<nav
-								className={classNames('header__nav', {
-									'header__nav-active': isActiveHeaderBurger,
-								})}
-							>
-								<ul className='header__nav__list-isAuth'>
-									<li className='header__nav__item header__nav__username'>
-										<div
-											className='header__nav__username__container'
-											onClick={() => toggleClassActiveUsername()}
-										>
-											<div className='header__nav__link-white'>{username}</div>
-											<img
-												className='header__nav__link-usericon'
-												src={userIcon}
-												alt='userIcon'
-											/>
-										</div>
-
-										<div
-											className={classNames('header__nav__username__content', {
-												'header__nav__username__content-active':
-													isActiveUsername,
-											})}
-										>
-											<div className='header__nav__username__item'>
-												<div
-													className='header__nav__settings-container-userdata'
-													onClick={() => dispatch(allActions.settingsShow)}
-												>
-													<div className='header__nav__settings-row2'>
-														<img
-															className='header__nav__settings-usericon'
-															src={userIcon}
-															alt='userIcon'
-														/>
-														<div className='header__nav__settings-userdata'>
-															<div className='header__nav__settings-userdata-username'>
-																{username}
-															</div>
-															<div className='header__nav__settings-userdata-email'>
-																{userEmail}
-															</div>
-														</div>
-													</div>
-
-													<div className='header__nav__settings-row'>
-														<img src={settingsIcon} alt='settingsIcon' />
-														<div className='header__nav__settings-text'>
-															Settings
-														</div>
-													</div>
-												</div>
-
-												<div className='header__nav__settings-sep'></div>
-
-												<div className='header__nav__settings-container'>
-													<div
-														className='header__nav__settings-row'
-														onClick={() => dispatch(allActions.settingsShow)}
-													>
-														<img src={themeIcon} alt='exitIcon' />
-														<div className='header__nav__link-white'>Theme</div>
-													</div>
-													<div
-														className='header__nav__settings-row'
-														onClick={() => {
-															allActions.logout()
-														}}
-													>
-														<img src={exitIcon} alt='exitIcon' />
-														<div className='header__nav__link-white'>
-															Logout
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</li>
-								</ul>
-								<ul className='header__nav__list header__nav__list-tasks'>
-									{/* <Lists /> */}
-								</ul>
-							</nav>
-						)}
+						<nav
+							className={classNames('header__nav', {
+								'header__nav-active': isActiveHeaderBurger,
+							})}
+						>
+							<ul className='header__nav__list'>
+								<li className='header__nav__item '>
+									<Link to='/login' className='header__nav__link '>
+										Log in
+									</Link>
+								</li>
+								<li className='header__nav__item '>
+									<img
+										onClick={() => console.log('test')}
+										className='header__menuburger'
+										src={menuBurgerIcon}
+										alt='menu-burger'
+										height='40px'
+										width='40px'
+									/>
+								</li>
+							</ul>
+						</nav>
 					</div>
 				</header>
 			</header>
