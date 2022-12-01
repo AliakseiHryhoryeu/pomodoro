@@ -30,6 +30,7 @@
 		display: flex;
 		justify-content: start;
 		align-items: center;
+		padding-left: 10px;
 	}
 	&__link {
 		display: flex;
@@ -64,8 +65,6 @@
 		}
 	}
 	&__mainLogo {
-		height: 20px;
-		width: 20px;
 		display: block;
 		overflow: hidden;
 	}
@@ -80,9 +79,11 @@
 		border-radius: 0px 10px 10px 0px;
 		display: block;
 		overflow: auto;
+		padding-right: 10px;
 		&-active {
 			top: 0;
 		}
+
 		&__link {
 			color: #2e2c2c;
 			&-white {
@@ -110,6 +111,9 @@
 			height: 100%;
 			&-tasks {
 				margin-bottom: 60px;
+			}
+			li {
+				cursor: pointer;
 			}
 		}
 		&__username {
@@ -340,7 +344,7 @@
 				align-items: center;
 				li {
 					list-style: none;
-					margin-left: 20px;
+					padding-left: 20px;
 				}
 				&-isAuth {
 					flex-direction: column;

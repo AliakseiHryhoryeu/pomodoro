@@ -1,12 +1,9 @@
 import React, { FC } from 'react'
 
-import accountIcon from 'assets/img/Account-icon.svg'
-import ThemeIcon from 'assets/img/Theme-icon.svg'
-
 import { useDispatch } from 'react-redux'
 import { useActions } from 'app/hooks/useActions'
 
-import cross from 'assets/img/remove.svg'
+import backArrow from 'assets/img/backArrow.svg'
 
 import './Settings.scss'
 
@@ -17,29 +14,54 @@ export const Settings: FC = props => {
 	return (
 		<div className='settings'>
 			<div className='settings__main'>
-				<div className='settings__left'>
-					<div className='settings__title'>Settings</div>
-					<div className='settings__category'>
-						<div className='settings__category-item settings__category-active'>
-							<img src={accountIcon} alt='Account-icon' />
-							Account
-						</div>
-						<div className='settings__category-item'>
-							<img src={ThemeIcon} alt='Theme-icon' />
-							Theme
+				<div
+					className='settings__header'
+					onClick={() => dispatch(allActions.settingsHide)}
+				>
+					<div className='settings__header-icon'>
+						<img src={backArrow} alt='backArrow' height='40px' width='40px' />
+					</div>
+					<div className='settings__header-title'>Settings</div>
+				</div>
+				<div className='settings__block'>
+					<div className='settings__block-title'>Durations</div>
+					<div className='settings__block-wrapper'>
+						<div className='settings__durations'>
+							<div className='settings__durations-block'>
+								<div className='settings__durations-time settings__durations-pomodoro'>
+									25
+								</div>
+								<div className='settings__durations-title'>Pomodoro</div>
+							</div>
+							<div className='settings__durations-block'>
+								<div className='settings__durations-time settings__durations-pomodoro'>
+									5
+								</div>
+								<div className='settings__durations-title'>Break</div>
+							</div>
+							<div className='settings__durations-block'>
+								<div className='settings__durations-time settings__durations-pomodoro'>
+									15
+								</div>
+								<div className='settings__durations-title'>Long break</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div className='settings__right'>
-					<div className='settings__title'>
-						<div className='settings__title__title'>Account</div>
-						<img
-							className='settings__title__close'
-							src={cross}
-							alt='close-icon'
-							onClick={() => dispatch(allActions.settingsHide())}
-						/>
+				<div className='settings__block'>
+					<div className='settings__block-title'>Durations</div>
+					<div className='settings__break'>
+						<div className='settings__break-title'>Short break</div>
+						<input type='checkbox' className='settings__break-switch'></input>
 					</div>
+					<div className='settings__break'></div>
+					<div className='settings__block-setting'></div>
+					<div className='settings__block-setting'>Long break</div>
+					<div className='settings__block-setting'>Pomodoro count</div>
+					<div className='settings__block-setting'>
+						Auto start next pomodoro session
+					</div>
+					<div className='settings__block-setting'>Short break</div>
 				</div>
 			</div>
 			<div

@@ -13,8 +13,8 @@ const initialState: IUserState = {
 	},
 	token: localStorage.getItem('token'),
 	trialMode: true,
-	settingsVisible: false,
-	burgerVisible: true,
+	settingsVisible: true,
+	burgerVisible: false,
 }
 
 export const userSlice = createSlice({

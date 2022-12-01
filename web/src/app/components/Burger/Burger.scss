@@ -1,7 +1,7 @@
-.settings {
+.burger {
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	align-items: flex-start;
+	justify-content: start;
 	position: fixed;
 	height: 100%;
 	width: 100%;
@@ -20,24 +20,16 @@
 		z-index: 1000;
 		background-color: #f0feff;
 		height: 100%;
-		width: 100%;
+		width: 70%;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		justify-content: start;
 		align-items: start;
-	}
-	&__header {
-		display: flex;
-		justify-content: start;
-		align-items: flex-start;
-		flex-direction: row;
-		font-size: 30px;
-		width: 100%;
-		background: rgba($color: #e6fafe, $alpha: 1);
-		padding: 20px;
-		cursor: pointer;
-		&-icon {
-			padding-right: 6px;
+		padding: 30px 20px;
+		ul {
+			li {
+				font-size: 30px;
+			}
 		}
 	}
 }
