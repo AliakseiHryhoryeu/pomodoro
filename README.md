@@ -4,14 +4,14 @@
 
 Will be later
 
-## Mobile
+## Mobile will be
 
 - React Native
 - Redux, Redux Toolkit
 - TypeScript
 - Expo
 
-## Web Application will be
+## Web Application 
 
 - React
 - Redux, Redux Toolkit
@@ -19,10 +19,10 @@ Will be later
 - Styled components
 - Webpack
 
-## Backend will be
+## Backend
 
-- Express
-- PostgreSQL
+- Express.js
+- MongoDB
 - JavaScript
 
 ## Figma (now i work on design)
@@ -35,7 +35,7 @@ https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
 ## Web
 
-...
+https://pomodoro11.vercel.app/
 
 ## Server
 
