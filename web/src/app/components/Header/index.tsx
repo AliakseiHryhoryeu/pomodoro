@@ -9,7 +9,7 @@ import { RootState } from 'app/store'
 
 import { useTypedSelector } from 'app/hooks/useAppSelector'
 
-import mainLogo from 'assets/img/favicon.svg'
+import mainLogo from 'assets/img/pomodoro.png'
 import settingsIcon from 'assets/img/settingsIcon.svg'
 import menuBurgerIcon from 'assets/img/menuBurger.svg'
 import './Header.scss'
@@ -57,8 +57,8 @@ export const Header: FC = () => {
 								className='header__mainLogo'
 								src={mainLogo}
 								alt='mainLogo'
-								height='40px'
-								width='40px'
+								height='30px'
+								width='30px'
 							/>
 							Pomodoro
 						</Link>

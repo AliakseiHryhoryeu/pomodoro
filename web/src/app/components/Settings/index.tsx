@@ -49,19 +49,70 @@ export const Settings: FC = props => {
 					</div>
 				</div>
 				<div className='settings__block'>
-					<div className='settings__block-title'>Durations</div>
-					<div className='settings__break'>
-						<div className='settings__break-title'>Short break</div>
-						<input type='checkbox' className='settings__break-switch'></input>
+					<div className='settings__block-wrapper'>
+						<div className='settings__block-title'>Breaks</div>
+						<div className='settings__break'>
+							<div className='settings__break-title'>Break</div>
+							<label className='settings__break-checkbox'>
+								<input type='checkbox' className='settings__break-switch' />
+								<span className='settings__break-checkbox-span'></span>
+							</label>
+						</div>
+						<div className='settings__break'>
+							<div className='settings__break-title'>Long break</div>
+							<label className='settings__break-checkbox'>
+								<input type='checkbox' className='settings__break-switch' />
+								<span className='settings__break-checkbox-span'></span>
+							</label>
+						</div>
+						<div className='settings__break'>
+							<div className='settings__break-title'>Pomodoro counts</div>
+							<label className='settings__break-checkbox'>
+								<input type='checkbox' className='settings__break-switch' />
+								<span className='settings__break-checkbox-span'></span>
+							</label>
+						</div>
+						<div className='settings__break'>
+							<div className='settings__break-title'>
+								Auto start next pomodoro session
+							</div>
+							<label className='settings__break-checkbox'>
+								<input
+									type='checkbox'
+									checked={true}
+									className='settings__break-checkbox-input'
+								/>
+								<span className='settings__break-checkbox-span'></span>
+							</label>
+						</div>
 					</div>
-					<div className='settings__break'></div>
-					<div className='settings__block-setting'></div>
-					<div className='settings__block-setting'>Long break</div>
-					<div className='settings__block-setting'>Pomodoro count</div>
-					<div className='settings__block-setting'>
-						Auto start next pomodoro session
+				</div>
+				<div className='settings__block'>
+					<div className='settings__block-wrapper'>
+						<div className='settings__block-title'>Themes</div>
+						<div className='settings__theme'>
+							<div className='settings__theme-title'>Light</div>
+							<label className='settings__break-checkbox'>
+								<input
+									type='checkbox'
+									checked={true}
+									className='settings__break-checkbox-input'
+								/>
+								<span className='settings__break-checkbox-span'></span>
+							</label>
+						</div>
+						<div className='settings__theme'>
+							<div className='settings__theme-title'>Dark</div>
+							<label className='settings__break-checkbox'>
+								<input
+									type='checkbox'
+									checked={false}
+									className='settings__break-checkbox-input'
+								/>
+								<span className='settings__break-checkbox-span'></span>
+							</label>
+						</div>
 					</div>
-					<div className='settings__block-setting'>Short break</div>
 				</div>
 			</div>
 			<div

@@ -6,7 +6,7 @@ const LocalStorageFolder = 'Theme'
 const LocalStorage_theme = JSON.parse(localStorage.getItem(LocalStorageFolder))
 
 const initialState: IThemeState = {
-	theme: LocalStorage_theme || 'dark',
+	theme: LocalStorage_theme || 'light',
 }
 
 export const themeSlice = createSlice({
@@ -15,10 +15,18 @@ export const themeSlice = createSlice({
 	reducers: {
 		changeTheme: (state, action: PayloadAction<{}>) => {
 			if (state.theme == 'dark') {
-				state.theme = 'white'
+				state.theme = 'light'
 			} else {
 				state.theme = 'dark'
 			}
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
+		},
+		changeThemeToLight: (state, action: PayloadAction<{}>) => {
+			state.theme = 'light'
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
+		},
+		changeThemeToDark: (state, action: PayloadAction<{}>) => {
+			state.theme = 'dark'
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
 		},
 	},

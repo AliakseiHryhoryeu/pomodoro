@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
 
-import { Header } from 'app/components'
+import { Header, Timer } from 'app/components'
 import styled from 'styled-components'
 export const Main: FC = () => {
 	const Main = styled.div`
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		width: 100%;
+		height: 100%;
 		@media (max-width: 768px) {
 			// background-color: red;
 		}
@@ -15,15 +17,7 @@ export const Main: FC = () => {
 	return (
 		<Main className='main'>
 			<Header />
+			<Timer />
 		</Main>
 	)
 }
-
-// import { useTypedSelector } from 'app/hooks/useAppSelector'
-// import { RootState } from 'app/store'
-// const { isTrialMode, showAlert } = useTypedSelector((state: RootState) => {
-// 	return {
-// 		isTrialMode: state.user.trialMode,
-// 		showAlert: state.user.alertVisible,
-// 	}
-// })
