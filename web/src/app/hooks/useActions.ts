@@ -1,13 +1,13 @@
 import { bindActionCreators } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 
-// import { taskActions } from 'app/store/task/task.slice'
-// import { listActions } from 'app/store/list/list.slice'
+import { settingsActions } from 'app/store/settings/settings.slice'
+import { themeActions } from 'app/store/theme/theme.slice'
 import { userActions } from 'app/store/user/user.slice'
 
 const allActions = {
-	// ...taskActions,
-	// ...listActions,
+	...settingsActions,
+	...themeActions,
 	...userActions,
 }
 export const useActions = () => {

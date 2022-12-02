@@ -69,6 +69,12 @@ export const Header: FC = () => {
 							})}
 						>
 							<ul className='header__nav__list'>
+								{/* <li>
+									<label className='settings__break-checkbox'>
+										<input type='checkbox' className='settings__break-switch' />
+										<span className='settings__break-checkbox-span'></span>
+									</label>
+								</li> */}
 								<li
 									className='header__nav__item'
 									onClick={() => dispatch(allActions.settingsShow)}

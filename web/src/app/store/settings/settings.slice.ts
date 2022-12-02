@@ -11,14 +11,14 @@ const LocalStorage_settings = JSON.parse(
 
 const initialState: ISettingsState = {
 	durations: {
-		pomodoroCount: 4,
-		pomodoroTime: 2500,
-		shortTime: 500,
-		longTime: 2000,
+		pomodoroTime: 25,
+		breakTime: 5,
+		longTime: 15,
 	},
 	breaks: {
 		short: true,
 		long: true,
+		pomodoroCounts: 4,
 		autoStart: true,
 	},
 	timerTime: 2500,
@@ -31,15 +31,7 @@ export const settingsSlice = createSlice({
 		// ================= //
 		// === Durations === //
 		// ================= //
-		changePomodoroCount: (
-			state,
-			action: PayloadAction<{ newCount: number }>
-		) => {
-			if (action.payload.newCount > 0) {
-				state.durations.pomodoroCount = action.payload.newCount
-			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		},
+
 		changePomodoroTime: (
 			state,
 			action: PayloadAction<{ newPomodoroTime: number }>
@@ -49,7 +41,7 @@ export const settingsSlice = createSlice({
 			}
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
-		changeShortTime: (
+		changeBreakTime: (
 			state,
 			action: PayloadAction<{ newShortTime: number }>
 		) => {
@@ -68,16 +60,27 @@ export const settingsSlice = createSlice({
 		// ============== //
 		// === Breaks === //
 		// ============== //
-		changeShortBreak: (state, action: PayloadAction<{}>) => {
+		toggleBreak: (state, action: PayloadAction<{}>) => {
 			state.breaks.short = !state.breaks.short
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
-		changeLongBreak: (state, action: PayloadAction<{}>) => {
+		toggleLongBreak: (state, action: PayloadAction<{}>) => {
 			state.breaks.long = !state.breaks.long
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
-		changeAutoStart: (state, action: PayloadAction<{}>) => {
+		toggleAutoStart: (state, action: PayloadAction<{}>) => {
 			state.breaks.autoStart = !state.breaks.autoStart
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		},
+		changePomodoroCount: (
+			state,
+			action: PayloadAction<{ newCount: string }>
+		) => {
+			if (Number(action.payload.newCount) > 0) {
+				state.breaks.pomodoroCounts = Number(action.payload.newCount)
+			} else {
+				state.breaks.pomodoroCounts = 1
+			}
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 	},

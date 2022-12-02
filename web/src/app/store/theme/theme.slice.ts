@@ -13,7 +13,7 @@ export const themeSlice = createSlice({
 	name: 'themeSlice',
 	initialState,
 	reducers: {
-		changeTheme: (state, action: PayloadAction<{}>) => {
+		toggleTheme: (state, action: PayloadAction<{}>) => {
 			if (state.theme == 'dark') {
 				state.theme = 'light'
 			} else {

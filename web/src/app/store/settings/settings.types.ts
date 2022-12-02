@@ -5,13 +5,13 @@ export interface ISettingsState {
 }
 
 export interface IDurations {
-	pomodoroCount: number
 	pomodoroTime: number
-	shortTime: number
+	breakTime: number
 	longTime: number
 }
 export interface IBreaks {
 	short: boolean
 	long: boolean
+	pomodoroCounts: number
 	autoStart: boolean
 }

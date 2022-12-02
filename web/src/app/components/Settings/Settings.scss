@@ -2,11 +2,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: fixed;
+	position: absolute;
 	height: 100%;
 	width: 100%;
 	z-index: 100;
-	overflow: hidden;
+	overflow-x: hidden;
 	background: rgba($color: #000000, $alpha: 0.7);
 	&__bg {
 		position: absolute;
@@ -18,9 +18,12 @@
 	}
 	&__main {
 		z-index: 1000;
-		background-color: #f0feff;
+		background: #f0feff;
 		height: 100%;
 		width: 100%;
+		position: fixed;
+		overflow-x: hidden;
+		overflow-y: scroll;
 		display: flex;
 		flex-direction: column;
 		justify-content: start;
@@ -80,6 +83,14 @@
 			background: rgba($color: #0083ff, $alpha: 1);
 			border-radius: 6px;
 			cursor: pointer;
+			input {
+				background-color: transparent;
+				max-width: 60px;
+				width: auto;
+				border: none;
+				font-size: 36px;
+				color: #fff;
+			}
 		}
 		&-time {
 			font-size: 40px;
@@ -98,6 +109,20 @@
 		justify-content: space-between;
 		align-items: center;
 		flex-direction: row;
+		min-height: 40px;
+		cursor: pointer;
+		&-input {
+			align-self: end;
+			text-align: end;
+			height: 100%;
+			border: none;
+			background-color: transparent;
+			font-size: 26px;
+			max-width: 80px;
+		}
+		&:hover {
+			background-color: #dbf9ff;
+		}
 		&-title {
 			font-size: 20px;
 			font-weight: normal;
@@ -158,10 +183,18 @@
 		width: 100%;
 		min-width: 280px;
 		max-width: 400px;
+		min-height: 40px;
+		cursor: pointer;
 		display: flex;
-		justify-content: space-between;
+		justify-content: start;
 		align-items: center;
 		flex-direction: row;
+		svg {
+			margin-left: auto;
+		}
+		&:hover {
+			background-color: #dbf9ff;
+		}
 		&-title {
 			font-size: 20px;
 			font-weight: normal;
@@ -176,9 +209,10 @@
 			height: 80%;
 			width: 60%;
 			overflow-y: scroll;
+			overflow-x: hidden;
 		}
 		&__header {
-			width: auto;
+			width: 100%;
 		}
 	}
 }
