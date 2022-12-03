@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { useDispatch } from 'react-redux'
+import classNames from 'classnames'
 
 import { useActions } from 'app/hooks/useActions'
 import { useTypedSelector } from 'app/hooks/useAppSelector'
@@ -13,18 +14,15 @@ import doubleArrorRight from 'assets/img/doubleArrorRight.svg'
 import './Timer.scss'
 
 export const Timer: FC = props => {
-	const dispatch = useDispatch()
-
-	const { isAuth, username } = useTypedSelector((state: RootState) => {
+	const { theme } = useTypedSelector((state: RootState) => {
 		return {
-			username: state.user.activeUser.username,
-			isAuth: !state.user.trialMode,
+			theme: state.theme.theme,
 		}
 	})
 
 	const allActions = useActions()
 	return (
-		<div className='timer'>
+		<div className={classNames('timer', `timer-${theme}`)}>
 			<div className='timer__wrapper'>
 				<div className='timer__time'>
 					<div className='timer__time-title'>Start to focus</div>

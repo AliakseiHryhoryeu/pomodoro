@@ -7,9 +7,9 @@ import { Header } from 'app/components'
 import { RootState } from 'app/store'
 import { useLoginMutation } from 'app/store/user/user.api'
 
-import googleIcon from 'assets/img/Google-icon.svg'
-import facebookIcon from 'assets/img/Facebook-icon.svg'
-import appleIcon from 'assets/img/Apple-icon.svg'
+// import googleIcon from 'assets/img/Google-icon.svg'
+// import facebookIcon from 'assets/img/Facebook-icon.svg'
+// import appleIcon from 'assets/img/Apple-icon.svg'
 import { loginSchema } from './validation'
 
 import './Login.scss'
@@ -107,7 +107,7 @@ export const Login: FC = () => {
 						</Link>
 					</div>
 					<div className='login__text'>
-						By continuing with Google, Apple, or Email, you agree to Todolist’s
+						By continuing with Google, Apple, or Email, you agree to Pomodoro's
 						<span className='login__text-underline'>Terms of Service</span>
 						and
 						<span className='login__text-underline'>Privacy Policy</span>.

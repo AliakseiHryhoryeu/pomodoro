@@ -11,13 +11,18 @@ Will be later
 - TypeScript
 - Expo
 
-## Web Application 
+## Web Application
 
 - React
 - Redux, Redux Toolkit
 - TypeScript
-- Styled components
 - Webpack
+
+## Chrome extension
+
+- HTML
+- CSS
+- JavaScript
 
 ## Backend
 
@@ -25,9 +30,9 @@ Will be later
 - MongoDB
 - JavaScript
 
-## Figma (now i work on design)
+## Figma
 
-https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
+`https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app`
 
 ## Google play
 
@@ -35,7 +40,7 @@ https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
 ## Web
 
-https://pomodoro11.vercel.app/
+`https://pomodoro11.vercel.app/`
 
 ## Server
 

@@ -6,7 +6,7 @@
 	width: 100%;
 	overflow: hidden;
 	flex-grow: 1;
-	background: rgba($color: #f0feff, $alpha: 1);
+	background: var(--Dark-bg-white);
 	&__wrapper {
 		display: flex;
 		flex-direction: column;
@@ -29,6 +29,10 @@
 		margin-bottom: 40px;
 		border: 1px solid #c6c6c6;
 		border-radius: 50%;
+		color: var(--Dark-font-color);
+		&:hover {
+			background-color: var(--Dark-bg-white-hover);
+		}
 		&-title {
 			font-size: 24px;
 			font-weight: normal;
@@ -66,5 +70,18 @@
 				height: 44px;
 			}
 		}
+	}
+
+	&-dark {
+		background: var(--Dark-bg-white);
+		&__time {
+			color: var(--Dark-font-color);
+			&:hover {
+			}
+		}
+	}
+	&-light {
+		background: var(--Light-bg-white);
+		background-color: var(--Dark-bg-white-hover);
 	}
 }

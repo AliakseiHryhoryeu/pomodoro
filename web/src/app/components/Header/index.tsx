@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import classNames from 'classnames'
 
 import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { useActions } from 'app/hooks/useActions'
@@ -20,18 +21,18 @@ export const Header: FC = () => {
 
 	const allActions = useActions()
 
-	const { settingsVisible, BurgerVisible } = useTypedSelector(
+	const { settingsVisible, BurgerVisible, theme } = useTypedSelector(
 		(state: RootState) => {
 			return {
 				settingsVisible: state.user.settingsVisible,
 				BurgerVisible: state.user.burgerVisible,
+				theme: state.theme.theme,
 			}
 		}
 	)
-
 	return (
 		<>
-			<header className='header'>
+			<header className={classNames('header', `header-${theme}`)}>
 				<div className='header__wrapper'>
 					<img
 						className='header__burger'

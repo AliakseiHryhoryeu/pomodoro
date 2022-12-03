@@ -1,9 +1,9 @@
 {
-	"name": "to-do-list",
+	"name": "pomodoro-timer",
 	"version": "1.0.0",
-	"description": "Client-Server application to do list",
+	"description": "Pomodoro-web",
 	"private": false,
-	"repository": "https://github.com/AliakseiHryhoryeu/To-do-list",
+	"repository": "https://github.com/AliakseiHryhoryeu/pomodoro",
 	"author": "AliakseiHryhoryeu <88304337+AliakseiHryhoryeu@users.noreply.github.com>",
 	"license": "MIT",
 	"browserslist": {

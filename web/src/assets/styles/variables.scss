@@ -1,8 +1,22 @@
 :root {
-	--header-height: 3rem;
+	/* Light Theme */
+	--Light-bg-white: #f0feff;
+	--Light-bg-white-hover: #e2faff;
+	--Light-bg-dark: #e6faff;
+	--Light-bg-dark-hover: #cdf1f8;
+
+	--Light-font-color: #000;
+
+	/* Dark Theme */
+	--Dark-bg-white: #171717;
+	--Dark-bg-white-hover: #000;
+	--Dark-bg-dark: #212020;
+	--Dark-bg-dark-hover: #1a1b19;
+
+	--Dark-font-color: #fff;
 
 	/* Background colors */
-	--header-color: hsl(192, 98%, 95%);
+	--header-color: #e6faff;
 	--landing-section-color: hsl(223, 95%, 96%);
 	--auth-menu-color: hsl(190, 68%, 96%);
 	--auth-color: hsl(184, 60%, 97%);
@@ -19,8 +33,6 @@
 	--settings-bg-shadow-color: hsl(192, 3%, 7%, 70%);
 	--settings-border-img-color: hsl(192, 2%, 16%, 100%);
 
-	--alert-bg-color: hsl(45, 100%, 51%, 90%);
-
 	--page404-bg-color: hsl(192, 100%, 97%);
 
 	--header-bg-username-color: hsl(234, 92%, 33%, 70%);
@@ -33,55 +45,37 @@
 	--btn-border-radius: 1rem;
 	--btn-font-size: 1.1rem;
 
-	/* Badge colors */
-
-	--badge-color-grey: hsl(192, 10%, 81%, 100%);
-	--badge-color-lime: hsl(129, 49%, 81%, 100%);
-	--badge-color-purple: hsl(281, 89%, 65%, 100%);
-	--badge-color-black: hsl(258, 100%, 5%, 100%);
-	--badge-color-red: hsl(0, 100%, 70%, 100%);
-	--badge-color-green: hsl(153, 47%, 49%, 100%);
-	--badge-color-blue: hsl(198, 79%, 66%, 100%);
-	--badge-color-pink: hsl(345, 100%, 87%, 100%);
-
 	/*Fonts and typography start*/
-	--body-font: 'Montserrat', -apple-system, system-ui, sans-serif;
+	--body-font: 'Inter', -apple-system, system-ui, sans-serif;
 
-	--big-font-size: 2.5rem;
-	--h1-font-size: 2rem;
-	--h2-font-size: 1.25rem;
-	--h3-font-size: 1.1rem;
-	--normal-font-size: 0.938rem;
-	--small-font-size: 0.813rem;
-	--smaller-font-size: 0.75rem;
+	--big-fs: 2.5rem;
+	--h1-fs: 2rem;
+	--h2-fs: 1.25rem;
+	--h3-fs: 1.1rem;
+	--normal-fs: 0.938rem;
+	--small-fs: 0.813rem;
+	--smaller-fs: 0.75rem;
 
 	@media screen and (min-width: 968px) {
-		--big-font-size: 3.5rem;
-		--h1-font-size: 2.25rem;
-		--h2-font-size: 1.5rem;
-		--h3-font-size: 1.25rem;
-		--normal-font-size: 1rem;
-		--small-font-size: 0.875rem;
-		--smaller-font-size: 0.813rem;
+		--big-fs: 3.5rem;
+		--h1-fs: 2.25rem;
+		--h2-fs: 1.5rem;
+		--h3-fs: 1.25rem;
+		--normal-fs: 1rem;
+		--small-fs: 0.875rem;
+		--smaller-fs: 0.813rem;
 	}
 
 	--font-medium: 500;
 	--font-semi-bold: 600;
 	/*Fonts and typography end*/
 
-	/* Margenes Bottom */
-	--mb-0-2: 0.2rem;
-	--mb-0-5: 0.5rem;
-	--mb-0-75: 0.75rem;
-	--mb-1: 1rem;
-	--mb-1-5: 1.5rem;
-	--mb-2: 2rem;
-	--mb-2-5: 2.5rem;
-	/* Margenes Bottom */
-	--mside-0-5: 0.5rem;
-	--mside-0-75: 0.75rem;
-	--mside-1: 1rem;
-	--mside-1-5: 1.5rem;
-	--mside-2: 2rem;
-	--mside-2-5: 2.5rem;
+	/* Margins & paddings */
+	--m02: 0.2rem;
+	--m05: 0.5rem;
+	--m075: 0.75rem;
+	--m1: 1rem;
+	--m15: 1.5rem;
+	--m2: 2rem;
+	--m25: 2.5rem;
 }

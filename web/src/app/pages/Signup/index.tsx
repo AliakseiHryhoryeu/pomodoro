@@ -7,9 +7,9 @@ import { Header } from 'app/components'
 import { RootState } from 'app/store'
 import { useSignUpMutation } from 'app/store/user/user.api'
 
-import googleIcon from 'assets/img/Google-icon.svg'
-import facebookIcon from 'assets/img/Facebook-icon.svg'
-import appleIcon from 'assets/img/Apple-icon.svg'
+// import googleIcon from 'assets/img/Google-icon.svg'
+// import facebookIcon from 'assets/img/Facebook-icon.svg'
+// import appleIcon from 'assets/img/Apple-icon.svg'
 
 import { signupSchema } from './validation'
 
@@ -113,7 +113,7 @@ export const Signup: FC = () => {
 					</button>
 
 					<div className='signup__text'>
-						By continuing with Google, Apple, or Email, you agree to Todolist’s
+						By continuing with Google, Apple, or Email, you agree to Pomodoro's
 						<span className='signup__text-underline'>Terms of Service</span>
 						and
 						<span className='signup__text-underline'>Privacy Policy</span>.
