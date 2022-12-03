@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Routes, Route } from 'react-router-dom'
+
 import { Page404, Signup, Login, PasswordReset, Main } from 'app/pages'
-import { useAuthQuery } from './store/user/user.api'
-function App() {
+import { useAuthQuery } from 'app/store/user/user.api'
+
+export const App: FC = props => {
 	useAuthQuery({})
 	return (
 		<Routes>
@@ -14,5 +16,3 @@ function App() {
 		</Routes>
 	)
 }
-
-export default App

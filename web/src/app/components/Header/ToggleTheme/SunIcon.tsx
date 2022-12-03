@@ -8,7 +8,7 @@ export const SunIcon: FC = props => {
 			width='64px'
 			height='64px'
 			viewBox='0 0 512 512'
-			enable-background='new 0 0 512 512'
+			enableBackground='new 0 0 512 512'
 		>
 			<g id='sun'>
 				<g>
