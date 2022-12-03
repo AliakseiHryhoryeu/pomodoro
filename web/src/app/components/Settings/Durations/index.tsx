@@ -80,8 +80,8 @@ export const Durations: FC = () => {
 								className='settings__durations-time'
 								value={longBreak}
 								onChange={e =>
-									allActions.changeBreakTime({
-										newShortTime: Number(e.target.value),
+									allActions.changeLongTime({
+										newLongTime: Number(e.target.value),
 									})
 								}
 							/>

@@ -1,20 +1,16 @@
 import React, { FC } from 'react'
-
-// import accountIcon from 'assets/img/Account-icon.svg'
-// import ThemeIcon from 'assets/img/Theme-icon.svg'
-
 import { useDispatch } from 'react-redux'
-import { useActions } from 'app/hooks/useActions'
+import { Link } from 'react-router-dom'
 
-// import cross from 'assets/img/remove.svg'
+import { useTypedSelector } from 'app/hooks/useAppSelector'
+import { useActions } from 'app/hooks/useActions'
+import { RootState } from 'app/store'
 
 import './Burger.scss'
-import { Link } from 'react-router-dom'
-import { useTypedSelector } from 'app/hooks/useAppSelector'
-import { RootState } from 'app/store'
 
 export const Burger: FC = props => {
 	const dispatch = useDispatch()
+	const allActions = useActions()
 
 	const { isAuth, username } = useTypedSelector((state: RootState) => {
 		return {
@@ -23,7 +19,6 @@ export const Burger: FC = props => {
 		}
 	})
 
-	const allActions = useActions()
 	return (
 		<div className='burger'>
 			<div className='burger__main'>
