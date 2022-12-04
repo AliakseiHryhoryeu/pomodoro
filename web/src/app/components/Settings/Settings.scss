@@ -15,6 +15,9 @@
 		z-index: 100;
 		overflow: hidden;
 		cursor: pointer;
+		&:hover {
+			background: rgba($color: #000000, $alpha: 0.2);
+		}
 	}
 	&__main {
 		z-index: 1000;
@@ -32,14 +35,18 @@
 	&__header {
 		display: flex;
 		justify-content: start;
-		align-items: flex-start;
+		align-items: center;
 		flex-direction: row;
 		font-size: 28px;
 		width: 100%;
 		background: rgba($color: #e6fafe, $alpha: 1);
+		color: #000000;
+		&:hover {
+			background: rgba($color: #e6fafe, $alpha: 1);
+		}
 		padding: 20px;
 		cursor: pointer;
-		&-icon {
+		svg {
 			padding-right: 6px;
 		}
 	}
@@ -81,6 +88,9 @@
 			height: 90px;
 			color: #fff;
 			background: rgba($color: #0083ff, $alpha: 1);
+			&:hover {
+				background: var(--Light-button-bg-hover);
+			}
 			border-radius: 6px;
 			cursor: pointer;
 			input {
@@ -99,6 +109,7 @@
 		&-title {
 			font-size: 16px;
 			font-weight: 700;
+			color: var(--Dark-button-color);
 		}
 	}
 	&__break {
@@ -151,15 +162,160 @@
 			max-width: 180px;
 		}
 	}
+	&-light {
+		.settings__block {
+			background: var(--Light-bg-white);
+
+			&-title {
+				color: var(--Light-button-color-hover);
+			}
+		}
+		.settings__bg {
+			&:hover {
+				background: rgba($color: #fff, $alpha: 0.03);
+			}
+		}
+		.settings__main .settings {
+			&__main {
+				background: var(--Light-bg-white);
+			}
+
+			&__header {
+				background: var(--Light-bg-dark);
+				color: var(--Light-font-color);
+				svg {
+					g {
+						fill: var(--Light-font-color);
+					}
+				}
+				&:hover {
+					background: var(--Light-bg-dark-hover);
+				}
+			}
+
+			&__durations {
+				&-block {
+					color: var(--Light-font-color);
+					background: var(--Light-button-bg);
+					&:hover {
+						background: var(--Light-button-bg-hover);
+					}
+
+					input {
+						color: var(--Light-button-color);
+					}
+				}
+				&-time {
+					color: var(--Light-button-color);
+				}
+				&-title {
+					color: var(--Light-button-color);
+				}
+			}
+
+			&__break {
+				color: var(--Light-font-color);
+				&:hover {
+					background-color: var(--Light-button-bg-hover);
+				}
+				input {
+					color: var(--Light-font-color);
+				}
+			}
+
+			&__theme {
+				color: var(--Light-font-color);
+				&:hover {
+					background-color: var(--Light-button-bg-hover);
+				}
+				input {
+					color: var(--Light-font-color);
+				}
+			}
+		}
+	}
+	&-dark {
+		.settings__block {
+			background: var(--Dark-bg-white);
+
+			&-title {
+				color: var(--Dark-button-color-hover);
+			}
+		}
+		.settings__bg {
+			&:hover {
+				background: rgba($color: #fff, $alpha: 0.03);
+			}
+		}
+		.settings__main .settings {
+			&__main {
+				background: var(--Dark-bg-white);
+			}
+
+			&__header {
+				background: var(--Dark-bg-dark);
+				color: var(--Dark-font-color);
+				svg {
+					g {
+						fill: var(--Dark-font-color);
+					}
+				}
+				&:hover {
+					background: var(--Dark-bg-dark-hover);
+				}
+			}
+
+			&__durations {
+				&-block {
+					color: var(--Dark-font-color);
+					background: var(--Dark-button-bg);
+					&:hover {
+						background: var(--Dark-button-bg-hover);
+					}
+					input {
+						color: var(--Dark-font-color);
+					}
+				}
+				&-title {
+					color: var(--Dark-button-color);
+				}
+				&-time {
+					color: var(--Dark-font-color);
+				}
+			}
+
+			&__break {
+				color: var(--Dark-font-color);
+				&:hover {
+					background-color: var(--Dark-button-bg-hover);
+				}
+				input {
+					color: var(--Dark-font-color);
+				}
+			}
+
+			&__theme {
+				color: var(--Dark-font-color);
+				&:hover {
+					background-color: var(--Dark-button-bg-hover);
+				}
+				input {
+					color: var(--Dark-font-color);
+				}
+			}
+		}
+	}
 }
 
 @media (min-width: 768px) {
 	.settings {
 		&__main {
-			height: 80%;
-			width: 60%;
+			height: 90%;
+			width: 50%;
+			max-width: 750px;
 			overflow-y: scroll;
 			overflow-x: hidden;
+			border-radius: 10px;
 		}
 		&__header {
 			width: 100%;

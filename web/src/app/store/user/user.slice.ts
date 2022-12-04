@@ -13,7 +13,7 @@ const initialState: IUserState = {
 	},
 	token: localStorage.getItem('token'),
 	trialMode: true,
-	settingsVisible: false,
+	settingsVisible: true,
 	burgerVisible: false,
 }
 

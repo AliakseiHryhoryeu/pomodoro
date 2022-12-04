@@ -32,7 +32,7 @@ Will be later
 
 ## Figma
 
-`https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app`
+https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
 ## Google play
 
@@ -40,7 +40,7 @@ Will be later
 
 ## Web
 
-`https://pomodoro11.vercel.app/`
+https://pomodoro11.vercel.app/
 
 ## Server
 

@@ -22,8 +22,8 @@ export const Burger: FC = props => {
 	})
 
 	return (
-		<div className='burger'>
-			<div className={classNames('burger__main', `burger__main-${theme}`)}>
+		<div className={classNames('burger', `burger-${theme}`)}>
+			<div className='burger__main'>
 				<ul>
 					{!isAuth && (
 						<>

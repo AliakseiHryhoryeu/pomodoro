@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { useActions } from 'app/hooks/useActions'
 import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { RootState } from 'app/store'
-import { CheckIcon } from '../CheckIcon'
+import { CheckIcon } from '../img/CheckIcon'
 
 export const Breaks: FC = props => {
 	const { shortBreak, longBreak, pomodoroCounts, autoStart } = useTypedSelector(

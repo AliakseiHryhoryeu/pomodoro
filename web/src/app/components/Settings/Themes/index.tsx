@@ -4,7 +4,7 @@ import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { useActions } from 'app/hooks/useActions'
 import { RootState } from 'app/store'
 
-import { CheckIcon } from '../CheckIcon'
+import { CheckIcon } from '../img/CheckIcon'
 
 export const Themes: FC = props => {
 	const { theme } = useTypedSelector((state: RootState) => {

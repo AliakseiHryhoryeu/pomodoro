@@ -1,9 +1,11 @@
 import React, { FC } from 'react'
-import { useDispatch } from 'react-redux'
+import classNames from 'classnames'
 
+import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { useActions } from 'app/hooks/useActions'
+import { RootState } from 'app/store'
 
-import { SettingsHeader } from './Header'
+import { SettingsHeader } from './SettingsHeader'
 import { Durations } from './Durations'
 import { Breaks } from './Breaks'
 import { Themes } from './Themes'
@@ -11,11 +13,15 @@ import { Themes } from './Themes'
 import './Settings.scss'
 
 export const Settings: FC = props => {
-	const dispatch = useDispatch()
+	const { theme } = useTypedSelector((state: RootState) => {
+		return {
+			theme: state.theme.theme,
+		}
+	})
 
 	const allActions = useActions()
 	return (
-		<div className='settings'>
+		<div className={classNames('settings', `settings-${theme}`)}>
 			<div className='settings__main'>
 				<SettingsHeader />
 				<Durations />
@@ -24,7 +30,7 @@ export const Settings: FC = props => {
 			</div>
 			<div
 				className='settings__bg'
-				onClick={() => dispatch(allActions.settingsHide())}
+				onClick={() => allActions.settingsHide()}
 			></div>
 		</div>
 	)

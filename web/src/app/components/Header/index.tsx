@@ -8,15 +8,14 @@ import { useActions } from 'app/hooks/useActions'
 import { RootState } from 'app/store'
 
 import { Settings, Burger } from 'app/components'
-import { ToggleTheme } from './ToggleTheme'
+import { ToggleTheme } from 'app/components/'
 
 import mainLogo from 'assets/img/pomodoro.png'
-import settingsIcon from 'assets/img/settingsIcon.svg'
-import menuBurgerIcon from 'assets/img/menuBurger.svg'
 
-import './Header.scss'
 import { MenuBurgerIcon } from './img/MenuBurgerIcon'
 import { SettingsIcon } from './img/SettionsIcon'
+
+import './Header.scss'
 
 export const Header: FC = () => {
 	const dispatch = useDispatch()
