@@ -1,46 +1,32 @@
 :root {
 	/* Light Theme */
 	--Light-bg-white: #f0feff;
-	--Light-bg-white-hover: #e2faff;
+	--Light-bg-white-hover: #e7fbff;
 	--Light-bg-dark: #e6faff;
 	--Light-bg-dark-hover: #cdf1f8;
 
 	--Light-font-color: #000;
 
+	--Light-button-color: #fff;
+	--Light-button-color-hover: #f7f7ff;
+	--Light-button-bg: #0083ff;
+	--Light-button-bg-hover: #258ef0;
 	/* Dark Theme */
-	--Dark-bg-white: #171717;
-	--Dark-bg-white-hover: #000;
-	--Dark-bg-dark: #212020;
-	--Dark-bg-dark-hover: #1a1b19;
+	--Dark-bg-white: #1f1f1f;
+	--Dark-bg-white-hover: #2b2a2a;
+	--Dark-bg-dark: #171717;
+	--Dark-bg-dark-hover: #1c1d1b;
 
-	--Dark-font-color: #fff;
+	--Dark-font-color: #e4e4e4;
 
-	/* Background colors */
-	--header-color: #e6faff;
-	--landing-section-color: hsl(223, 95%, 96%);
-	--auth-menu-color: hsl(190, 68%, 96%);
-	--auth-color: hsl(184, 60%, 97%);
-	--settings-color: hsl(184, 98%, 100%);
-	--tasklist-color: hsl(192, 100%, 97%);
-	--menulist-color: hsl(184, 100%, 97%);
-
-	--text-color-black: hsl(192, 4%, 15%);
-	--text-color-grey: hsl(192, 4%, 15%);
-	--text-color-grey-light: hsl(192, 6%, 73%);
-	--text-color-light: hsl(192, 0%, 97%);
-
-	--settings-bg-color: hsl(184, 100%, 97%);
-	--settings-bg-shadow-color: hsl(192, 3%, 7%, 70%);
-	--settings-border-img-color: hsl(192, 2%, 16%, 100%);
-
-	--page404-bg-color: hsl(192, 100%, 97%);
-
-	--header-bg-username-color: hsl(234, 92%, 33%, 70%);
-	--header-bg-username-color-white: hsl(234, 0, 0, 100%);
+	--Dark-button-color: #a2c56b;
+	--Dark-button-color-hover: #9ecc53;
+	--Dark-button-bg: #45483d;
+	--Dark-button-bg-hover: #3e4136;
 
 	/* buttons settings */
-	--btn-blue-color: hsl(234, 92%, 33%, 70%);
-	--btn-gray-color: hsl(240, 15%, 89%, 70%);
+	--btn-blue-color: #0716a2b3;
+	--btn-gray-color: #dfdfe7b3;
 	--btn-height: 3rem;
 	--btn-border-radius: 1rem;
 	--btn-font-size: 1.1rem;

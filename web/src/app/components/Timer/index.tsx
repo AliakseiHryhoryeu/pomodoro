@@ -12,6 +12,10 @@ import doubleArrorLeft from 'assets/img/doubleArrorLeft.svg'
 import doubleArrorRight from 'assets/img/doubleArrorRight.svg'
 
 import './Timer.scss'
+import { TimerRun } from './img/TimerRun'
+import { TimerBack } from './img/TimerBack'
+import { TimerNext } from './img/TimerNext'
+import { TimerPause } from './img/TimerPause'
 
 export const Timer: FC = props => {
 	const { theme } = useTypedSelector((state: RootState) => {
@@ -31,14 +35,14 @@ export const Timer: FC = props => {
 				</div>
 				<div className='timer__buttons'>
 					<div className='timer__buttons-button'>
-						<img src={doubleArrorLeft} alt='doubleArrorLeft' />
+						<TimerBack />
 					</div>
 					<div className='timer__buttons-button'>
-						<img src={Play} alt='backArrow' />
-						{/* <img src={Pause} alt='backArrow' /> */}
+						<TimerRun />
+						{/* <TimerPause /> */}
 					</div>
 					<div className='timer__buttons-button'>
-						<img src={doubleArrorRight} alt='doubleArrorRight' />
+						<TimerNext />
 					</div>
 				</div>
 			</div>

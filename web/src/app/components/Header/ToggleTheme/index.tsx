@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import classNames from 'classnames'
 
 import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { useActions } from 'app/hooks/useActions'
@@ -18,7 +19,7 @@ export const ToggleTheme: FC = props => {
 	})
 
 	return (
-		<label className='toggleTheme'>
+		<label className={classNames('toggleTheme', `toggleTheme-${theme}`)}>
 			<MoonIcon />
 			<input
 				type='checkbox'

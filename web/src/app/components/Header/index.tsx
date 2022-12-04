@@ -15,6 +15,8 @@ import settingsIcon from 'assets/img/settingsIcon.svg'
 import menuBurgerIcon from 'assets/img/menuBurger.svg'
 
 import './Header.scss'
+import { MenuBurgerIcon } from './img/MenuBurgerIcon'
+import { SettingsIcon } from './img/SettionsIcon'
 
 export const Header: FC = () => {
 	const dispatch = useDispatch()
@@ -34,15 +36,12 @@ export const Header: FC = () => {
 		<>
 			<header className={classNames('header', `header-${theme}`)}>
 				<div className='header__wrapper'>
-					<img
+					<div
 						className='header__burger'
 						onClick={() => dispatch(allActions.burgerShow)}
-						src={menuBurgerIcon}
-						alt='menu-burger'
-						height='36px'
-						width='36px'
-					/>
-
+					>
+						<MenuBurgerIcon />
+					</div>
 					<Link to='/' className='header__logo'>
 						<img src={mainLogo} alt='mainLogo' height='30px' width='30px' />
 						Pomodoro
@@ -54,12 +53,7 @@ export const Header: FC = () => {
 								<ToggleTheme />
 							</li>
 							<li onClick={() => dispatch(allActions.settingsShow)}>
-								<img
-									src={settingsIcon}
-									alt='menu-burger'
-									height='40px'
-									width='40px'
-								/>
+								<SettingsIcon />
 							</li>
 						</ul>
 					</nav>

@@ -2,7 +2,6 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	width: 100%;
 	min-width: 120px;
 	padding: 6px;
 	max-width: 200px;
@@ -61,6 +60,16 @@
 			border-radius: 50%;
 			transition: 0.5s;
 			transform: translateX(50px);
+		}
+	}
+	&-light {
+		&:hover {
+			background-color: var(--Light-bg-dark-hover);
+		}
+	}
+	&-dark {
+		&:hover {
+			background-color: var(--Dark-bg-dark-hover);
 		}
 	}
 }
