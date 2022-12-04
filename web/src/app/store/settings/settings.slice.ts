@@ -21,13 +21,53 @@ const initialState: ISettingsState = {
 		pomodoroCounts: 4,
 		autoStart: true,
 	},
-	timerTime: 2500,
+	timer: {
+		isActive: false,
+		currentTime: 2500,
+		currentTimer: 'pomodoro',
+	},
 }
 
 export const settingsSlice = createSlice({
 	name: 'settingsSlice',
 	initialState,
 	reducers: {
+		// ============= //
+		// === Timer === //
+		// ============= //
+		updateCurrentTime: (
+			state,
+			action: PayloadAction<{ updatedTime: number }>
+		) => {
+			if (action.payload.updatedTime > 0) {
+				state.timer.currentTime = action.payload.updatedTime
+			}
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		},
+		PauseTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+			if (action.payload.updatedTime > 0) {
+				state.timer.currentTime = action.payload.updatedTime
+			}
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		},
+		StopTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+			if (action.payload.updatedTime > 0) {
+				state.timer.currentTime = action.payload.updatedTime
+			}
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		},
+		NextTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+			if (action.payload.updatedTime > 0) {
+				state.timer.currentTime = action.payload.updatedTime
+			}
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		},
+		BackTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+			if (action.payload.updatedTime > 0) {
+				state.timer.currentTime = action.payload.updatedTime
+			}
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		},
 		// ================= //
 		// === Durations === //
 		// ================= //
@@ -46,7 +86,7 @@ export const settingsSlice = createSlice({
 			action: PayloadAction<{ newShortTime: number }>
 		) => {
 			if (action.payload.newShortTime > 0) {
-				state.durations.pomodoroTime = action.payload.newShortTime
+				state.durations.breakTime = action.payload.newShortTime
 			}
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},

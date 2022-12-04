@@ -1,21 +1,16 @@
-import React, { FC } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { FC, useEffect, useState } from 'react'
 import classNames from 'classnames'
 
 import { useActions } from 'app/hooks/useActions'
 import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { RootState } from 'app/store'
 
-import Play from 'assets/img/Play.svg'
-import Pause from 'assets/img/Pause.svg'
-import doubleArrorLeft from 'assets/img/doubleArrorLeft.svg'
-import doubleArrorRight from 'assets/img/doubleArrorRight.svg'
-
-import './Timer.scss'
 import { TimerRun } from './img/TimerRun'
 import { TimerBack } from './img/TimerBack'
 import { TimerNext } from './img/TimerNext'
 import { TimerPause } from './img/TimerPause'
+
+import './Timer.scss'
 
 export const Timer: FC = props => {
 	const { theme } = useTypedSelector((state: RootState) => {
@@ -24,28 +19,90 @@ export const Timer: FC = props => {
 		}
 	})
 
+	const [minutes, setMinutes] = useState(25)
+	const [seconds, setSeconds] = useState(0)
+	const [displayMessage, setDisplayMessage] = useState(false)
+
+	// привести в нормальный вид таймер завтра,
+	// начать делать версию для хрома,
+	// верстку логина, регистрации, 404 стр, и т.д. поправить
+	// упаковать серверную часть to do list в докер
+
+	const [isPause, setPause] = useState(false)
+	const startTimer = () => {
+		let interval = setInterval(() => {
+			if (isPause) {
+				clearInterval(interval)
+			}
+			console.log('work')
+			if (seconds === 0) {
+				if (minutes !== 0) {
+					setSeconds(59)
+					setMinutes(minutes - 1)
+				} else {
+					let minutes = displayMessage ? 24 : 4
+					let seconds = 59
+
+					setSeconds(seconds)
+					setMinutes(minutes)
+					setDisplayMessage(!displayMessage)
+				}
+			} else {
+				setSeconds(seconds - 1)
+			}
+		}, 1000)
+	}
+
+	const timerMinutes = minutes < 10 ? `0${minutes}` : minutes
+	const timerSeconds = seconds < 10 ? `0${seconds}` : seconds
+
 	const allActions = useActions()
 	return (
-		<div className={classNames('timer', `timer-${theme}`)}>
-			<div className='timer__wrapper'>
-				<div className='timer__time'>
-					<div className='timer__time-title'>Start to focus</div>
-					<div className='timer__time-time'>25:00</div>
-					<div className='timer__time-count'>1 of 4</div>
+		<>
+			<>
+				<div className='test'>
+					<div className='message'>
+						{displayMessage && <div>Break time! New session starts in:</div>}
+					</div>
+					<div className='timer'>
+						{timerMinutes}:{timerSeconds}
+					</div>
 				</div>
-				<div className='timer__buttons'>
-					<div className='timer__buttons-button'>
-						<TimerBack />
+			</>
+			<div className={classNames('timer', `timer-${theme}`)}>
+				<div className='timer__wrapper'>
+					<div className='timer__time'>
+						<div className='timer__time-title'>Start to focus</div>
+						<div className='timer__time-time'>25:00</div>
+						<div className='timer__time-count'>1 of 4</div>
 					</div>
-					<div className='timer__buttons-button'>
-						<TimerRun />
-						{/* <TimerPause /> */}
-					</div>
-					<div className='timer__buttons-button'>
-						<TimerNext />
+					<div className='timer__buttons'>
+						<div className='timer__buttons-button'>
+							<TimerBack />
+						</div>
+						<div
+							className='timer__buttons-button'
+							onClick={() => {
+								startTimer()
+							}}
+						>
+							<TimerRun />
+							{/* <TimerPause /> */}
+						</div>
+						{/* <div className='timer__buttons-button'>
+						<TimerStop />
+					</div> */}
+						<div
+							className='timer__buttons-button'
+							onClick={() => {
+								setPause(true)
+							}}
+						>
+							<TimerNext />
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	)
 }

@@ -1,14 +1,8 @@
-.haAclf {
-	width: 1000px;
-	background-color: red;
-	height: 10000px;
-}
-
 .login {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	background: var(--auth-color);
+	background: #f3fbfc;
 
 	&__container {
 		display: flex;
@@ -26,9 +20,9 @@
 	}
 	&__title {
 		text-align: center;
-		padding-bottom: var(--mb-2);
+		padding-bottom: 2rem;
 		font-weight: 600;
-		font-size: var(--h1-font-size);
+		font-size: 2rem;
 	}
 	&__social {
 		display: flex;
@@ -59,10 +53,10 @@
 		flex-direction: column;
 		max-width: 400px;
 		min-width: 385px;
-		padding: 0 var(--mb-0-5);
+		padding: 0 0.5rem;
 		min-height: 3rem;
-		margin-bottom: var(--mb-0-5);
-		background: var(--auth-color);
+		margin-bottom: 0.5rem;
+		background: #f3fbfc;
 		border: 1px solid #e5e5e5;
 		border-radius: 2px;
 		&-label {
@@ -76,11 +70,11 @@
 		}
 	}
 	&__button {
-		height: var(--btn-height);
+		height: 3rem;
 		width: 100%;
 		max-width: 400px;
 		cursor: pointer;
-		margin: var(--mb-0-5) 0;
+		margin: 0.5rem 0;
 		border: none;
 		border-radius: 5px;
 		display: flex;
@@ -90,7 +84,7 @@
 		font-size: 16px;
 		font-weight: 600;
 		&:hover {
-			background-color: rgba(9, 23, 149, 0.7);
+			background-color: #091795b3;
 		}
 		margin-bottom: 16px;
 	}
@@ -116,8 +110,8 @@
 
 .btn {
 	&-login {
-		color: var(--text-color-light);
-		background: var(--btn-blue-color);
+		color: #f7f7f7;
+		background: #0716a2b3;
 	}
 }
 

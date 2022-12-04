@@ -1,7 +1,7 @@
 export interface ISettingsState {
 	durations: IDurations
 	breaks: IBreaks
-	timerTime: number
+	timer: ITimer
 }
 
 export interface IDurations {
@@ -14,4 +14,10 @@ export interface IBreaks {
 	long: boolean
 	pomodoroCounts: number
 	autoStart: boolean
+}
+
+export interface ITimer {
+	isActive: boolean
+	currentTime: number
+	currentTimer: 'pomodoro' | 'short' | 'longBreak'
 }
