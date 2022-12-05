@@ -5,19 +5,25 @@ import { useActions } from 'app/hooks/useActions'
 import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { RootState } from 'app/store'
 
-import { TimerRun } from './img/TimerRun'
-import { TimerBack } from './img/TimerBack'
-import { TimerNext } from './img/TimerNext'
-import { TimerPause } from './img/TimerPause'
+import { TimerActive } from './buttons/TimerActive'
+import { TimerBack } from './buttons/TimerBack'
+import { TimerNext } from './buttons/TimerNext'
+import { TimerPause } from './buttons/TimerPause'
 
 import './Timer.scss'
+import { TimerStop } from './buttons/TimerStop'
 
 export const Timer: FC = props => {
-	const { theme } = useTypedSelector((state: RootState) => {
-		return {
-			theme: state.theme.theme,
+	const { theme, isActiveTimer, currentTimer } = useTypedSelector(
+		(state: RootState) => {
+			return {
+				theme: state.theme.theme,
+				isActiveTimer: state.settings.timer.isActive,
+				currentTimer: state.settings.timer.currentTimer,
+			}
 		}
-	})
+	)
+	const [isPause, setPause] = useState(false)
 
 	const [minutes, setMinutes] = useState(25)
 	const [seconds, setSeconds] = useState(0)
@@ -28,7 +34,6 @@ export const Timer: FC = props => {
 	// верстку логина, регистрации, 404 стр, и т.д. поправить
 	// упаковать серверную часть to do list в докер
 
-	const [isPause, setPause] = useState(false)
 	const startTimer = () => {
 		let interval = setInterval(() => {
 			if (isPause) {
@@ -73,33 +78,17 @@ export const Timer: FC = props => {
 				<div className='timer__wrapper'>
 					<div className='timer__time'>
 						<div className='timer__time-title'>Start to focus</div>
+						{/* {isActiveTimer && <div className='timer__time-title'>Be focus</div>} */}
 						<div className='timer__time-time'>25:00</div>
 						<div className='timer__time-count'>1 of 4</div>
 					</div>
 					<div className='timer__buttons'>
-						<div className='timer__buttons-button'>
-							<TimerBack />
-						</div>
-						<div
-							className='timer__buttons-button'
-							onClick={() => {
-								startTimer()
-							}}
-						>
-							<TimerRun />
-							{/* <TimerPause /> */}
-						</div>
-						{/* <div className='timer__buttons-button'>
+						<TimerBack />
+						<TimerActive />
 						<TimerStop />
-					</div> */}
-						<div
-							className='timer__buttons-button'
-							onClick={() => {
-								setPause(true)
-							}}
-						>
-							<TimerNext />
-						</div>
+						<TimerPause />
+						{isActiveTimer && <TimerPause />}
+						<TimerNext />
 					</div>
 				</div>
 			</div>

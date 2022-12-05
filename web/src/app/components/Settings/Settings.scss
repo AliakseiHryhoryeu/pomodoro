@@ -95,7 +95,10 @@
 			cursor: pointer;
 			input {
 				background-color: transparent;
-				max-width: 60px;
+				display: block;
+				max-width: 90px;
+				text-align: center;
+				width: 100%;
 				width: auto;
 				border: none;
 				font-size: 36px;

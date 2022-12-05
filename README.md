@@ -18,7 +18,7 @@ Will be later
 - TypeScript
 - Webpack
 
-## Chrome extension
+## Chrome extension - maybe later
 
 - HTML
 - CSS
@@ -30,7 +30,7 @@ Will be later
 - MongoDB
 - JavaScript
 
-## Figma
+## Figma - 06.12.2022 i will redesign timer
 
 https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
