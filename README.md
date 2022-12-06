@@ -30,7 +30,7 @@ Will be later
 - MongoDB
 - JavaScript
 
-## Figma - 06.12.2022 i will redesign timer
+## Figma
 
 https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
