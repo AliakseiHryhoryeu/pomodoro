@@ -46,31 +46,6 @@
 			font-weight: normal;
 		}
 	}
-	&__buttons {
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		flex-direction: row;
-
-		min-width: 280px;
-		max-width: 400px;
-		width: 100%;
-
-		&-button {
-			cursor: pointer;
-			background: var(--Light-button-bg);
-			width: 80px;
-			height: 80px;
-			border-radius: 50%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			img {
-				width: 44px;
-				height: 44px;
-			}
-		}
-	}
 
 	&-dark {
 		background: var(--Dark-bg-white);
@@ -79,26 +54,6 @@
 				color: var(--Dark-font-color);
 				&:hover {
 					background-color: var(--Dark-bg-white-hover);
-				}
-			}
-			.timer__buttons {
-				&-button {
-					background: var(--Dark-button-bg);
-					&:hover {
-						background: var(--Dark-button-bg-hover);
-						svg {
-							path {
-								fill: var(--Dark-button-color-hover);
-								stroke: var(--Dark-button-color-hover);
-							}
-						}
-					}
-					svg {
-						path {
-							fill: var(--Dark-button-color);
-							stroke: var(--Dark-button-color);
-						}
-					}
 				}
 			}
 		}
@@ -111,26 +66,6 @@
 				color: var(--Light-font-color);
 				&:hover {
 					background-color: var(--Light-bg-white-hover);
-				}
-			}
-			.timer__buttons {
-				&-button {
-					background: var(--Light-button-bg);
-					&:hover {
-						background: var(--Light-button-bg-hover);
-						svg {
-							path {
-								fill: var(--Light-button-color-hover);
-								stroke: var(--Light-button-color-hover);
-							}
-						}
-					}
-					svg {
-						path {
-							fill: var(--Light-button-color);
-							stroke: var(--Light-button-color);
-						}
-					}
 				}
 			}
 		}

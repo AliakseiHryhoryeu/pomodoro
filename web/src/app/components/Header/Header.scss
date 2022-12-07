@@ -24,7 +24,7 @@
 		height: 100%;
 		cursor: pointer;
 		padding: 0 10px;
-		margin-right: auto;
+		// margin-right: auto;
 		&:hover {
 			background: var(--Dark-bg-dark-hover);
 		}
@@ -48,6 +48,8 @@
 		margin-right: auto;
 		cursor: pointer;
 		height: 100%;
+		margin-right: auto;
+
 		img {
 			padding-right: 8px;
 		}

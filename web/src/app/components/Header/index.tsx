@@ -35,12 +35,12 @@ export const Header: FC = () => {
 		<>
 			<header className={classNames('header', `header-${theme}`)}>
 				<div className='header__wrapper'>
-					<div
+					{/* <div
 						className='header__burger'
 						onClick={() => dispatch(allActions.burgerShow)}
 					>
 						<MenuBurgerIcon />
-					</div>
+					</div> */}
 					<Link to='/' className='header__logo'>
 						<img src={mainLogo} alt='mainLogo' height='30px' width='30px' />
 						Pomodoro
