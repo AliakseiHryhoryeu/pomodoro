@@ -2,6 +2,7 @@ export interface ISettingsState {
 	durations: IDurations
 	breaks: IBreaks
 	timer: ITimer
+	showAlert: boolean
 }
 
 export interface IDurations {

@@ -26,6 +26,7 @@ const initialState: ISettingsState = {
 		currentTime: 2500,
 		currentTimer: 'pomodoro',
 	},
+	showAlert: true,
 }
 
 export const settingsSlice = createSlice({
@@ -122,6 +123,12 @@ export const settingsSlice = createSlice({
 				state.breaks.pomodoroCounts = 1
 			}
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		},
+		// ============= //
+		// === Alert === //
+		// ============= //
+		hideAlert: (state, action: PayloadAction<{}>) => {
+			state.showAlert = false
 		},
 	},
 })
