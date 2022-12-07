@@ -24,7 +24,7 @@ const initialState: ISettingsState = {
 		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
 		currentTimer: 'Pomodoro',
 	},
-	showAlert: true,
+	showAlert: Parsed.showAlert || true,
 }
 // need add last save time
 
@@ -49,6 +49,7 @@ export const settingsSlice = createSlice({
 			}
 			state.timer.isActive = false
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			console.log(Parsed)
 		},
 
 		// updateCurrentTime: (
@@ -156,6 +157,7 @@ export const settingsSlice = createSlice({
 		// ============= //
 		hideAlert: (state, action: PayloadAction<{}>) => {
 			state.showAlert = false
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 	},
 })

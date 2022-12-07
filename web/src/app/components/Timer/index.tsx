@@ -12,17 +12,18 @@ import { ChangeTime } from './ChangeTime/intex'
 import { TimerButton } from './TimerButton'
 
 export const Timer: FC = props => {
-	const { theme, isActiveTimer, showAlert, currentTimer } = useTypedSelector(
+	const { theme, isActiveTimer, showAlert } = useTypedSelector(
 		(state: RootState) => {
 			return {
 				theme: state.theme.theme,
 				isActiveTimer: state.settings.timer.isActive,
 				showAlert: state.settings.showAlert,
-				currentTimer: state.settings.timer.currentTimer,
 			}
 		}
 	)
-
+	useEffect(() => {
+		console.log(showAlert)
+	}, [])
 	const allActions = useActions()
 	return (
 		<>
