@@ -20,5 +20,5 @@ export interface IBreaks {
 export interface ITimer {
 	isActive: boolean
 	currentTime: number
-	currentTimer: 'pomodoro' | 'short' | 'longBreak'
+	currentTimer: 'Pomodoro' | 'Short break' | 'Long break'
 }

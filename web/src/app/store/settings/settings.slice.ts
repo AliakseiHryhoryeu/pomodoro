@@ -5,29 +5,28 @@ import type { RootState } from 'app/store'
 import { ISettingsState } from './settings.types'
 
 const LocalStorageFolder = 'Settings'
-const LocalStorage_settings = JSON.parse(
-	localStorage.getItem(LocalStorageFolder)
-)
+const Parsed = JSON.parse(localStorage.getItem(LocalStorageFolder))
 
 const initialState: ISettingsState = {
 	durations: {
-		pomodoroTime: 25,
-		breakTime: 5,
-		longTime: 15,
+		pomodoroTime: Parsed.pomodoroTime || 25,
+		breakTime: Parsed.breakTime || 5,
+		longTime: Parsed.longTime || 15,
 	},
 	breaks: {
-		short: true,
-		long: true,
-		pomodoroCounts: 4,
-		autoStart: true,
+		short: Parsed.short || true,
+		long: Parsed.long || true,
+		pomodoroCounts: Parsed.pomodoroCounts || 4,
+		autoStart: Parsed.autoStart || true,
 	},
 	timer: {
 		isActive: false,
-		currentTime: 2500,
-		currentTimer: 'pomodoro',
+		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
+		currentTimer: 'Pomodoro',
 	},
 	showAlert: true,
 }
+// need add last save time
 
 export const settingsSlice = createSlice({
 	name: 'settingsSlice',
@@ -36,39 +35,55 @@ export const settingsSlice = createSlice({
 		// ============= //
 		// === Timer === //
 		// ============= //
-		updateCurrentTime: (
-			state,
-			action: PayloadAction<{ updatedTime: number }>
-		) => {
-			if (action.payload.updatedTime > 0) {
-				state.timer.currentTime = action.payload.updatedTime
+		changeTimer: (state, action: PayloadAction<{}>) => {
+			const currentTimer = state.timer.currentTimer
+			if (currentTimer === 'Pomodoro') {
+				state.timer.currentTimer = 'Short break'
+				state.timer.currentTime = state.durations.breakTime * 60
+			} else if (currentTimer === 'Short break') {
+				state.timer.currentTimer = 'Long break'
+				state.timer.currentTime = state.durations.longTime * 60
+			} else {
+				state.timer.currentTimer = 'Pomodoro'
+				state.timer.currentTime = state.durations.pomodoroTime * 60
 			}
+			state.timer.isActive = false
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
-		PauseTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-			if (action.payload.updatedTime > 0) {
-				state.timer.currentTime = action.payload.updatedTime
-			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		},
-		StopTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-			if (action.payload.updatedTime > 0) {
-				state.timer.currentTime = action.payload.updatedTime
-			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		},
-		NextTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-			if (action.payload.updatedTime > 0) {
-				state.timer.currentTime = action.payload.updatedTime
-			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		},
-		BackTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-			if (action.payload.updatedTime > 0) {
-				state.timer.currentTime = action.payload.updatedTime
-			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		},
+
+		// updateCurrentTime: (
+		// 	state,
+		// 	action: PayloadAction<{ updatedTime: number }>
+		// ) => {
+		// 	if (action.payload.updatedTime > 0) {
+		// 		state.timer.currentTime = action.payload.updatedTime
+		// 	}
+		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		// },
+		// PauseTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+		// 	if (action.payload.updatedTime > 0) {
+		// 		state.timer.currentTime = action.payload.updatedTime
+		// 	}
+		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		// },
+		// StopTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+		// 	if (action.payload.updatedTime > 0) {
+		// 		state.timer.currentTime = action.payload.updatedTime
+		// 	}
+		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		// },
+		// NextTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+		// 	if (action.payload.updatedTime > 0) {
+		// 		state.timer.currentTime = action.payload.updatedTime
+		// 	}
+		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		// },
+		// BackTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+		// 	if (action.payload.updatedTime > 0) {
+		// 		state.timer.currentTime = action.payload.updatedTime
+		// 	}
+		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		// },
 		// ================= //
 		// === Durations === //
 		// ================= //
@@ -77,8 +92,12 @@ export const settingsSlice = createSlice({
 			state,
 			action: PayloadAction<{ newPomodoroTime: number }>
 		) => {
+			const currentTimer = state.timer.currentTimer
 			if (action.payload.newPomodoroTime > 0) {
 				state.durations.pomodoroTime = action.payload.newPomodoroTime
+				if (currentTimer === 'Pomodoro') {
+					state.timer.currentTime = action.payload.newPomodoroTime * 60
+				}
 			}
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
@@ -86,14 +105,22 @@ export const settingsSlice = createSlice({
 			state,
 			action: PayloadAction<{ newShortTime: number }>
 		) => {
+			const currentTimer = state.timer.currentTimer
 			if (action.payload.newShortTime > 0) {
 				state.durations.breakTime = action.payload.newShortTime
+				if (currentTimer === 'Short break') {
+					state.timer.currentTime = action.payload.newShortTime * 60
+				}
 			}
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 		changeLongTime: (state, action: PayloadAction<{ newLongTime: number }>) => {
+			const currentTimer = state.timer.currentTimer
 			if (action.payload.newLongTime > 0) {
 				state.durations.longTime = action.payload.newLongTime
+				if (currentTimer === 'Long break') {
+					state.timer.currentTime = action.payload.newLongTime * 60
+				}
 			}
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},

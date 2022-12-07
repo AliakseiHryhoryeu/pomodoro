@@ -1,12 +1,45 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
+import classNames from 'classnames'
+
+import { useTypedSelector } from 'app/hooks/useAppSelector'
+import { useActions } from 'app/hooks/useActions'
+import { RootState } from 'app/store'
+
 import { ChangeTimeIcon } from './ChangeTimeIcon'
 
-export const ChangeTime: FC = props => {
+import './ChangeTime.scss'
+
+export const ChangeTime: FC = () => {
+	const { theme, currentTimer, currentTime } = useTypedSelector(
+		(state: RootState) => {
+			return {
+				theme: state.theme.theme,
+				currentTimer: state.settings.timer.currentTimer,
+				currentTime: state.settings.timer.currentTime,
+			}
+		}
+	)
+	const minutes = Math.floor(currentTime / 60)
+	const seconds = currentTime - Math.floor(currentTime / 60) * 60
+
+	const formatedTime = (time: number) => {
+		if (time < 10) {
+			return `0${time}`
+		}
+		return `${time}`
+	}
+	const allActions = useActions()
+
 	return (
-		<div className='button'>
+		<div
+			className={classNames('timer__button', `timer__button-${theme}`)}
+			onClick={() => allActions.changeTimer({})}
+		>
 			<ChangeTimeIcon />
-			<div className='button__title'>Pomodoro time:</div>
-			<div className='button__time'>25:00</div>
+			<div className='timer__button-title'>{currentTimer}:</div>
+			<div className='timer__button-time'>
+				{formatedTime(minutes)}:{formatedTime(seconds)}
+			</div>
 		</div>
 	)
 }
