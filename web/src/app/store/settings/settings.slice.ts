@@ -1,32 +1,41 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import { emptySettingsState } from './settings.types'
+
 import type { RootState } from 'app/store'
 
 import { ISettingsState } from './settings.types'
 
+// Get last settings from Local Storage
 const LocalStorageFolder = 'Settings'
-const Parsed = JSON.parse(localStorage.getItem(LocalStorageFolder))
+const getParsed = () => {
+	let Parsed = JSON.parse(localStorage.getItem(LocalStorageFolder))
+	if (typeof Parsed == undefined || Parsed == null) {
+		Parsed = emptySettingsState
+	}
+	return Parsed
+}
+const Parsed: ISettingsState = getParsed()
 
 const initialState: ISettingsState = {
 	durations: {
-		pomodoroTime: Parsed.pomodoroTime || 25,
-		breakTime: Parsed.breakTime || 5,
-		longTime: Parsed.longTime || 15,
+		pomodoroTime: Parsed.durations.pomodoroTime || 25,
+		breakTime: Parsed.durations.breakTime || 5,
+		longTime: Parsed.durations.longTime || 15,
 	},
 	breaks: {
-		short: Parsed.short || true,
-		long: Parsed.long || true,
-		pomodoroCounts: Parsed.pomodoroCounts || 4,
-		autoStart: Parsed.autoStart || true,
+		short: Parsed.breaks.short && true,
+		long: Parsed.breaks.long && true,
+		pomodoroCounts: Parsed.breaks.pomodoroCounts || 4,
+		autoStart: Parsed.breaks.autoStart && true,
 	},
 	timer: {
 		isActive: false,
 		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
 		currentTimer: 'Pomodoro',
 	},
-	showAlert: Parsed.showAlert || true,
+	showAlert: Parsed.showAlert && true,
 }
-// need add last save time
 
 export const settingsSlice = createSlice({
 	name: 'settingsSlice',
@@ -49,7 +58,6 @@ export const settingsSlice = createSlice({
 			}
 			state.timer.isActive = false
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-			console.log(Parsed)
 		},
 
 		// updateCurrentTime: (

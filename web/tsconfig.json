@@ -21,6 +21,7 @@
 		"removeComments": true,
 		"noImplicitReturns": true,
 		"noUnusedLocals": false,
+		"noUnusedParameters": false,
 		"outDir": "build",
 		"baseUrl": "src",
 		"paths": {

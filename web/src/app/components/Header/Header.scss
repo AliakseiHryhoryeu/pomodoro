@@ -1,6 +1,5 @@
 .header {
 	display: flex;
-	position: fixed;
 	justify-content: start;
 	align-items: center;
 	z-index: 50;
@@ -38,7 +37,8 @@
 	}
 
 	&__logo {
-		display: none;
+		// display: none;
+		display: flex;
 		justify-content: center;
 		align-items: center;
 		padding: 0px 10px;
@@ -70,6 +70,8 @@
 				height: 100%;
 				padding: 0px 5px;
 				svg {
+					height: 30px;
+					width: 30px;
 					g {
 						fill: var(--Dark-font-color);
 					}
@@ -167,6 +169,21 @@
 		}
 		&__logo {
 			display: flex;
+		}
+	}
+}
+
+@media (min-width: 400px) {
+	.header {
+		&__nav {
+			ul {
+				li {
+					svg {
+						height: 40px;
+						width: 40px;
+					}
+				}
+			}
 		}
 	}
 }
