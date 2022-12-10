@@ -30,7 +30,7 @@ https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
 ## Google play
 
-...
+.....
 
 ## Web
 
