@@ -2,7 +2,7 @@
 
 ## Short Description
 
-Will be later
+Pomodoro app, data save in local storage
 
 ## Mobile will be
 
@@ -24,19 +24,13 @@ Will be later
 - CSS
 - JavaScript
 
-## Backend
-
-- Express.js
-- MongoDB
-- JavaScript
-
 ## Figma
 
 https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
 ## Google play
 
-...
+.....
 
 ## Web
 
