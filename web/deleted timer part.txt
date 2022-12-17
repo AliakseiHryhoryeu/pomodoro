@@ -18,7 +18,6 @@ deleted timer part
 	// 		if (isPause) {
 	// 			clearInterval(interval)
 	// 		}
-	// 		console.log('work')
 	// 		if (seconds === 0) {
 	// 			if (minutes !== 0) {
 	// 				setSeconds(59)

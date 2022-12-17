@@ -20,6 +20,7 @@ export interface IBreaks {
 export interface ITimer {
 	isActive: boolean
 	currentTime: number
+	currentPomodoroCount: number
 	currentTimer: 'Pomodoro' | 'Short break' | 'Long break'
 }
 
@@ -38,6 +39,7 @@ export const emptySettingsState: ISettingsState = {
 	timer: {
 		isActive: false,
 		currentTime: 25 * 60,
+		currentPomodoroCount: 1,
 		currentTimer: 'Pomodoro',
 	},
 	showAlert: true,

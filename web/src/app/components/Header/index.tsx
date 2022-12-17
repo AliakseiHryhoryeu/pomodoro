@@ -31,11 +31,6 @@ export const Header: FC = () => {
 			}
 		}
 	)
-	useEffect(() => {
-		setInterval(() => {
-			console.log(theme)
-		}, 1000)
-	}, [])
 	return (
 		<>
 			<header className={classNames('header', `header-${theme}`)}>

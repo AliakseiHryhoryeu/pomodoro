@@ -30,6 +30,7 @@ const initialState: ISettingsState = {
 	timer: {
 		isActive: false,
 		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
+		currentPomodoroCount: 1,
 		currentTimer: 'Pomodoro',
 	},
 	showAlert: Parsed.showAlert && true,
@@ -57,65 +58,65 @@ export const settingsSlice = createSlice({
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 		updateTime: (state, action: PayloadAction<{}>) => {
+			if (state.timer.isActive) {
+				state.timer.currentTime -= 1
+			}
 			if (state.timer.currentTime <= 0) {
 				switch (state.timer.currentTimer) {
 					case 'Pomodoro':
-						state.timer.currentTimer = 'Short break'
-						state.timer.currentTime = state.durations.breakTime * 60
+						state.timer.currentPomodoroCount++
+						if (state.breaks.short) {
+							state.timer.currentTimer = 'Short break'
+							state.timer.currentTime = state.durations.breakTime * 60
+						} else if (state.breaks.long) {
+							state.timer.currentTimer = 'Long break'
+							state.timer.currentTime = state.durations.longTime * 60
+						} else {
+							state.timer.currentTimer = 'Pomodoro'
+							state.timer.currentTime = state.durations.pomodoroTime * 60
+						}
 						break
 					case 'Short break':
-						state.timer.currentTimer = 'Long break'
-						state.timer.currentTime = state.durations.longTime * 60
+						if (
+							state.timer.currentPomodoroCount >= state.breaks.pomodoroCounts
+						) {
+							state.timer.currentTimer = 'Long break'
+							state.timer.currentTime = state.durations.longTime * 60
+						} else {
+							state.timer.currentTimer = 'Pomodoro'
+							state.timer.currentTime = state.durations.pomodoroTime * 60
+						}
 						break
 					case 'Long break':
 						state.timer.currentTimer = 'Pomodoro'
 						state.timer.currentTime = state.durations.pomodoroTime * 60
+						state.timer.currentPomodoroCount = 1
+						if (state.breaks.autoStart === false) {
+							state.timer.isActive = false
+						}
 						break
 					default:
 						break
 				}
-			} else {
-				if (state.timer.isActive) {
-					state.timer.currentTime -= 1
-				}
 			}
 
-			state.timer.isActive = false
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
-		// updateCurrentTime: (
-		// 	state,
-		// 	action: PayloadAction<{ updatedTime: number }>
-		// ) => {
-		// 	if (action.payload.updatedTime > 0) {
-		// 		state.timer.currentTime = action.payload.updatedTime
-		// 	}
+
+		toggleRunTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+			state.timer.isActive = !state.timer.isActive
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		},
+
+		// runTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+		// 	state.timer.isActive = false
 		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		// },
-		// PauseTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-		// 	if (action.payload.updatedTime > 0) {
-		// 		state.timer.currentTime = action.payload.updatedTime
-		// 	}
+		// pauseTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+		// 	state.timer.isActive = false
 		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		// },
-		// StopTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-		// 	if (action.payload.updatedTime > 0) {
-		// 		state.timer.currentTime = action.payload.updatedTime
-		// 	}
-		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		// },
-		// NextTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-		// 	if (action.payload.updatedTime > 0) {
-		// 		state.timer.currentTime = action.payload.updatedTime
-		// 	}
-		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		// },
-		// BackTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-		// 	if (action.payload.updatedTime > 0) {
-		// 		state.timer.currentTime = action.payload.updatedTime
-		// 	}
-		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		// },
+
 		// ================= //
 		// === Durations === //
 		// ================= //
