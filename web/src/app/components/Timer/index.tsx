@@ -21,10 +21,13 @@ export const Timer: FC = props => {
 			}
 		}
 	)
-	useEffect(() => {
-		console.log(showAlert)
-	}, [])
+
 	const allActions = useActions()
+	useEffect(() => {
+		setInterval(() => {
+			allActions.updateTime({})
+		}, 1000)
+	}, [])
 	return (
 		<>
 			<div className={classNames('timer', `timer-${theme}`)}>

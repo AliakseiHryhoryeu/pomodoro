@@ -1,3 +1,5 @@
+$test: var(--Dark-bg-white);
+
 .settings {
 	display: flex;
 	align-items: center;
@@ -7,7 +9,8 @@
 	width: 100%;
 	z-index: 100;
 	overflow-x: hidden;
-	background: var(--Dark-bg-white);
+	background: rgba($color: #000, $alpha: 0.7);
+
 	&__bg {
 		position: absolute;
 		height: 100%;
@@ -174,6 +177,9 @@
 		}
 	}
 	&-light {
+		.settings__main {
+			background: var(--Light-bg-white);
+		}
 		.settings__block {
 			background: var(--Light-bg-white);
 

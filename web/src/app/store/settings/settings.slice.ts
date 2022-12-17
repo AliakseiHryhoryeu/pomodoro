@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { emptySettingsState } from './settings.types'
+import { ISettingsState, emptySettingsState } from './settings.types'
 
 import type { RootState } from 'app/store'
-
-import { ISettingsState } from './settings.types'
 
 // Get last settings from Local Storage
 const LocalStorageFolder = 'Settings'
@@ -45,11 +43,10 @@ export const settingsSlice = createSlice({
 		// === Timer === //
 		// ============= //
 		changeTimer: (state, action: PayloadAction<{}>) => {
-			const currentTimer = state.timer.currentTimer
-			if (currentTimer === 'Pomodoro') {
+			if (state.timer.currentTimer === 'Pomodoro') {
 				state.timer.currentTimer = 'Short break'
 				state.timer.currentTime = state.durations.breakTime * 60
-			} else if (currentTimer === 'Short break') {
+			} else if (state.timer.currentTimer === 'Short break') {
 				state.timer.currentTimer = 'Long break'
 				state.timer.currentTime = state.durations.longTime * 60
 			} else {
@@ -59,7 +56,33 @@ export const settingsSlice = createSlice({
 			state.timer.isActive = false
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
+		updateTime: (state, action: PayloadAction<{}>) => {
+			if (state.timer.currentTime <= 0) {
+				switch (state.timer.currentTimer) {
+					case 'Pomodoro':
+						state.timer.currentTimer = 'Short break'
+						state.timer.currentTime = state.durations.breakTime * 60
+						break
+					case 'Short break':
+						state.timer.currentTimer = 'Long break'
+						state.timer.currentTime = state.durations.longTime * 60
+						break
+					case 'Long break':
+						state.timer.currentTimer = 'Pomodoro'
+						state.timer.currentTime = state.durations.pomodoroTime * 60
+						break
+					default:
+						break
+				}
+			} else {
+				if (state.timer.isActive) {
+					state.timer.currentTime -= 1
+				}
+			}
 
+			state.timer.isActive = false
+			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+		},
 		// updateCurrentTime: (
 		// 	state,
 		// 	action: PayloadAction<{ updatedTime: number }>

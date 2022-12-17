@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import classNames from 'classnames'
@@ -31,6 +31,11 @@ export const Header: FC = () => {
 			}
 		}
 	)
+	useEffect(() => {
+		setInterval(() => {
+			console.log(theme)
+		}, 1000)
+	}, [])
 	return (
 		<>
 			<header className={classNames('header', `header-${theme}`)}>
