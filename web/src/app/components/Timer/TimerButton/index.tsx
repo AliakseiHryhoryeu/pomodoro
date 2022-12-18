@@ -1,9 +1,17 @@
 import React, { FC } from 'react'
-import { TimerButtonIcon } from './TimerButtonIcon'
+import { TimerRunIcon } from './icons/TimerRunIcon'
+import { TimerPauseIcon } from './icons/TimerPauseIcon'
 import { useActions } from 'app/hooks/useActions'
+import { useTypedSelector } from 'app/hooks/useAppSelector'
+import { RootState } from 'app/store'
 import './TimerButton.scss'
 
 export const TimerButton: FC = () => {
+	const { isActive } = useTypedSelector((state: RootState) => {
+		return {
+			isActive: state.settings.timer.isActive,
+		}
+	})
 	const allActions = useActions()
 	return (
 		<div
@@ -12,7 +20,8 @@ export const TimerButton: FC = () => {
 				allActions.toggleRunTimer()
 			}}
 		>
-			<TimerButtonIcon />
+			{isActive && <TimerPauseIcon />}
+			{!isActive && <TimerRunIcon />}
 		</div>
 	)
 }

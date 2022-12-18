@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { ISettingsState, emptySettingsState } from './settings.types'
+import btnSound from 'assets/audio/btnSound.mp3'
+import btnSound2 from 'assets/audio/btnSound-2.mp3'
+import endPomodoroSound from 'assets/audio/endPomodoro.mp3'
 
 import type { RootState } from 'app/store'
 
@@ -44,6 +47,9 @@ export const settingsSlice = createSlice({
 		// === Timer === //
 		// ============= //
 		changeTimer: (state, action: PayloadAction<{}>) => {
+			const audio = new Audio(btnSound)
+			audio.play()
+
 			if (state.timer.currentTimer === 'Pomodoro') {
 				state.timer.currentTimer = 'Short break'
 				state.timer.currentTime = state.durations.breakTime * 60
@@ -62,9 +68,14 @@ export const settingsSlice = createSlice({
 				state.timer.currentTime -= 1
 			}
 			if (state.timer.currentTime <= 0) {
+				const endBreakAudio = new Audio(btnSound2)
+				const endPomodoroAudio = new Audio(endPomodoroSound)
+
 				switch (state.timer.currentTimer) {
 					case 'Pomodoro':
 						state.timer.currentPomodoroCount++
+						endPomodoroAudio.play()
+
 						if (state.breaks.short) {
 							state.timer.currentTimer = 'Short break'
 							state.timer.currentTime = state.durations.breakTime * 60
@@ -77,6 +88,8 @@ export const settingsSlice = createSlice({
 						}
 						break
 					case 'Short break':
+						endBreakAudio.play()
+
 						if (
 							state.timer.currentPomodoroCount >= state.breaks.pomodoroCounts
 						) {
@@ -88,6 +101,7 @@ export const settingsSlice = createSlice({
 						}
 						break
 					case 'Long break':
+						endBreakAudio.play()
 						state.timer.currentTimer = 'Pomodoro'
 						state.timer.currentTime = state.durations.pomodoroTime * 60
 						state.timer.currentPomodoroCount = 1
@@ -104,6 +118,9 @@ export const settingsSlice = createSlice({
 		},
 
 		toggleRunTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+			const audio = new Audio(btnSound2)
+			audio.play()
+
 			state.timer.isActive = !state.timer.isActive
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},

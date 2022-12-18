@@ -2,14 +2,7 @@
 
 ## Short Description
 
-Pomodoro app, data save in local storage
-
-## Mobile will be
-
-- React Native
-- Redux, Redux Toolkit
-- TypeScript
-- Expo
+Pomodoro app, data can save in local storage,
 
 ## Web Application
 
@@ -17,6 +10,13 @@ Pomodoro app, data save in local storage
 - Redux, Redux Toolkit
 - TypeScript
 - Webpack
+
+## Mobile will be
+
+- React Native
+- Redux, Redux Toolkit
+- TypeScript
+- Expo
 
 ## Chrome extension - maybe later
 
@@ -36,8 +36,9 @@ https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
 https://pomodoro11.vercel.app/
 
-## Server
-
-...
-
-<!-- ![To-do-list-preview](preview.jpg) -->
+![Pomodoro-preview-dark-1](./preview/preview-dark.jpg)
+![Pomodoro-preview-dark-1](./preview/preview-light.jpg)
+![Pomodoro-preview-dark-1](./preview/preview-dark-1.jpg)
+![Pomodoro-preview-dark-2](./preview/preview-dark-2.jpg)
+![Pomodoro-preview-light-1](./preview/preview-light-1.jpg)
+![Pomodoro-preview-light-2](./preview/preview-light-2.jpg)

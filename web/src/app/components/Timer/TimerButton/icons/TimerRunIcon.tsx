@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-export const TimerButtonIcon: FC = () => {
+export const TimerRunIcon: FC = () => {
 	return (
 		<svg
 			width='140'
