@@ -32,7 +32,7 @@ export const Timer: FC = props => {
 					<ChangeTime />
 				</div>
 			</div>
-			{showAlert && (
+			{/* {showAlert && (
 				<div
 					className='alert__wrapper'
 					onClick={() => allActions.hideAlert({})}
@@ -40,7 +40,7 @@ export const Timer: FC = props => {
 					<Alert text={'Tap to pause'} />
 					<Alert text={'Tap and hold to cancel timer'} />
 				</div>
-			)}
+			)} */}
 		</>
 	)
 }
