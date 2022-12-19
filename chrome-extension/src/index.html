@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pomodoro timer</title>
+	</head>
+	<body>
+		<div class="main">
+			<!-- ************ -->
+			<!-- Header Start -->
+			<!-- ************ -->
+			<header class="header">
+				<div class="header__wrapper">
+					<div class="header__logo">
+						<img
+							src="./img/icons/icon-128.png"
+							alt="mainLogo"
+							height="30px"
+							width="30px"
+						/>
+						Pomodoro
+					</div>
+
+					<nav class="header__nav">
+						<ul>
+							<li>
+								<label class="toggleTheme">
+									<svg
+										version="1.1"
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 65.485 65.485"
+										width="64px"
+										height="64px"
+									>
+										<g>
+											<g id="group-6svg">
+												<path
+													fill="#7c41da"
+													d="M32.515,37.462c-8.916-8.916-11.246-21.901-7.039-32.97
+												c-3.973,1.51-7.705,3.84-10.905,7.039C2.456,23.647,2.456,43.29,14.572,55.405c12.115,12.116,31.758,12.116,43.874,0.001
+												c3.199-3.2,5.529-6.932,7.039-10.905C54.416,48.707,41.43,46.378,32.515,37.462z"
+												/>
+											</g>
+										</g>
+									</svg>
+									<input class="toggleTheme-checkbox" type="checkbox" />
+									<!-- checked={theme === 'light' || false}
+				onChange={() => allActions.toggleTheme({})} -->
+
+									<span class="toggleTheme-span"></span>
+									<svg
+										version="1.1"
+										xmlns="http://www.w3.org/2000/svg"
+										width="64px"
+										height="64px"
+										viewBox="0 0 512 512"
+										enableBackground="new 0 0 512 512"
+									>
+										<g id="sun">
+											<g>
+												<g>
+													<path
+														fill="#F6BB42"
+														d="M256,85.341c-5.891,0-10.656-4.781-10.656-10.671V10.672c0-5.891,4.766-10.664,10.656-10.664
+				c5.906,0,10.672,4.773,10.672,10.664V74.67C266.672,80.56,261.906,85.341,256,85.341z"
+													/>
+												</g>
+												<g>
+													<path
+														fill="#F6BB42"
+														d="M256,511.992C256,511.992,256.016,511.992,256,511.992c-5.875,0-10.656-4.781-10.656-10.656v-63.997
+				c0-5.906,4.781-10.688,10.672-10.688l0,0c5.891,0,10.656,4.781,10.656,10.688v63.997
+				C266.672,507.211,261.906,511.992,256,511.992z"
+													/>
+												</g>
+											</g>
+											<g>
+												<g>
+													<path
+														fill="#FFCE54"
+														d="M135.332,135.324c-4.172,4.164-10.922,4.164-15.078,0L74.99,90.068c-4.156-4.164-4.156-10.914,0-15.078
+				c4.172-4.172,10.922-4.172,15.094,0l45.248,45.248C139.504,124.402,139.504,131.16,135.332,135.324z"
+													/>
+												</g>
+												<g>
+													<path
+														fill="#FFCE54"
+														d="M437.026,437.011L437.026,437.011c-4.172,4.172-10.922,4.172-15.094,0l-45.249-45.25
+				c-4.172-4.172-4.172-10.921,0-15.077l0,0c4.172-4.172,10.922-4.172,15.094,0l45.249,45.249
+				C441.182,426.089,441.182,432.839,437.026,437.011z"
+													/>
+												</g>
+											</g>
+											<g>
+												<g>
+													<path
+														fill="#F6BB42"
+														d="M85.35,256c0,5.891-4.781,10.664-10.672,10.664H10.68c-5.891,0-10.656-4.773-10.672-10.664
+				c0-5.891,4.781-10.664,10.672-10.664h63.998C80.568,245.336,85.35,250.109,85.35,256z"
+													/>
+												</g>
+												<g>
+													<path
+														fill="#F6BB42"
+														d="M511.992,256L511.992,256c0,5.891-4.766,10.664-10.656,10.664h-63.997
+				c-5.891,0-10.672-4.773-10.672-10.664l0,0c0-5.891,4.781-10.664,10.672-10.664h63.997
+				C507.227,245.336,511.992,250.109,511.992,256z"
+													/>
+												</g>
+											</g>
+											<g>
+												<g>
+													<path
+														fill="#FFCE54"
+														d="M135.332,376.684c4.172,4.156,4.172,10.905,0,15.077l-45.248,45.25c-4.172,4.172-10.922,4.172-15.094,0
+				c-4.156-4.172-4.156-10.922,0-15.078l45.264-45.249C124.41,372.512,131.16,372.512,135.332,376.684z"
+													/>
+												</g>
+												<g>
+													<path
+														fill="#FFCE54"
+														d="M437.026,74.982C437.026,74.99,437.026,74.982,437.026,74.982c4.155,4.171,4.155,10.921,0,15.085
+				l-45.265,45.256c-4.156,4.164-10.906,4.164-15.078,0l0,0c-4.172-4.164-4.172-10.922,0-15.086l45.249-45.256
+				C426.104,70.818,432.854,70.818,437.026,74.982z"
+													/>
+												</g>
+											</g>
+											<path
+												fill="#FFCE54"
+												d="M256,394.651c-76.45,0-138.651-62.186-138.651-138.651c0-76.458,62.201-138.66,138.651-138.66
+		c76.467,0,138.668,62.202,138.668,138.66C394.668,332.466,332.467,394.651,256,394.651z"
+											/>
+											<path
+												fill="#F6BB42"
+												d="M256,106.669c-82.466,0-149.323,66.857-149.323,149.331c0,82.466,66.857,149.339,149.323,149.339
+		c82.482,0,149.34-66.873,149.34-149.339C405.34,173.526,338.482,106.669,256,106.669z M346.513,346.497
+		c-24.171,24.187-56.311,37.498-90.513,37.498c-34.187,0-66.326-13.312-90.497-37.498c-24.171-24.155-37.499-56.311-37.499-90.497
+		c0-34.186,13.328-66.334,37.499-90.505c24.171-24.178,56.311-37.491,90.497-37.491c34.202,0,66.342,13.313,90.513,37.491
+		c24.171,24.171,37.483,56.319,37.483,90.505C383.996,290.187,370.684,322.342,346.513,346.497z"
+											/>
+										</g>
+									</svg>
+								</label>
+							</li>
+							<li>
+								<svg
+									class="imported"
+									version="1.0"
+									xmlns="http://www.w3.org/2000/svg"
+									width="40px"
+									height="40px"
+									viewBox="0 0 512.000000 512.000000"
+									preserveAspectRatio="xMidYMid meet"
+								>
+									<g
+										transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+										fill="#000000"
+										stroke="none"
+									>
+										<path
+											d="M2205 5106 c-41 -18 -82 -68 -94 -114 -5 -20 -37 -152 -72 -292 -34 -140 -65 -262 -70 -270 -4 -9 -38 -26 -76 -40 -37 -13 -111 -43 -163 -67 -52 -24 -102 -42 -110 -40 -8 2 -120 68 -248 145 128  78 -248 144 -267 148 -71 13 -97 -6 -337 -244 -125 -124 -235 -241 -244 -260 -34 -72 -21 -105 144 -380 l151 -252 -33 -73 c-18 -39 -43 -103 -57 -141 -15 -43 -31 -72 -44 -77 -11 -5-148 -40 -304 -78 -287 -70 -315 -80 -355 -135 -20 -27 -21 -40 -21 -376 0 -336 1 -349 21 -376 40 -54 68 -65 355 -135 156 -38 293 -73 304 -78 13 -5 29 -33 44 -77 14 -38 43 -110 67 -161 l42 -91 -136 -226 c-112 -188 -136 -235 -140 -275 -3 -31 1 -58 11 -77 26 -48 478 -492 510 -500 67 -16 106 0 336 138l224 135 91 -42 c50 -23 122 -53 160 -66 43 -15 72 -31 77 -44 5 -11 40 -148 78 -304 70 -287 81 -315 135 -355 27 -20 40 -21 376 -21 336 0 349 1 376 21 54 40 65 68 135 355 38 156 73 293 78 304 5 13 33 29 77 45 38 13 111 43 163 67 l94 44 235 -141 c222 -132 238 -140 287 -140 70 0 85 12 341 271 222 225 243 254 230 322 -3 18 -69 137 -147 266 l-140 234 45 101 c24 56 52 125 63 155 11 32 26 57 38 62 11 5 148 40 304 78 287 70 315 81 355 135 20 27 21 40 21 376 0 336 -1 349 -21 376 -40 54 -68 65 -355 135 -156 38 -293 73 -304 78 -13 5 -29 34 -44 77 -14 38 -42 107 -63 154 -22 46 -37 92 -35 101 3 9 62 112 131 228 151 250 160 270 151 325 -7 37 -29 63 -234 269 -124 126 -239 238 -255 250 -21 15 -45 21 -81 22 -49 0 -64 -8 -289 -142 -131 -79 -241 -143 -246 -143 -4 0 -46 17 -92 38 -45 21 -114 49 -152 63 -43 15 -72 31 -77 44 -5 11 -40 148 -78 304 -70 287 -80 315 -135 355 -26 20 -42 21 -364 23 -265 2 -344 0 -367 -11z m498 -1507 c415 -62 750 -354 865 -754 160 -552 -165 -1132 -723 -1293 -552 -160 -1132 165 -1293 723 -190 657 309 1325 996 1334 46 1 116 -4 155 -10z"
+										/>
+									</g>
+								</svg>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<!-- ********** -->
+			<!-- Header End -->
+			<!-- ********** -->
+
+			<!-- *********** -->
+			<!-- Timer Start -->
+			<!-- *********** -->
+
+			<div class="timer">
+				<div class="timer__wrapper">
+					<div class="timer__time">
+						<!-- {/*onlick toggle timer */} -->
+						<svg
+							width="80"
+							height="100"
+							viewBox="0 0 80 100"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<rect width="30" height="100" fill="#399FFF" />
+							<rect x="50" width="30" height="100" fill="#399FFF" />
+						</svg>
+						<svg
+							width="140"
+							height="140"
+							viewBox="0 0 160 160"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M0 80.1563V160.156L7.89958 156.222C73.1715 123.81 160 80.4061 160 80.1563C160 79.9064 73.1715 36.5029 7.89958 4.09068L0 0.15625V80.1563Z"
+								fill="#399FFF"
+							/>
+						</svg>
+					</div>
+					<div>
+						<!-- {/* class={classs('timer__button',
+						`timer__button-${theme}`)} onClick={() =>
+						allActions.changeTimer({})} */} -->
+						<svg
+							width="18"
+							height="24"
+							viewBox="0 0 18 28"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<line
+								y1="-0.5"
+								x2="11.2473"
+								y2="-0.5"
+								transform="matrix(0.782719 -0.622376 0.643408 0.765523 1 8)"
+								stroke="black"
+							/>
+							<line
+								y1="-0.5"
+								x2="11.2473"
+								y2="-0.5"
+								transform="matrix(-0.782719 -0.622376 -0.643408 0.765523 17 8)"
+								stroke="black"
+							/>
+							<line
+								y1="-0.5"
+								x2="11.2473"
+								y2="-0.5"
+								transform="matrix(0.782719 0.622376 0.643408 -0.765523 1 20)"
+								stroke="black"
+							/>
+							<line
+								y1="-0.5"
+								x2="11.2473"
+								y2="-0.5"
+								transform="matrix(-0.782719 0.622376 -0.643408 -0.765523 17 20)"
+								stroke="black"
+							/>
+						</svg>
+						<div class="timer__button-title">
+							Pomodoro
+							<!-- {currentTimer}: -->
+						</div>
+						<div class="timer__button-time">
+							25:00
+							<!-- {/* {formatedTime(minutes)}:{formatedTime(seconds)} */} -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ********* -->
+			<!-- Timer End -->
+			<!-- ********* -->
+
+			<!-- ******************** -->
+			<!-- Settings Popup start -->
+			<!-- ******************** -->
+			<div class="settings">
+				<div class="settings__main">
+					<div class="settings__header">
+						<svg
+							version="1.0"
+							xmlns="http://www.w3.org/2000/svg"
+							width="30px"
+							height="30px"
+							viewBox="0 0 512.000000 512.000000"
+							preserveAspectRatio="xMidYMid meet"
+						>
+							<g
+								transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+								fill="#000000"
+								stroke="none"
+							>
+								<path
+									d="M2058 4727 c-31 -13 -74 -38 -95 -55 -77 -62 -1882 -1878 -1907
+-1920 -38 -61 -60 -154 -52 -225 14 -132 -40 -73 1014 -1129 795 -796 975
+-971 1020 -994 78 -39 202 -46 285 -14 89 34 153 90 191 169 28 60 31 75 31
+161 0 165 16 144 -562 729 -274 278 -534 536 -579 575 -45 40 -118 91 -167
+116 l-86 45 1837 5 1837 5 57 23 c81 33 160 108 200 190 30 60 33 75 33 152
+-1 70 -5 95 -27 142 -35 76 -99 143 -173 181 l-60 32 -1855 5 -1855 5 95 50
+95 49 576 576 c665 664 634 624 634 795 0 89 -3 106 -28 156 -15 31 -50 78
+-77 103 -72 68 -126 89 -235 93 -77 3 -98 0 -147 -20z"
+								/>
+							</g>
+						</svg>
+						<div class="settings__header-title">Settings</div>
+					</div>
+					<div class="settings__block">
+						<div class="settings__block-title">Durations</div>
+						<div class="settings__block-wrapper">
+							<div class="settings__durations">
+								<div class="settings__durations-block">
+									<input type="number" class="settings__durations-time" />
+
+									<div class="settings__durations-title">Pomodoro</div>
+								</div>
+								<div class="settings__durations-block">
+									<input type="number" class="settings__durations-time" />
+									<div class="settings__durations-title">Break</div>
+								</div>
+								<div class="settings__durations-block">
+									<input type="number" class="settings__durations-time" />
+									<div class="settings__durations-title">Long break</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="settings__block">
+						<div class="settings__block-wrapper">
+							<div class="settings__block-title">Breaks</div>
+							<div class="settings__break">
+								<div class="settings__break-title">Break</div>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 48 48"
+									width="40px"
+									height="40px"
+								>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCa"
+										x1="21.241"
+										x2="3.541"
+										y1="39.241"
+										y2="21.541"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset=".108" stopColor="#0d7044" />
+										<stop offset=".433" stopColor="#11945a" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
+										d="M16.599,41.42L1.58,26.401c-0.774-0.774-0.774-2.028,0-2.802l4.019-4.019	c0.774-0.774,2.028-0.774,2.802,0L23.42,34.599c0.774,0.774,0.774,2.028,0,2.802l-4.019,4.019	C18.627,42.193,17.373,42.193,16.599,41.42z"
+									/>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCb"
+										x1="-15.77"
+										x2="26.403"
+										y1="43.228"
+										y2="43.228"
+										gradientTransform="rotate(134.999 21.287 38.873)"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset="0" stopColor="#2ac782" />
+										<stop offset="1" stopColor="#21b876" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
+										d="M12.58,34.599L39.599,7.58c0.774-0.774,2.028-0.774,2.802,0l4.019,4.019	c0.774,0.774,0.774,2.028,0,2.802L19.401,41.42c-0.774,0.774-2.028,0.774-2.802,0l-4.019-4.019	C11.807,36.627,11.807,35.373,12.58,34.599z"
+									/>
+								</svg>
+							</div>
+							<div class="settings__break">
+								<div class="settings__break-title">Long break</div>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 48 48"
+									width="40px"
+									height="40px"
+								>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCa"
+										x1="21.241"
+										x2="3.541"
+										y1="39.241"
+										y2="21.541"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset=".108" stopColor="#0d7044" />
+										<stop offset=".433" stopColor="#11945a" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
+										d="M16.599,41.42L1.58,26.401c-0.774-0.774-0.774-2.028,0-2.802l4.019-4.019	c0.774-0.774,2.028-0.774,2.802,0L23.42,34.599c0.774,0.774,0.774,2.028,0,2.802l-4.019,4.019	C18.627,42.193,17.373,42.193,16.599,41.42z"
+									/>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCb"
+										x1="-15.77"
+										x2="26.403"
+										y1="43.228"
+										y2="43.228"
+										gradientTransform="rotate(134.999 21.287 38.873)"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset="0" stopColor="#2ac782" />
+										<stop offset="1" stopColor="#21b876" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
+										d="M12.58,34.599L39.599,7.58c0.774-0.774,2.028-0.774,2.802,0l4.019,4.019	c0.774,0.774,0.774,2.028,0,2.802L19.401,41.42c-0.774,0.774-2.028,0.774-2.802,0l-4.019-4.019	C11.807,36.627,11.807,35.373,12.58,34.599z"
+									/>
+								</svg>
+							</div>
+							<div class="settings__break">
+								<div class="settings__break-title">Pomodoro counts</div>
+								<input class="settings__break-input" type="number" />
+							</div>
+							<div class="settings__break">
+								<div class="settings__break-title">
+									Auto start next pomodoro session
+								</div>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 48 48"
+									width="40px"
+									height="40px"
+								>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCa"
+										x1="21.241"
+										x2="3.541"
+										y1="39.241"
+										y2="21.541"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset=".108" stopColor="#0d7044" />
+										<stop offset=".433" stopColor="#11945a" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
+										d="M16.599,41.42L1.58,26.401c-0.774-0.774-0.774-2.028,0-2.802l4.019-4.019	c0.774-0.774,2.028-0.774,2.802,0L23.42,34.599c0.774,0.774,0.774,2.028,0,2.802l-4.019,4.019	C18.627,42.193,17.373,42.193,16.599,41.42z"
+									/>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCb"
+										x1="-15.77"
+										x2="26.403"
+										y1="43.228"
+										y2="43.228"
+										gradientTransform="rotate(134.999 21.287 38.873)"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset="0" stopColor="#2ac782" />
+										<stop offset="1" stopColor="#21b876" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
+										d="M12.58,34.599L39.599,7.58c0.774-0.774,2.028-0.774,2.802,0l4.019,4.019	c0.774,0.774,0.774,2.028,0,2.802L19.401,41.42c-0.774,0.774-2.028,0.774-2.802,0l-4.019-4.019	C11.807,36.627,11.807,35.373,12.58,34.599z"
+									/>
+								</svg>
+							</div>
+						</div>
+					</div>
+					<div class="settings__block">
+						<div class="settings__block-wrapper">
+							<div class="settings__block-title">Themes</div>
+							<div class="settings__theme">
+								<div class="settings__theme-title">Light</div>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 48 48"
+									width="40px"
+									height="40px"
+								>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCa"
+										x1="21.241"
+										x2="3.541"
+										y1="39.241"
+										y2="21.541"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset=".108" stopColor="#0d7044" />
+										<stop offset=".433" stopColor="#11945a" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
+										d="M16.599,41.42L1.58,26.401c-0.774-0.774-0.774-2.028,0-2.802l4.019-4.019	c0.774-0.774,2.028-0.774,2.802,0L23.42,34.599c0.774,0.774,0.774,2.028,0,2.802l-4.019,4.019	C18.627,42.193,17.373,42.193,16.599,41.42z"
+									/>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCb"
+										x1="-15.77"
+										x2="26.403"
+										y1="43.228"
+										y2="43.228"
+										gradientTransform="rotate(134.999 21.287 38.873)"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset="0" stopColor="#2ac782" />
+										<stop offset="1" stopColor="#21b876" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
+										d="M12.58,34.599L39.599,7.58c0.774-0.774,2.028-0.774,2.802,0l4.019,4.019	c0.774,0.774,0.774,2.028,0,2.802L19.401,41.42c-0.774,0.774-2.028,0.774-2.802,0l-4.019-4.019	C11.807,36.627,11.807,35.373,12.58,34.599z"
+									/>
+								</svg>
+							</div>
+							<div class="settings__theme">
+								<div class="settings__theme-title">Dark</div>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 48 48"
+									width="40px"
+									height="40px"
+								>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCa"
+										x1="21.241"
+										x2="3.541"
+										y1="39.241"
+										y2="21.541"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset=".108" stopColor="#0d7044" />
+										<stop offset=".433" stopColor="#11945a" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
+										d="M16.599,41.42L1.58,26.401c-0.774-0.774-0.774-2.028,0-2.802l4.019-4.019	c0.774-0.774,2.028-0.774,2.802,0L23.42,34.599c0.774,0.774,0.774,2.028,0,2.802l-4.019,4.019	C18.627,42.193,17.373,42.193,16.599,41.42z"
+									/>
+									<linearGradient
+										id="HoiJCu43QtshzIrYCxOfCb"
+										x1="-15.77"
+										x2="26.403"
+										y1="43.228"
+										y2="43.228"
+										gradientTransform="rotate(134.999 21.287 38.873)"
+										gradientUnits="userSpaceOnUse"
+									>
+										<stop offset="0" stopColor="#2ac782" />
+										<stop offset="1" stopColor="#21b876" />
+									</linearGradient>
+									<path
+										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
+										d="M12.58,34.599L39.599,7.58c0.774-0.774,2.028-0.774,2.802,0l4.019,4.019	c0.774,0.774,0.774,2.028,0,2.802L19.401,41.42c-0.774,0.774-2.028,0.774-2.802,0l-4.019-4.019	C11.807,36.627,11.807,35.373,12.58,34.599z"
+									/>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="settings__bg"></div>
+			</div>
+
+			<!-- ****************** -->
+			<!-- Settings Popup end -->
+			<!-- ****************** -->
+		</div>
+
+		<link href="index.css" rel="stylesheet" type="text/css" />
+		<script type="module" src="./js/popup.js"></script>
+	</body>
+</html>
