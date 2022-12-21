@@ -13,39 +13,6 @@ const imagemin = require('gulp-imagemin')
 
 var ts = require('gulp-typescript')
 
-var tsProject = ts.createProject('tsconfig.json', {
-	compilerOptions: {
-		target: 'es5',
-		lib: ['es6', 'es7', 'dom'],
-		allowSyntheticDefaultImports: true,
-		allowJs: true,
-		skipLibCheck: true,
-		strict: false,
-		forceConsistentCasingInFileNames: true,
-		noEmit: false,
-		incremental: true,
-		esModuleInterop: true,
-		module: 'es6',
-		moduleResolution: 'node',
-		resolveJsonModule: true,
-		isolatedModules: true,
-		jsx: 'react',
-		sourceMap: true,
-		experimentalDecorators: true,
-		declaration: false,
-		removeComments: true,
-		noImplicitReturns: true,
-		noUnusedLocals: false,
-		noUnusedParameters: false,
-		outDir: 'build',
-		baseUrl: 'src',
-		paths: {
-			'src/*': ['./src/*'],
-		},
-	},
-	include: ['src', 'custom.d.ts'],
-})
-
 const paths = {
 	html: {
 		src: './src/**.html',

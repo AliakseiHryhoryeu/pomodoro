@@ -6,39 +6,48 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	// *****************************************
 	// ****  Toogle Visible Settings Start  ****
 	// *****************************************
-	console.log('test')
-	// let settingsVisible = true
-	// const changeVisible = () => {
-	// 	settingsVisible = !settingsVisible
-	// 	if (settingsVisible) {
-	// 		settings.style.display = 'flex'
-	// 	} else {
-	// 		settings.style.display = 'none'
+	let settingsVisible = true
+	const changeVisible = () => {
+		settingsVisible = !settingsVisible
+		if (settings) {
+			if (settingsVisible) {
+				settings.style.display = 'flex'
+			} else {
+				settings.style.display = 'none'
+			}
+		}
+	}
 
-	// 	}
-	// }
+	console.log(settingsBgBtn)
 
-	// settingsBgBtn.addEventListener(
-	// 	'click',
-	// 	e => {
-	// 		changeVisible()
-	// 	},
-	// 	false
-	// )
-	// headerSettingsBtn.addEventListener(
-	// 	'click',
-	// 	e => {
-	// 		changeVisible()
-	// 	},
-	// 	false
-	// )
-	// settingsHeaderBtn.addEventListener(
-	// 	'click',
-	// 	e => {
-	// 		changeVisible()
-	// 	},
-	// 	false
-	// )
+	if (settingsBgBtn != null) {
+		console.log('test')
+
+		settingsBgBtn.addEventListener(
+			'click',
+			e => {
+				changeVisible()
+			},
+			false
+		)
+	}
+
+	headerSettingsBtn &&
+		headerSettingsBtn.addEventListener(
+			'click',
+			e => {
+				changeVisible()
+			},
+			false
+		)
+	settingsHeaderBtn &&
+		settingsHeaderBtn.addEventListener(
+			'click',
+			e => {
+				changeVisible()
+			},
+			false
+		)
 	// *****************************************
 	// ****  Toogle Visible Settings End  ****
 	// *****************************************
