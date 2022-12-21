@@ -144,7 +144,7 @@
 									</svg>
 								</label>
 							</li>
-							<li>
+							<li id="headerSettingsBtn">
 								<svg
 									class="imported"
 									version="1.0"
@@ -262,9 +262,9 @@
 			<!-- ******************** -->
 			<!-- Settings Popup start -->
 			<!-- ******************** -->
-			<div class="settings">
+			<div class="settings" id="settings">
 				<div class="settings__main">
-					<div class="settings__header">
+					<div class="settings__header" id="settings__header">
 						<svg
 							version="1.0"
 							xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +275,7 @@
 						>
 							<g
 								transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-								fill="#000000"
+								fill="#ffffff"
 								stroke="none"
 							>
 								<path
@@ -331,8 +331,8 @@
 										y2="21.541"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset=".108" stopColor="#0d7044" />
-										<stop offset=".433" stopColor="#11945a" />
+										<stop offset=".108" stop-color="#0d7044" />
+										<stop offset=".433" stop-color="#11945a" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
@@ -347,8 +347,8 @@
 										gradientTransform="rotate(134.999 21.287 38.873)"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset="0" stopColor="#2ac782" />
-										<stop offset="1" stopColor="#21b876" />
+										<stop offset="0" stop-color="#2ac782" />
+										<stop offset="1" stop-color="#21b876" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
@@ -372,8 +372,8 @@
 										y2="21.541"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset=".108" stopColor="#0d7044" />
-										<stop offset=".433" stopColor="#11945a" />
+										<stop offset=".108" stop-color="#0d7044" />
+										<stop offset=".433" stop-color="#11945a" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
@@ -388,8 +388,8 @@
 										gradientTransform="rotate(134.999 21.287 38.873)"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset="0" stopColor="#2ac782" />
-										<stop offset="1" stopColor="#21b876" />
+										<stop offset="0" stop-color="#2ac782" />
+										<stop offset="1" stop-color="#21b876" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
@@ -419,8 +419,8 @@
 										y2="21.541"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset=".108" stopColor="#0d7044" />
-										<stop offset=".433" stopColor="#11945a" />
+										<stop offset=".108" stop-color="#0d7044" />
+										<stop offset=".433" stop-color="#11945a" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
@@ -435,8 +435,8 @@
 										gradientTransform="rotate(134.999 21.287 38.873)"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset="0" stopColor="#2ac782" />
-										<stop offset="1" stopColor="#21b876" />
+										<stop offset="0" stop-color="#2ac782" />
+										<stop offset="1" stop-color="#21b876" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
@@ -465,8 +465,8 @@
 										y2="21.541"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset=".108" stopColor="#0d7044" />
-										<stop offset=".433" stopColor="#11945a" />
+										<stop offset=".108" stop-color="#0d7044" />
+										<stop offset=".433" stop-color="#11945a" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
@@ -481,8 +481,8 @@
 										gradientTransform="rotate(134.999 21.287 38.873)"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset="0" stopColor="#2ac782" />
-										<stop offset="1" stopColor="#21b876" />
+										<stop offset="0" stop-color="#2ac782" />
+										<stop offset="1" stop-color="#21b876" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
@@ -506,8 +506,8 @@
 										y2="21.541"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset=".108" stopColor="#0d7044" />
-										<stop offset=".433" stopColor="#11945a" />
+										<stop offset=".108" stop-color="#0d7044" />
+										<stop offset=".433" stop-color="#11945a" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCa)"
@@ -522,8 +522,8 @@
 										gradientTransform="rotate(134.999 21.287 38.873)"
 										gradientUnits="userSpaceOnUse"
 									>
-										<stop offset="0" stopColor="#2ac782" />
-										<stop offset="1" stopColor="#21b876" />
+										<stop offset="0" stop-color="#2ac782" />
+										<stop offset="1" stop-color="#21b876" />
 									</linearGradient>
 									<path
 										fill="url(#HoiJCu43QtshzIrYCxOfCb)"
@@ -534,7 +534,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="settings__bg"></div>
+				<div class="settings__bg" id="settingsBg"></div>
 			</div>
 
 			<!-- ****************** -->
@@ -543,6 +543,15 @@
 		</div>
 
 		<link href="index.css" rel="stylesheet" type="text/css" />
-		<script type="module" src="./js/popup.js"></script>
+		<!-- <script type="module" src="./js/popup.js"></script> -->
+		<script type="module" src="./js/Settings/settings.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" /><link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin
+		/><link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
 	</body>
 </html>

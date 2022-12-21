@@ -11,6 +11,41 @@ const concat = require('gulp-concat')
 const autoPrefixer = require('gulp-autoprefixer')
 const imagemin = require('gulp-imagemin')
 
+var ts = require('gulp-typescript')
+
+var tsProject = ts.createProject('tsconfig.json', {
+	compilerOptions: {
+		target: 'es5',
+		lib: ['es6', 'es7', 'dom'],
+		allowSyntheticDefaultImports: true,
+		allowJs: true,
+		skipLibCheck: true,
+		strict: false,
+		forceConsistentCasingInFileNames: true,
+		noEmit: false,
+		incremental: true,
+		esModuleInterop: true,
+		module: 'es6',
+		moduleResolution: 'node',
+		resolveJsonModule: true,
+		isolatedModules: true,
+		jsx: 'react',
+		sourceMap: true,
+		experimentalDecorators: true,
+		declaration: false,
+		removeComments: true,
+		noImplicitReturns: true,
+		noUnusedLocals: false,
+		noUnusedParameters: false,
+		outDir: 'build',
+		baseUrl: 'src',
+		paths: {
+			'src/*': ['./src/*'],
+		},
+	},
+	include: ['src', 'custom.d.ts'],
+})
+
 const paths = {
 	html: {
 		src: './src/**.html',
@@ -32,6 +67,10 @@ const paths = {
 	},
 	js: {
 		src: './src/js/**.js',
+		dest: './build/js/',
+	},
+	typescript: {
+		src: ['./src/ts/**.ts', './src/ts/**/**.ts'],
 		dest: './build/js/',
 	},
 	manifest: {
@@ -98,6 +137,17 @@ function js() {
 		.pipe(dest(paths.js.dest))
 }
 
+// function ts() {
+// 	return src(paths.ts.src).pipe(ts()).pipe(dest(paths.ts.dest))
+// }
+
+function compileTypeScript() {
+	return src(paths.typescript.src)
+		.pipe(ts())
+		.pipe(uglify())
+		.pipe(dest(paths.typescript.dest))
+}
+
 function fonts() {
 	return src(paths.fonts.src).pipe(dest(paths.fonts.dest))
 }
@@ -117,8 +167,32 @@ function serve() {
 	watch(paths.fonts.src, series(fonts)).on('change', sync.reload)
 	watch(paths.manifest.src, series(manifest)).on('change', sync.reload)
 	watch(paths.js.src, series(js)).on('change', sync.reload)
+	watch(paths.typescript.src, series(compileTypeScript)).on(
+		'change',
+		sync.reload
+	)
 }
 
-exports.build = series(clear, html, scss, images, fonts, manifest, js, scss)
+exports.build = series(
+	clear,
+	html,
+	scss,
+	images,
+	fonts,
+	manifest,
+	js,
+	compileTypeScript,
+	scss
+)
 
-exports.dev = series(clear, html, scss, images, fonts, manifest, js, serve)
+exports.start = series(
+	clear,
+	html,
+	scss,
+	images,
+	fonts,
+	manifest,
+	js,
+	compileTypeScript,
+	serve
+)

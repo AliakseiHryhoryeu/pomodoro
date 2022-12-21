@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(e){document.getElementById("settings"),document.getElementById("settingsBg"),document.getElementById("headerSettingsBtn"),document.getElementById("settings__header");console.log("test")});
