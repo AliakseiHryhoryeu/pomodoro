@@ -21,7 +21,7 @@ export const Settings: FC = props => {
 
 	const allActions = useActions()
 	return (
-		<div className={classNames('settings', `settings-${theme}`)}>
+		<div className={classNames('settings', `settings-${theme}`)} id='settings'>
 			<div className='settings__main'>
 				<SettingsHeader />
 				<Durations />

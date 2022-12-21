@@ -18,11 +18,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 		}
 	}
 
-	console.log(settingsBgBtn)
-
-	if (settingsBgBtn != null) {
-		console.log('test')
-
+	settingsBgBtn &&
 		settingsBgBtn.addEventListener(
 			'click',
 			e => {
@@ -30,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
 			},
 			false
 		)
-	}
 
 	headerSettingsBtn &&
 		headerSettingsBtn.addEventListener(
@@ -48,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 			},
 			false
 		)
-	// *****************************************
+	// ***************************************
 	// ****  Toogle Visible Settings End  ****
-	// *****************************************
+	// ***************************************
 })

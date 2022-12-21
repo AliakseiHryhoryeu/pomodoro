@@ -10,7 +10,7 @@ import type { RootState } from 'app/store'
 // Get last settings from Local Storage
 const LocalStorageFolder = 'Settings'
 const getParsed = () => {
-	let Parsed = JSON.parse(localStorage.getItem(LocalStorageFolder))
+	let Parsed = JSON.parse(localStorage.getItem(LocalStorageFolder) || '{}')
 	if (typeof Parsed == undefined || Parsed == null) {
 		Parsed = emptySettingsState
 	}

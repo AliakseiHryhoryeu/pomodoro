@@ -5,8 +5,8 @@ import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { useActions } from 'app/hooks/useActions'
 import { RootState } from 'app/store'
 
-import { SunIcon } from './SunIcon'
-import { MoonIcon } from './MoonIcon'
+import { SunIcon } from './img/SunIcon'
+import { MoonIcon } from './img/MoonIcon'
 
 import './ToggleTheme.scss'
 
@@ -19,9 +19,13 @@ export const ToggleTheme: FC = props => {
 	})
 
 	return (
-		<label className={classNames('toggleTheme', `toggleTheme-${theme}`)}>
+		<label
+			className={classNames('toggleTheme', `toggleTheme-${theme}`)}
+			id='toggleTheme'
+		>
 			<MoonIcon />
 			<input
+				id='toggleThemeCheckbox'
 				type='checkbox'
 				checked={theme === 'light' || false}
 				onChange={() => allActions.toggleTheme({})}

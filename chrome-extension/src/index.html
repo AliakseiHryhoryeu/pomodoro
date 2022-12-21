@@ -26,7 +26,7 @@
 					<nav class="header__nav">
 						<ul>
 							<li>
-								<label class="toggleTheme">
+								<label class="toggleTheme" id="toggleTheme">
 									<svg
 										version="1.1"
 										xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,11 @@
 											</g>
 										</g>
 									</svg>
-									<input class="toggleTheme-checkbox" type="checkbox" />
+									<input
+										class="toggleTheme-checkbox"
+										id="toggleThemeCheckbox"
+										type="checkbox"
+									/>
 									<!-- checked={theme === 'light' || false}
 				onChange={() => allActions.toggleTheme({})} -->
 
@@ -543,6 +547,6 @@
 		</div>
 
 		<link href="index.css" rel="stylesheet" type="text/css" />
-		<script type="module" src="./js/settigs/settings.js"></script>
+		<script type="module" src="./js/settings/settings.js"></script>
 	</body>
 </html>

@@ -3,7 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IThemeState } from './theme.types'
 
 const LocalStorageFolder = 'Theme'
-const LocalStorage_theme = JSON.parse(localStorage.getItem(LocalStorageFolder))
+const LocalStorage_theme = JSON.parse(
+	localStorage.getItem(LocalStorageFolder) || '{}'
+)
 
 const initialState: IThemeState = {
 	theme: LocalStorage_theme || 'light',
