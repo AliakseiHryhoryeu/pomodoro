@@ -11,8 +11,34 @@ const concat = require('gulp-concat')
 const autoPrefixer = require('gulp-autoprefixer')
 const imagemin = require('gulp-imagemin')
 
-var ts = require('gulp-typescript')
-
+const ts = require('gulp-typescript')
+const tsProject = ts.createProject({
+	compilerOptions: {
+		target: 'es5',
+		lib: ['es6', 'es7', 'dom'],
+		allowSyntheticDefaultImports: true,
+		allowJs: true,
+		skipLibCheck: true,
+		strict: false,
+		forceConsistentCasingInFileNames: true,
+		noEmit: false,
+		incremental: true,
+		esModuleInterop: true,
+		module: 'commonjs',
+		moduleResolution: 'node',
+		resolveJsonModule: true,
+		isolatedModules: true,
+		sourceMap: true,
+		experimentalDecorators: true,
+		declaration: false,
+		removeComments: true,
+		noImplicitReturns: true,
+		noImplicitReturns: true,
+		noUnusedLocals: false,
+		noUnusedParameters: false,
+	},
+	include: ['src', 'custom.d.ts'],
+})
 const paths = {
 	html: {
 		src: './src/**.html',
@@ -110,7 +136,7 @@ function js() {
 
 function compileTypeScript() {
 	return src(paths.typescript.src)
-		.pipe(ts())
+		.pipe(tsProject())
 		.pipe(uglify())
 		.pipe(dest(paths.typescript.dest))
 }

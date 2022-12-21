@@ -7,7 +7,7 @@
 	max-width: 200px;
 	cursor: pointer;
 	&:hover {
-		background-color: #cdf1f8;
+		background-color: var(--Dark-bg-dark-hover);
 	}
 	svg {
 		display: none;
@@ -18,7 +18,7 @@
 		display: none;
 	}
 	input[type='checkbox']:checked ~ .toggleTheme-span {
-		background: var(--Dark-bg-dark-hover);
+		background: #0083ff;
 		&::before {
 			transform: translateX(-50px);
 		}
@@ -62,17 +62,11 @@
 		}
 	}
 	&-light {
-		input[type='checkbox']:checked ~ .toggleTheme-span {
-			background: var(--Light-bg-dark-hover);
-		}
 		&:hover {
 			background-color: var(--Light-bg-dark-hover);
 		}
 	}
 	&-dark {
-		input[type='checkbox']:checked ~ .toggleTheme-span {
-			background: var(--Dark-bg-dark-hover);
-		}
 		&:hover {
 			background-color: var(--Dark-bg-dark-hover);
 		}
