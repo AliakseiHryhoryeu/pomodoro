@@ -1,1 +1,0 @@
-"use strict";exports.__esModule=!0;var theme_state_1=require("./theme.state");document.addEventListener("DOMContentLoaded",function(e){document.getElementById("toggleTheme");var t=document.getElementById("toggleThemeCheckbox"),o=(0,theme_state_1.getThemeState)();null!=t&&(console.log("light"===o||!1),t.checked="light"===o||!1)});

@@ -1,36 +1,50 @@
 {
-	"name": "gulp",
+	"name": "pomodoro-timer",
 	"version": "1.0.0",
-	"main": "index.js",
+	"description": "Pomodoro-chrome",
+	"private": false,
+	"repository": "https://github.com/AliakseiHryhoryeu/pomodoro",
+	"author": "AliakseiHryhoryeu <88304337+AliakseiHryhoryeu@users.noreply.github.com>",
 	"license": "MIT",
-	"browserslist": [
-		"defaults",
-		"not IE 11",
-		"maintained node versions"
-	],
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
 	"scripts": {
-		"start": "gulp start",
-		"build": "gulp build"
+		"build": "cross-env NODE_ENV=production webpack --mode production",
+		"start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+		"stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json"
 	},
+	"dependencies": {},
 	"devDependencies": {
-		"@babel/core": "^7.17.8",
-		"browser-sync": "^2.27.7",
-		"del": "^6.0.0",
-		"gulp": "^4.0.2",
-		"gulp-autoprefixer": "^8.0.0",
-		"gulp-babel": "^8.0.0",
-		"gulp-concat": "^2.6.1",
-		"gulp-csso": "^4.0.1",
-		"gulp-file-include": "^2.3.0",
-		"gulp-htmlmin": "^5.0.1",
-		"gulp-imagemin": "^7.1.0",
-		"gulp-sass": "^5.1.0",
-		"gulp-uglify": "^3.0.2",
-		"imagemin": "^8.0.1",
-		"sass": "^1.49.8"
-	},
-	"dependencies": {
-		"gulp-typescript": "^6.0.0-alpha.1",
-		"typescript": "^4.9.4"
+		"@babel/polyfill": "7.12.1",
+		"babel-loader": "8.2.5",
+		"clean-webpack-plugin": "4.0.0",
+		"copy-webpack-plugin": "^11.0.0",
+		"cross-env": "7.0.3",
+		"css-loader": "6.7.1",
+		"dotenv": "^16.0.3",
+		"file-loader": "6.2.0",
+		"html-webpack-plugin": "5.5.0",
+		"mini-css-extract-plugin": "2.6.1",
+		"optimize-css-assets-webpack-plugin": "6.0.1",
+		"postcss-loader": "7.0.1",
+		"sass": "1.55.0",
+		"sass-loader": "13.0.2",
+		"style-loader": "^3.3.1",
+		"ts-loader": "^9.2.8",
+		"typescript": "^4.6.3",
+		"webpack": "^5.74.0",
+		"webpack-bundle-analyzer": "4.6.1",
+		"webpack-cli": "4.10.0",
+		"webpack-dev-server": "4.11.1"
 	}
 }
