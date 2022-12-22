@@ -11,7 +11,7 @@
 			<!-- ************ -->
 			<!-- Header Start -->
 			<!-- ************ -->
-			<header class="header">
+			<header class="header" id="header">
 				<div class="header__wrapper">
 					<div class="header__logo">
 						<img
@@ -181,7 +181,7 @@
 			<!-- Timer Start -->
 			<!-- *********** -->
 
-			<div class="timer">
+			<div class="timer" id="timer">
 				<div class="timer__wrapper">
 					<div class="timer__time">
 						<!-- {/*onlick toggle timer */} -->
@@ -208,10 +208,7 @@
 							/>
 						</svg>
 					</div>
-					<div>
-						<!-- {/* class={classs('timer__button',
-						`timer__button-${theme}`)} onClick={() =>
-						allActions.changeTimer({})} */} -->
+					<div class="timer__button" id="timer__button">
 						<svg
 							width="18"
 							height="24"

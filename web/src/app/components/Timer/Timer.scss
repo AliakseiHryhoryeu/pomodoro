@@ -28,7 +28,7 @@
 		max-width: 300px;
 		width: 100%;
 		margin-bottom: 40px;
-		border: 1px solid #c6c6c6;
+		border: 6px solid #399fff;
 		border-radius: 50%;
 		color: var(--Dark-font-color);
 		&:hover {
@@ -69,6 +69,14 @@
 					background-color: var(--Light-bg-white-hover);
 				}
 			}
+		}
+	}
+}
+
+@media (min-width: 560px) {
+	.timer {
+		&__time {
+			border: 10px solid #399fff;
 		}
 	}
 }

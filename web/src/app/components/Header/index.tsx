@@ -33,7 +33,7 @@ export const Header: FC = () => {
 	)
 	return (
 		<>
-			<header className={classNames('header', `header-${theme}`)}>
+			<header className={classNames('header', `header-${theme}`)} id='header'>
 				<div className='header__wrapper'>
 					{/* <div
 						className='header__burger'

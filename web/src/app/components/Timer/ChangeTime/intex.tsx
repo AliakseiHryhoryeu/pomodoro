@@ -33,6 +33,7 @@ export const ChangeTime: FC = () => {
 	return (
 		<div
 			className={classNames('timer__button', `timer__button-${theme}`)}
+			id='timer__button'
 			onClick={() => allActions.changeTimer({})}
 		>
 			<ChangeTimeIcon />

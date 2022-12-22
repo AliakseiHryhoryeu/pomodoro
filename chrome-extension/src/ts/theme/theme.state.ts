@@ -13,11 +13,12 @@ export const getThemeState = () => {
 	return state.theme
 }
 
-export const toggleTheme = () => {
-	if (state.theme == 'dark') {
+export const toggleThemeState = () => {
+	if (state.theme === 'dark') {
 		state.theme = 'light'
 	} else {
 		state.theme = 'dark'
 	}
 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
+	console.log('set theme', state.theme)
 }

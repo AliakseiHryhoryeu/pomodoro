@@ -26,7 +26,7 @@ export const Timer: FC = props => {
 	}, [])
 	return (
 		<>
-			<div className={classNames('timer', `timer-${theme}`)}>
+			<div className={classNames('timer', `timer-${theme}`)} id='timer'>
 				<div className='timer__wrapper'>
 					<TimerButton />
 					<ChangeTime />
