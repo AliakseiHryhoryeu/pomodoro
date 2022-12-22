@@ -24,7 +24,7 @@ const tsProject = ts.createProject({
 		noEmit: false,
 		incremental: true,
 		esModuleInterop: true,
-		module: 'commonjs',
+		module: 'es6',
 		moduleResolution: 'node',
 		resolveJsonModule: true,
 		isolatedModules: true,
@@ -130,15 +130,14 @@ function js() {
 		.pipe(dest(paths.js.dest))
 }
 
-// function ts() {
-// 	return src(paths.ts.src).pipe(ts()).pipe(dest(paths.ts.dest))
-// }
-
 function compileTypeScript() {
-	return src(paths.typescript.src)
-		.pipe(tsProject())
-		.pipe(uglify())
-		.pipe(dest(paths.typescript.dest))
+	return (
+		src(paths.typescript.src)
+			.pipe(tsProject())
+			.pipe(uglify())
+			// .pipe(concat('compiledTypeScript.js'))
+			.pipe(dest(paths.typescript.dest))
+	)
 }
 
 function fonts() {
