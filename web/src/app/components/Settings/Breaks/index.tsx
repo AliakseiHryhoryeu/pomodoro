@@ -23,6 +23,7 @@ export const Breaks: FC = props => {
 				<div className='settings__block-title'>Breaks</div>
 				<div
 					className='settings__break'
+					id='settingsBreaks-Break'
 					onClick={() => allActions.toggleBreak({})}
 				>
 					<div className='settings__break-title'>Break</div>
@@ -30,6 +31,7 @@ export const Breaks: FC = props => {
 				</div>
 				<div
 					className='settings__break'
+					id='settingsBreaks-LongBreak'
 					onClick={() => allActions.toggleLongBreak({})}
 				>
 					<div className='settings__break-title'>Long break</div>
@@ -39,6 +41,7 @@ export const Breaks: FC = props => {
 					<div className='settings__break-title'>Pomodoro counts</div>
 					<input
 						className='settings__break-input'
+						id='settingsBreaks-PomodoroCounts'
 						type='number'
 						value={pomodoroCounts}
 						onChange={e =>
@@ -49,6 +52,7 @@ export const Breaks: FC = props => {
 				<div
 					className='settings__break'
 					onClick={() => allActions.toggleAutoStart({})}
+					id='settingsBreaks-AutoStart'
 				>
 					<div className='settings__break-title'>
 						Auto start next pomodoro session

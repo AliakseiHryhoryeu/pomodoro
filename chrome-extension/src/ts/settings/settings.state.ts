@@ -1,0 +1,217 @@
+import { ISettingsState, emptySettingsState } from './settings.types'
+// import btnSound from 'assets/audio/btnSound.mp3'
+// import btnSound2 from 'assets/audio/btnSound-2.mp3'
+// import endPomodoroSound from 'assets/audio/endPomodoro.mp3'
+
+// Get last settings from Local Storage
+const LocalStorageFolder = 'Settings'
+const getParsed = () => {
+	let Parsed = JSON.parse(localStorage.getItem(LocalStorageFolder) || '{}')
+	if (typeof Parsed == undefined || Parsed == null) {
+		Parsed = emptySettingsState
+	}
+	return Parsed
+}
+const Parsed: ISettingsState = getParsed()
+
+const state: ISettingsState = {
+	durations: {
+		pomodoroTime: Parsed.durations.pomodoroTime || 25,
+		breakTime: Parsed.durations.breakTime || 5,
+		longTime: Parsed.durations.longTime || 15,
+	},
+	breaks: {
+		short: Parsed.breaks.short && true,
+		long: Parsed.breaks.long && true,
+		pomodoroCounts: Parsed.breaks.pomodoroCounts || 4,
+		autoStart: Parsed.breaks.autoStart && true,
+	},
+	timer: {
+		isActive: false,
+		currentPomodoroCount: 1,
+		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
+		currentTimer: 'Pomodoro',
+	},
+	showAlert: Parsed.showAlert && true,
+}
+
+// // ============= //
+// // === Timer === //
+// // ============= //
+export const changeTimer = () => {
+	// const audio = new Audio(btnSound)
+	// audio.play()
+
+	if (state.timer.currentTimer === 'Pomodoro') {
+		state.timer.currentTimer = 'Short break'
+		state.timer.currentTime = state.durations.breakTime * 60
+	} else if (state.timer.currentTimer === 'Short break') {
+		state.timer.currentTimer = 'Long break'
+		state.timer.currentTime = state.durations.longTime * 60
+	} else {
+		state.timer.currentTimer = 'Pomodoro'
+		state.timer.currentTime = state.durations.pomodoroTime * 60
+	}
+	state.timer.isActive = false
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+
+export const updateTime = () => {
+	if (state.timer.isActive) {
+		state.timer.currentTime -= 1
+	}
+	if (state.timer.currentTime <= 0) {
+		// const endBreakAudio = new Audio(btnSound2)
+		// const endPomodoroAudio = new Audio(endPomodoroSound)
+
+		switch (state.timer.currentTimer) {
+			case 'Pomodoro':
+				state.timer.currentPomodoroCount++
+				// endPomodoroAudio.play()
+
+				if (state.breaks.short) {
+					state.timer.currentTimer = 'Short break'
+					state.timer.currentTime = state.durations.breakTime * 60
+				} else if (state.breaks.long) {
+					state.timer.currentTimer = 'Long break'
+					state.timer.currentTime = state.durations.longTime * 60
+				} else {
+					state.timer.currentTimer = 'Pomodoro'
+					state.timer.currentTime = state.durations.pomodoroTime * 60
+				}
+				break
+			case 'Short break':
+				// endBreakAudio.play()
+
+				if (state.timer.currentPomodoroCount >= state.breaks.pomodoroCounts) {
+					state.timer.currentTimer = 'Long break'
+					state.timer.currentTime = state.durations.longTime * 60
+				} else {
+					state.timer.currentTimer = 'Pomodoro'
+					state.timer.currentTime = state.durations.pomodoroTime * 60
+				}
+				break
+			case 'Long break':
+				// endBreakAudio.play()
+				state.timer.currentTimer = 'Pomodoro'
+				state.timer.currentTime = state.durations.pomodoroTime * 60
+				state.timer.currentPomodoroCount = 1
+				if (state.breaks.autoStart === false) {
+					state.timer.isActive = false
+				}
+				break
+			default:
+				break
+		}
+	}
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+
+export const toggleRunTimer = () => {
+	// const audio = new Audio(btnSound2)
+	// audio.play()
+
+	state.timer.isActive = !state.timer.isActive
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+
+// // ================= //
+// // === Durations === //
+// // ================= //
+export const changePomodoroTime = (newPomodoroTime: number) => {
+	const currentTimer = state.timer.currentTimer
+	if (newPomodoroTime > 0) {
+		state.durations.pomodoroTime = newPomodoroTime
+		if (currentTimer === 'Pomodoro') {
+			state.timer.currentTime = newPomodoroTime * 60
+		}
+	}
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+export const changeBreakTime = (newShortTime: number) => {
+	const currentTimer = state.timer.currentTimer
+	if (newShortTime > 0) {
+		state.durations.breakTime = newShortTime
+		if (currentTimer === 'Short break') {
+			state.timer.currentTime = newShortTime * 60
+		}
+	}
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+export const changeLongTime = (newLongTime: number) => {
+	const currentTimer = state.timer.currentTimer
+	if (newLongTime > 0) {
+		state.durations.longTime = newLongTime
+		if (currentTimer === 'Long break') {
+			state.timer.currentTime = newLongTime * 60
+		}
+	}
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+
+// // ============== //
+// // === Breaks === //
+// // ============== //
+export const toggleBreak = () => {
+	state.breaks.short = !state.breaks.short
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+export const toggleLongBreak = () => {
+	state.breaks.long = !state.breaks.long
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+export const toggleAutoStart = () => {
+	state.breaks.autoStart = !state.breaks.autoStart
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+export const changePomodoroCount = (newCount: string) => {
+	if (Number(newCount) > 0) {
+		state.breaks.pomodoroCounts = Number(newCount)
+	} else {
+		state.breaks.pomodoroCounts = 1
+	}
+	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+}
+
+// // =================== //
+// // === GET'S STATE === //
+// // =================== //
+
+// Durations
+export const getDurationsPomodoroTime = () => {
+	return state.durations.pomodoroTime
+}
+export const getDurationsBreakTime = () => {
+	return state.durations.breakTime
+}
+export const getDurationsLongTime = () => {
+	return state.durations.longTime
+}
+
+// Breaks
+export const getBreaksShort = () => {
+	return state.breaks.short
+}
+export const getBreaksLong = () => {
+	return state.breaks.long
+}
+export const getBreaksPomodoroCounts = () => {
+	return state.breaks.pomodoroCounts
+}
+export const getBreaksAutoStart = () => {
+	return state.breaks.autoStart
+}
+
+// Timer
+export const getTimerIsActive = () => {
+	return state.timer.isActive
+}
+export const getTimerCurrentPomodoroCount = () => {
+	return state.timer.currentPomodoroCount
+}
+export const getTimerCurrentTime = () => {
+	return state.timer.currentTime
+}
+export const getTimerCurrentTimer = () => {
+	return state.timer.currentTimer
+}

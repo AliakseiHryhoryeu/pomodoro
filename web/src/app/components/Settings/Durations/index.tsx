@@ -4,10 +4,6 @@ import { RootState } from 'app/store'
 import { useActions } from 'app/hooks/useActions'
 
 export const Durations: FC = () => {
-	const [pomodoroInputVisible, setPomodoroInputVisible] = useState(false)
-	const [breakInputVisible, setBreakInputVisible] = useState(false)
-	const [longBreakInputVisible, setLongBreakInputVisible] = useState(false)
-
 	const { pomodoroTime, breakTime, longBreak } = useTypedSelector(
 		(state: RootState) => {
 			return {
@@ -25,13 +21,11 @@ export const Durations: FC = () => {
 			<div className='settings__block-title'>Durations</div>
 			<div className='settings__block-wrapper'>
 				<div className='settings__durations'>
-					<div
-						className='settings__durations-block'
-						onClick={() => setPomodoroInputVisible(true)}
-					>
+					<div className='settings__durations-block'>
 						<input
 							type='number'
 							className='settings__durations-time'
+							id='settingsDurations-Pomodoro'
 							value={pomodoroTime}
 							onChange={e =>
 								allActions.changePomodoroTime({
@@ -42,13 +36,11 @@ export const Durations: FC = () => {
 
 						<div className='settings__durations-title'>Pomodoro</div>
 					</div>
-					<div
-						className='settings__durations-block'
-						onClick={() => setBreakInputVisible(true)}
-					>
+					<div className='settings__durations-block'>
 						<input
 							type='number'
 							className='settings__durations-time'
+							id='settingsDurations-Break'
 							value={breakTime}
 							onChange={e =>
 								allActions.changeBreakTime({
@@ -58,13 +50,11 @@ export const Durations: FC = () => {
 						/>
 						<div className='settings__durations-title'>Break</div>
 					</div>
-					<div
-						className='settings__durations-block'
-						onClick={() => setLongBreakInputVisible(true)}
-					>
+					<div className='settings__durations-block'>
 						<input
 							type='number'
 							className='settings__durations-time'
+							id='settingsDurations-LongBreak'
 							value={longBreak}
 							onChange={e =>
 								allActions.changeLongTime({

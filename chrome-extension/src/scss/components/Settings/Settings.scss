@@ -183,7 +183,7 @@
 			background: var(--Light-bg-white);
 
 			&-title {
-				color: var(--Light-button-color-hover);
+				color: var(--Light-font-color);
 			}
 		}
 		.settings__bg {
@@ -255,7 +255,7 @@
 			background: var(--Dark-bg-white);
 
 			&-title {
-				color: var(--Dark-button-color-hover);
+				color: var(--Dark-font-color);
 			}
 		}
 		.settings__bg {

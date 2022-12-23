@@ -1,5 +1,3 @@
-$test: var(--Dark-bg-white);
-
 .settings {
 	display: flex;
 	align-items: center;
@@ -61,6 +59,7 @@ $test: var(--Dark-bg-white);
 		justify-content: start;
 		align-items: flex-start;
 		width: 100%;
+		color: var(--Dark-font-color);
 		&-title {
 			font-size: 26px;
 			font-weight: 600;
@@ -184,7 +183,7 @@ $test: var(--Dark-bg-white);
 			background: var(--Light-bg-white);
 
 			&-title {
-				color: var(--Light-button-color-hover);
+				color: var(--Light-font-color);
 			}
 		}
 		.settings__bg {
@@ -256,7 +255,7 @@ $test: var(--Dark-bg-white);
 			background: var(--Dark-bg-white);
 
 			&-title {
-				color: var(--Dark-button-color-hover);
+				color: var(--Dark-font-color);
 			}
 		}
 		.settings__bg {

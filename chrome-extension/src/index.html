@@ -298,16 +298,28 @@
 						<div class="settings__block-wrapper">
 							<div class="settings__durations">
 								<div class="settings__durations-block">
-									<input type="number" class="settings__durations-time" />
+									<input
+										type="number"
+										id="settingsDurations-Pomodoro"
+										class="settings__durations-time"
+									/>
 
 									<div class="settings__durations-title">Pomodoro</div>
 								</div>
 								<div class="settings__durations-block">
-									<input type="number" class="settings__durations-time" />
+									<input
+										type="number"
+										class="settings__durations-time"
+										id="settingsDurations-Break"
+									/>
 									<div class="settings__durations-title">Break</div>
 								</div>
 								<div class="settings__durations-block">
-									<input type="number" class="settings__durations-time" />
+									<input
+										type="number"
+										class="settings__durations-time"
+										id="settingsDurations-LongBreak"
+									/>
 									<div class="settings__durations-title">Long break</div>
 								</div>
 							</div>
@@ -316,9 +328,10 @@
 					<div class="settings__block">
 						<div class="settings__block-wrapper">
 							<div class="settings__block-title">Breaks</div>
-							<div class="settings__break">
+							<div class="settings__break" id="settingsBreaks-Break">
 								<div class="settings__break-title">Break</div>
 								<svg
+									id="settingsBreaks-BreakIcon"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 48 48"
 									width="40px"
@@ -357,9 +370,10 @@
 									/>
 								</svg>
 							</div>
-							<div class="settings__break">
+							<div class="settings__break" id="settingsBreaks-LongBreak">
 								<div class="settings__break-title">Long break</div>
 								<svg
+									id="settingsBreaks-LongBreakIcon"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 48 48"
 									width="40px"
@@ -400,13 +414,18 @@
 							</div>
 							<div class="settings__break">
 								<div class="settings__break-title">Pomodoro counts</div>
-								<input class="settings__break-input" type="number" />
+								<input
+									class="settings__break-input"
+									id="settingsBreaks-PomodoroCounts"
+									type="number"
+								/>
 							</div>
-							<div class="settings__break">
+							<div class="settings__break" id="settingsBreaks-AutoStart">
 								<div class="settings__break-title">
 									Auto start next pomodoro session
 								</div>
 								<svg
+									id="settingsBreaks-AutoStartIcon"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 48 48"
 									width="40px"
@@ -450,9 +469,10 @@
 					<div class="settings__block">
 						<div class="settings__block-wrapper">
 							<div class="settings__block-title">Themes</div>
-							<div class="settings__theme">
+							<div class="settings__theme" id="settingsThemes-Light">
 								<div class="settings__theme-title">Light</div>
 								<svg
+									id="settingsThemes-LightIcon"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 48 48"
 									width="40px"
@@ -491,9 +511,10 @@
 									/>
 								</svg>
 							</div>
-							<div class="settings__theme">
+							<div class="settings__theme" id="settingsThemes-Dark">
 								<div class="settings__theme-title">Dark</div>
 								<svg
+									id="settingsThemes-DarkIcon"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 48 48"
 									width="40px"

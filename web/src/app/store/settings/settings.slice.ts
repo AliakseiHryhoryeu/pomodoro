@@ -117,7 +117,7 @@ export const settingsSlice = createSlice({
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 
-		toggleRunTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
+		toggleRunTimer: (state, action: PayloadAction<{}>) => {
 			const audio = new Audio(btnSound2)
 			audio.play()
 
@@ -125,19 +125,9 @@ export const settingsSlice = createSlice({
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 
-		// runTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-		// 	state.timer.isActive = false
-		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		// },
-		// pauseTimer: (state, action: PayloadAction<{ updatedTime: number }>) => {
-		// 	state.timer.isActive = false
-		// 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
-		// },
-
 		// ================= //
 		// === Durations === //
 		// ================= //
-
 		changePomodoroTime: (
 			state,
 			action: PayloadAction<{ newPomodoroTime: number }>

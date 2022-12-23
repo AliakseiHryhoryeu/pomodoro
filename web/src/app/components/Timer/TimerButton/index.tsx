@@ -17,7 +17,7 @@ export const TimerButton: FC = () => {
 		<div
 			className='timer__time'
 			onClick={() => {
-				allActions.toggleRunTimer()
+				allActions.toggleRunTimer({})
 			}}
 		>
 			{isActive && <TimerPauseIcon />}

@@ -20,6 +20,7 @@ export const Themes: FC = props => {
 				<div className='settings__block-title'>Themes</div>
 				<div
 					className='settings__theme'
+					id='settingsThemes-Light'
 					onClick={() => allActions.changeThemeToLight({})}
 				>
 					<div className='settings__theme-title'>Light</div>
@@ -29,7 +30,9 @@ export const Themes: FC = props => {
 					className='settings__theme'
 					onClick={() => allActions.changeThemeToDark({})}
 				>
-					<div className='settings__theme-title'>Dark</div>
+					<div className='settings__theme-title' id='settingsThemes-Dark'>
+						Dark
+					</div>
 					{theme === 'dark' && <CheckIcon />}
 				</div>
 			</div>
