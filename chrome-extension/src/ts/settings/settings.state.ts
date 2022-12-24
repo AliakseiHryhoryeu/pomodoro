@@ -1,16 +1,14 @@
 import { ISettingsState, emptySettingsState } from './settings.types'
-// import btnSound from 'assets/audio/btnSound.mp3'
-// import btnSound2 from 'assets/audio/btnSound-2.mp3'
-// import endPomodoroSound from 'assets/audio/endPomodoro.mp3'
+import btnSound from '../../audio/btnSound.mp3'
+import btnSound2 from '../../audio/btnSound-2.mp3'
+import endPomodoroSound from '../../audio/endPomodoro.mp3'
 
 // Get last settings from Local Storage
 const LocalStorageFolder = 'Settings'
-const getParsed = () => {
-	let Parsed = JSON.parse(localStorage.getItem(LocalStorageFolder) || '{}')
-	if (typeof Parsed == undefined || Parsed == null) {
-		Parsed = emptySettingsState
-	}
-	return Parsed
+async function getParsed() {
+	/// <reference types="chrome"/>
+	let data = await chrome.storage.sync.get([LocalStorageFolder])
+	return JSON.parse(data || '{}')
 }
 const Parsed: ISettingsState = getParsed()
 
@@ -39,21 +37,35 @@ const state: ISettingsState = {
 // // === Timer === //
 // // ============= //
 export const changeTimer = () => {
-	// const audio = new Audio(btnSound)
-	// audio.play()
+	const audio = new Audio(btnSound)
+	audio.play()
 
 	if (state.timer.currentTimer === 'Pomodoro') {
-		state.timer.currentTimer = 'Short break'
-		state.timer.currentTime = state.durations.breakTime * 60
+		if (state.breaks.short) {
+			state.timer.currentTimer = 'Short break'
+			state.timer.currentTime = state.durations.breakTime * 60
+		} else if (state.breaks.long) {
+			state.timer.currentTimer = 'Long break'
+			state.timer.currentTime = state.durations.longTime * 60
+		} else {
+			state.timer.currentTimer = 'Pomodoro'
+			state.timer.currentTime = state.durations.pomodoroTime * 60
+		}
 	} else if (state.timer.currentTimer === 'Short break') {
-		state.timer.currentTimer = 'Long break'
-		state.timer.currentTime = state.durations.longTime * 60
+		if (state.breaks.long) {
+			state.timer.currentTimer = 'Long break'
+			state.timer.currentTime = state.durations.longTime * 60
+		} else {
+			state.timer.currentTimer = 'Pomodoro'
+			state.timer.currentTime = state.durations.pomodoroTime * 60
+		}
 	} else {
 		state.timer.currentTimer = 'Pomodoro'
 		state.timer.currentTime = state.durations.pomodoroTime * 60
 	}
 	state.timer.isActive = false
 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateTimerChangeBtn()
 }
 
 export const updateTime = () => {
@@ -61,13 +73,13 @@ export const updateTime = () => {
 		state.timer.currentTime -= 1
 	}
 	if (state.timer.currentTime <= 0) {
-		// const endBreakAudio = new Audio(btnSound2)
-		// const endPomodoroAudio = new Audio(endPomodoroSound)
+		const endBreakAudio = new Audio(btnSound2)
+		const endPomodoroAudio = new Audio(endPomodoroSound)
 
 		switch (state.timer.currentTimer) {
 			case 'Pomodoro':
 				state.timer.currentPomodoroCount++
-				// endPomodoroAudio.play()
+				endPomodoroAudio.play()
 
 				if (state.breaks.short) {
 					state.timer.currentTimer = 'Short break'
@@ -81,18 +93,23 @@ export const updateTime = () => {
 				}
 				break
 			case 'Short break':
-				// endBreakAudio.play()
+				endBreakAudio.play()
 
 				if (state.timer.currentPomodoroCount >= state.breaks.pomodoroCounts) {
-					state.timer.currentTimer = 'Long break'
-					state.timer.currentTime = state.durations.longTime * 60
+					if (state.breaks.long) {
+						state.timer.currentTimer = 'Long break'
+						state.timer.currentTime = state.durations.longTime * 60
+					} else {
+						state.timer.currentTimer = 'Pomodoro'
+						state.timer.currentTime = state.durations.pomodoroTime * 60
+					}
 				} else {
 					state.timer.currentTimer = 'Pomodoro'
 					state.timer.currentTime = state.durations.pomodoroTime * 60
 				}
 				break
 			case 'Long break':
-				// endBreakAudio.play()
+				endBreakAudio.play()
 				state.timer.currentTimer = 'Pomodoro'
 				state.timer.currentTime = state.durations.pomodoroTime * 60
 				state.timer.currentPomodoroCount = 1
@@ -105,14 +122,17 @@ export const updateTime = () => {
 		}
 	}
 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateTimerChangeBtn()
+	updateTimerButton()
 }
 
 export const toggleRunTimer = () => {
-	// const audio = new Audio(btnSound2)
-	// audio.play()
+	const audio = new Audio(btnSound2)
+	audio.play()
 
 	state.timer.isActive = !state.timer.isActive
 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateTimerButton()
 }
 
 // // ================= //
@@ -127,6 +147,7 @@ export const changePomodoroTime = (newPomodoroTime: number) => {
 		}
 	}
 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateTimerChangeBtn()
 }
 export const changeBreakTime = (newShortTime: number) => {
 	const currentTimer = state.timer.currentTimer
@@ -137,6 +158,7 @@ export const changeBreakTime = (newShortTime: number) => {
 		}
 	}
 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateTimerChangeBtn()
 }
 export const changeLongTime = (newLongTime: number) => {
 	const currentTimer = state.timer.currentTimer
@@ -147,6 +169,7 @@ export const changeLongTime = (newLongTime: number) => {
 		}
 	}
 	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateTimerChangeBtn()
 }
 
 // // ============== //
@@ -210,8 +233,35 @@ export const getTimerCurrentPomodoroCount = () => {
 	return state.timer.currentPomodoroCount
 }
 export const getTimerCurrentTime = () => {
-	return state.timer.currentTime
+	const currentTime = state.timer.currentTime
+	const minutes = Math.floor(currentTime / 60)
+	const seconds = currentTime - Math.floor(currentTime / 60) * 60
+
+	const formatedTime = (time: number) => {
+		if (time < 10) {
+			return `0${time}`
+		}
+		return `${time}`
+	}
+	return `${formatedTime(minutes)}:${formatedTime(seconds)}`
 }
 export const getTimerCurrentTimer = () => {
 	return state.timer.currentTimer
+}
+
+const timerChangeTimeTime = document.getElementById('timer__button-time')
+const timerChangeTimeTitle = document.getElementById('timer__button-title')
+
+const updateTimerChangeBtn = () => {
+	timerChangeTimeTime.textContent = getTimerCurrentTime()
+	timerChangeTimeTitle.textContent = getTimerCurrentTimer()
+}
+
+const timerTimePause = document.getElementById('timer__time-pause')
+const timerTimeRun = document.getElementById('timer__time-run')
+
+const updateTimerButton = () => {
+	const timerButtonInitisActive = getTimerIsActive()
+	timerTimePause.style.display = timerButtonInitisActive ? 'block' : 'none'
+	timerTimeRun.style.display = timerButtonInitisActive ? 'none' : 'block'
 }

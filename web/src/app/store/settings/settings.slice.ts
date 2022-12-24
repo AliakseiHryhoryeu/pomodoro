@@ -51,11 +51,24 @@ export const settingsSlice = createSlice({
 			audio.play()
 
 			if (state.timer.currentTimer === 'Pomodoro') {
-				state.timer.currentTimer = 'Short break'
-				state.timer.currentTime = state.durations.breakTime * 60
+				if (state.breaks.short) {
+					state.timer.currentTimer = 'Short break'
+					state.timer.currentTime = state.durations.breakTime * 60
+				} else if (state.breaks.long) {
+					state.timer.currentTimer = 'Long break'
+					state.timer.currentTime = state.durations.longTime * 60
+				} else {
+					state.timer.currentTimer = 'Pomodoro'
+					state.timer.currentTime = state.durations.pomodoroTime * 60
+				}
 			} else if (state.timer.currentTimer === 'Short break') {
-				state.timer.currentTimer = 'Long break'
-				state.timer.currentTime = state.durations.longTime * 60
+				if (state.breaks.long) {
+					state.timer.currentTimer = 'Long break'
+					state.timer.currentTime = state.durations.longTime * 60
+				} else {
+					state.timer.currentTimer = 'Pomodoro'
+					state.timer.currentTime = state.durations.pomodoroTime * 60
+				}
 			} else {
 				state.timer.currentTimer = 'Pomodoro'
 				state.timer.currentTime = state.durations.pomodoroTime * 60
@@ -93,8 +106,13 @@ export const settingsSlice = createSlice({
 						if (
 							state.timer.currentPomodoroCount >= state.breaks.pomodoroCounts
 						) {
-							state.timer.currentTimer = 'Long break'
-							state.timer.currentTime = state.durations.longTime * 60
+							if (state.breaks.long) {
+								state.timer.currentTimer = 'Long break'
+								state.timer.currentTime = state.durations.longTime * 60
+							} else {
+								state.timer.currentTimer = 'Pomodoro'
+								state.timer.currentTime = state.durations.pomodoroTime * 60
+							}
 						} else {
 							state.timer.currentTimer = 'Pomodoro'
 							state.timer.currentTime = state.durations.pomodoroTime * 60

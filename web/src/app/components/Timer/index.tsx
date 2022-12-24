@@ -5,7 +5,7 @@ import { useActions } from 'app/hooks/useActions'
 import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { RootState } from 'app/store'
 
-import { Alert } from '../Alert/intex'
+// import { Alert } from '../Alert/intex'
 
 import './Timer.scss'
 import { ChangeTime } from './ChangeTime/intex'

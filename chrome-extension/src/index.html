@@ -15,7 +15,7 @@
 				<div class="header__wrapper">
 					<div class="header__logo">
 						<img
-							src="./img/icons/icon-128.png"
+							src="./img/icon-128.png"
 							alt="mainLogo"
 							height="30px"
 							width="30px"
@@ -183,9 +183,10 @@
 
 			<div class="timer" id="timer">
 				<div class="timer__wrapper">
-					<div class="timer__time">
+					<div class="timer__time" id="timer__time">
 						<!-- {/*onlick toggle timer */} -->
 						<svg
+							id="timer__time-pause"
 							width="80"
 							height="100"
 							viewBox="0 0 80 100"
@@ -196,6 +197,7 @@
 							<rect x="50" width="30" height="100" fill="#399FFF" />
 						</svg>
 						<svg
+							id="timer__time-run"
 							width="140"
 							height="140"
 							viewBox="0 0 160 160"
@@ -245,11 +247,11 @@
 								stroke="black"
 							/>
 						</svg>
-						<div class="timer__button-title">
+						<div class="timer__button-title" id="timer__button-title">
 							Pomodoro
 							<!-- {currentTimer}: -->
 						</div>
-						<div class="timer__button-time">
+						<div class="timer__button-time" id="timer__button-time">
 							25:00
 							<!-- {/* {formatedTime(minutes)}:{formatedTime(seconds)} */} -->
 						</div>

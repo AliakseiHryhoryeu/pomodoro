@@ -20,10 +20,13 @@
 	},
 	"scripts": {
 		"build": "cross-env NODE_ENV=production webpack --mode production",
+		"dev": "cross-env NODE_ENV=production webpack --mode development",
 		"start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
 		"stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@types/chrome": "^0.0.206"
+	},
 	"devDependencies": {
 		"@babel/polyfill": "7.12.1",
 		"babel-loader": "8.2.5",

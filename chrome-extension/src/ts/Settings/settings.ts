@@ -21,6 +21,12 @@ import {
 	toggleLongBreak,
 	toggleAutoStart,
 	getBreaksAutoStart,
+	updateTime,
+	changeTimer,
+	getTimerCurrentTimer,
+	getTimerCurrentTime,
+	getTimerIsActive,
+	toggleRunTimer,
 } from './settings.state'
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -31,8 +37,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	// ==================================
 	// ====  Toogle Visible Settings ====
 	// ==================================
-	let settingsVisible = true
-	const changeVisible = () => {
+	let settingsVisible = false
+	settings.style.display = 'none'
+	const changeSettingsVisible = () => {
 		settingsVisible = !settingsVisible
 		if (settings) {
 			if (settingsVisible) {
@@ -45,21 +52,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	settingsBgBtn.addEventListener(
 		'click',
 		e => {
-			changeVisible()
+			changeSettingsVisible()
 		},
 		false
 	)
 	headerSettingsBtn.addEventListener(
 		'click',
 		e => {
-			changeVisible()
+			changeSettingsVisible()
 		},
 		false
 	)
 	settingsHeaderBtn.addEventListener(
 		'click',
 		e => {
-			changeVisible()
+			changeSettingsVisible()
 		},
 		false
 	)
@@ -193,4 +200,37 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	// =================
 	// ====  Timer  ====
 	// =================
+	setInterval(() => {
+		updateTime()
+	}, 1000)
+
+	const timer = document.getElementById('timer')
+
+	const timerTime = document.getElementById('timer__time')
+	const timerTimePause = document.getElementById('timer__time-pause')
+	const timerTimeRun = document.getElementById('timer__time-run')
+
+	const timerButtonInitisActive = getTimerIsActive()
+	timerTimePause.style.display = timerButtonInitisActive ? 'block' : 'none'
+	timerTimeRun.style.display = timerButtonInitisActive ? 'none' : 'block'
+	timerTime.addEventListener(
+		'click',
+		e => {
+			toggleRunTimer()
+		},
+		false
+	)
+	const timerChangeTimeBtn = document.getElementById('timer__button')
+	timerChangeTimeBtn.addEventListener(
+		'click',
+		e => {
+			changeTimer()
+		},
+		false
+	)
+	const timerChangeTimeTitle = document.getElementById('timer__button-title')
+	timerChangeTimeTitle.textContent = getTimerCurrentTimer()
+
+	const timerChangeTimeTime = document.getElementById('timer__button-time')
+	timerChangeTimeTime.textContent = getTimerCurrentTime()
 })
