@@ -5,34 +5,59 @@ import endPomodoroSound from '../../audio/endPomodoro.mp3'
 
 // Get last settings from Local Storage
 const LocalStorageFolder = 'Settings'
-async function getParsed() {
-	/// <reference types="chrome"/>
-	let data = await chrome.storage.sync.get([LocalStorageFolder])
-	return JSON.parse(data || '{}')
+
+const getParsed = () => {
+	let Parsed = JSON.parse(localStorage.getItem(LocalStorageFolder) || '{}')
+	if (typeof Parsed == undefined || Parsed == null) {
+		Parsed = emptySettingsState
+	}
+	return Parsed
 }
-const Parsed: ISettingsState = getParsed()
+// const Parsed: ISettingsState = getParsed()
+
+const Parsed: ISettingsState = emptySettingsState
+
+// const state: ISettingsState = {
+// 	durations: {
+// 		pomodoroTime: Parsed.durations.pomodoroTime || 25,
+// 		breakTime: Parsed.durations.breakTime || 5,
+// 		longTime: Parsed.durations.longTime || 15,
+// 	},
+// 	breaks: {
+// 		short: Parsed.breaks.short && true,
+// 		long: Parsed.breaks.long && true,
+// 		pomodoroCounts: Parsed.breaks.pomodoroCounts || 4,
+// 		autoStart: Parsed.breaks.autoStart && true,
+// 	},
+// 	timer: {
+// 		isActive: false,
+// 		currentPomodoroCount: 1,
+// 		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
+// 		currentTimer: 'Pomodoro',
+// 	},
+// 	showAlert: Parsed.showAlert && true,
+// }
 
 const state: ISettingsState = {
 	durations: {
-		pomodoroTime: Parsed.durations.pomodoroTime || 25,
-		breakTime: Parsed.durations.breakTime || 5,
-		longTime: Parsed.durations.longTime || 15,
+		pomodoroTime: 25,
+		breakTime: 5,
+		longTime: 15,
 	},
 	breaks: {
-		short: Parsed.breaks.short && true,
-		long: Parsed.breaks.long && true,
-		pomodoroCounts: Parsed.breaks.pomodoroCounts || 4,
-		autoStart: Parsed.breaks.autoStart && true,
+		short: true,
+		long: true,
+		pomodoroCounts: 4,
+		autoStart: true,
 	},
 	timer: {
 		isActive: false,
 		currentPomodoroCount: 1,
-		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
+		currentTime: 25 * 60,
 		currentTimer: 'Pomodoro',
 	},
-	showAlert: Parsed.showAlert && true,
+	showAlert: true,
 }
-
 // // ============= //
 // // === Timer === //
 // // ============= //
@@ -199,7 +224,9 @@ export const changePomodoroCount = (newCount: string) => {
 // // =================== //
 // // === GET'S STATE === //
 // // =================== //
-
+export const getState = () => {
+	return state
+}
 // Durations
 export const getDurationsPomodoroTime = () => {
 	return state.durations.pomodoroTime

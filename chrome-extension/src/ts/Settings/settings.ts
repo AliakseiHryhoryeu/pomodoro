@@ -27,7 +27,19 @@ import {
 	getTimerCurrentTime,
 	getTimerIsActive,
 	toggleRunTimer,
+	getState,
 } from './settings.state'
+
+setInterval(() => {
+	console.log('working')
+	const state = getState()
+	chrome.storage.local.set({ safgasgasgsag: state }).then(e => {
+		console.log(e)
+	})
+	chrome.storage.local.get(['safgasgasgsag']).then(e => {
+		console.log(e)
+	})
+}, 1000)
 
 document.addEventListener('DOMContentLoaded', function (event) {
 	const settings = document.getElementById('settings')
