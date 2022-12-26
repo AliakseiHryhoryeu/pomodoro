@@ -4,7 +4,7 @@ const LocalStorageFolder = 'Theme'
 const LocalStorage_theme = JSON.parse(
 	localStorage.getItem(LocalStorageFolder) || '{}'
 )
-
+// const getChromeState = chrome.storage.local.get({ key: 'test' })
 const state: IThemeState = {
 	theme: LocalStorage_theme || 'dark',
 }

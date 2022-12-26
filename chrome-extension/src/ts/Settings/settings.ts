@@ -29,16 +29,41 @@ import {
 	toggleRunTimer,
 	getState,
 } from './settings.state'
+import { ISettingsState } from './settings.types'
 
 setInterval(() => {
 	console.log('working')
+}, 1000)
+
+const setServerData = (key: string) => {
 	const state = getState()
-	chrome.storage.local.set({ safgasgasgsag: state }).then(e => {
+
+	chrome.storage.sync.set({ safgasgasgsag: state }).then(e => {
 		console.log(e)
 	})
-	chrome.storage.local.get(['safgasgasgsag']).then(e => {
-		console.log(e)
-	})
+}
+
+function getServerData(key: string) {
+	const response = chrome.storage.sync
+		.get([key])
+		.then(e => {
+			console.log(e)
+		})
+		.then(
+			onfulfilled => {
+				console.log(onfulfilled)
+				return onfulfilled
+			},
+			onrejected => {
+				return false
+			}
+		)
+	return response
+}
+setServerData('safgasgasgsag')
+setInterval(() => {
+	const test = getServerData('safgasgasgsag')
+	console.log(test)
 }, 1000)
 
 document.addEventListener('DOMContentLoaded', function (event) {
