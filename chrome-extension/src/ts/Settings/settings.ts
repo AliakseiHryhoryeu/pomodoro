@@ -1,3 +1,4 @@
+import { getServerData, setServerData } from '../storage/storage'
 import {
 	changeThemeToDark,
 	changeThemeToLight,
@@ -32,38 +33,11 @@ import {
 import { ISettingsState } from './settings.types'
 
 setInterval(() => {
-	console.log('working')
-}, 1000)
-
-const setServerData = (key: string) => {
-	const state = getState()
-
-	chrome.storage.sync.set({ safgasgasgsag: state }).then(e => {
-		console.log(e)
-	})
-}
-
-function getServerData(key: string) {
-	const response = chrome.storage.sync
-		.get([key])
-		.then(e => {
-			console.log(e)
-		})
-		.then(
-			onfulfilled => {
-				console.log(onfulfilled)
-				return onfulfilled
-			},
-			onrejected => {
-				return false
-			}
-		)
-	return response
-}
-setServerData('safgasgasgsag')
-setInterval(() => {
-	const test = getServerData('safgasgasgsag')
-	console.log(test)
+	// const test1 = setServerData('set testdata ')
+	// console.log('set server data', test1)
+	const test1 = setServerData('updated001', getState())
+	const test = getServerData('updated001')
+	// console.log('get server data', getServerData('test'))
 }, 1000)
 
 document.addEventListener('DOMContentLoaded', function (event) {

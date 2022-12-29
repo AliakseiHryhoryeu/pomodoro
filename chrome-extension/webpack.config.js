@@ -49,6 +49,7 @@ module.exports = {
 		'src/ts/styles.ts',
 		'src/ts/settings/settings.ts',
 		'src/ts/theme/theme.ts',
+		'src/ts/storage/storage.ts',
 	],
 	output: {
 		path: path.resolve(__dirname, 'build'),
