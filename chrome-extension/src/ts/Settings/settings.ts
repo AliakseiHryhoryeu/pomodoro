@@ -32,13 +32,13 @@ import {
 } from './settings.state'
 import { ISettingsState } from './settings.types'
 
-setInterval(() => {
-	// const test1 = setServerData('set testdata ')
-	// console.log('set server data', test1)
-	const test1 = setServerData('updated001', getState())
-	const test = getServerData('updated001')
-	// console.log('get server data', getServerData('test'))
-}, 1000)
+// setInterval(() => {
+// 	// const test1 = setServerData('set testdata ')
+// 	// console.log('set server data', test1)
+// 	const test1 = setServerData('updated001', getState())
+// 	const test = getServerData('updated001')
+// 	// console.log('get server data', getServerData('test'))
+// }, 1000)
 
 document.addEventListener('DOMContentLoaded', function (event) {
 	const settings = document.getElementById('settings')

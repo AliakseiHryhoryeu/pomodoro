@@ -1,30 +1,35 @@
+import { getStorageData, updateStorageData } from './theme.storage'
 import { IThemeState } from './theme.types'
 
-const LocalStorageFolder = 'Theme'
-const LocalStorage_theme = JSON.parse(
-	localStorage.getItem(LocalStorageFolder) || '{}'
-)
-// const getChromeState = chrome.storage.local.get({ key: 'test' })
 const state: IThemeState = {
-	theme: LocalStorage_theme || 'dark',
+	theme: 'dark',
 }
-
+async function updateState() {
+	const test = await getStorageData()
+	await getStorageData().then(data => {
+		console.log('data', data)
+		console.log('data', data.theme)
+		state.theme = data.theme
+	})
+	console.log(test)
+}
+updateState()
 export const toggleThemeState = () => {
 	if (state.theme === 'dark') {
 		state.theme = 'light'
 	} else {
 		state.theme = 'dark'
 	}
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
+	updateStorageData()
 }
 
 export const changeThemeToLight = () => {
 	state.theme = 'light'
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
+	updateStorageData()
 }
 export const changeThemeToDark = () => {
 	state.theme = 'dark'
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
+	updateStorageData()
 }
 
 export const getThemeState = () => {
