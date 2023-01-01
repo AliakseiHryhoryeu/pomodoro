@@ -4,7 +4,6 @@ import { TimerPauseIcon } from './icons/TimerPauseIcon'
 import { useActions } from 'app/hooks/useActions'
 import { useTypedSelector } from 'app/hooks/useAppSelector'
 import { RootState } from 'app/store'
-import './TimerButton.scss'
 
 export const TimerButton: FC = () => {
 	const { isActive } = useTypedSelector((state: RootState) => {

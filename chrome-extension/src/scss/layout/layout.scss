@@ -1,0 +1,18 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	outline: none;
+	font-weight: normal;
+	// !important to fix bugs with fonts in browsers
+	font-family: var(--body-font) !important;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+body {
+	min-height: 100vh;
+}
+
+a {
+	text-decoration: none;
+}

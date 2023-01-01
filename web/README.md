@@ -1,5 +1,7 @@
 # Pomodoro timer
 
+i write this docs tomorow
+
 ## Short Description
 
 Pomodoro app, data can save in local storage,
@@ -11,25 +13,24 @@ Pomodoro app, data can save in local storage,
 - TypeScript
 - Webpack
 
-## Chrome extension
-
-- HTML/SCSS
-- TypeScript/JavaScript
-- Webpack
-- Chrome Storage
-
-## Mobile - maybe later
+## Mobile will be
 
 - React Native
 - Redux, Redux Toolkit
 - TypeScript
 - Expo
 
+## Chrome extension - maybe later
+
+- HTML
+- CSS
+- JavaScript
+
 ## Figma
 
 https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
-## Chrome Web Store
+## Google play
 
 .....
 

@@ -1,0 +1,15 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	min-width: 100%;
+	min-height: 100vh;
+	height: 100%;
+}
+
+.iframe-import {
+	border: none;
+}
+.iframe-import #document body {
+	margin: 0;
+}
