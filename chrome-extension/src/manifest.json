@@ -1,7 +1,7 @@
 {
 	"name": "Pomodoro timer",
-	"version": "0.0.1",
-	"description": "Pomodoro timer",
+	"version": "1.0.0",
+	"description": "Pomodoro timer, source code - https://github.com/AliakseiHryhoryeu/pomodoro/tree/main/chrome-extension",
 	"permissions": ["storage", "fontSettings"],
 	"action": {
 		"default_icon": {

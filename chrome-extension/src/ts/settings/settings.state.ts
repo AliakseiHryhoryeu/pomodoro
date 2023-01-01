@@ -2,43 +2,11 @@ import { ISettingsState, emptySettingsState } from './settings.types'
 import btnSound from '../../audio/btnSound.mp3'
 import btnSound2 from '../../audio/btnSound-2.mp3'
 import endPomodoroSound from '../../audio/endPomodoro.mp3'
+import { getStorageData } from './settings.storage'
+import { updateStorageData } from './settings.storage'
+import { getThemeState } from '../theme/theme.state'
 
-// Get last settings from Local Storage
-const LocalStorageFolder = 'Settings'
-
-const getParsed = () => {
-	let Parsed = JSON.parse(localStorage.getItem(LocalStorageFolder) || '{}')
-	if (typeof Parsed == undefined || Parsed == null) {
-		Parsed = emptySettingsState
-	}
-	return Parsed
-}
-// const Parsed: ISettingsState = getParsed()
-
-const Parsed: ISettingsState = emptySettingsState
-
-// const state: ISettingsState = {
-// 	durations: {
-// 		pomodoroTime: Parsed.durations.pomodoroTime || 25,
-// 		breakTime: Parsed.durations.breakTime || 5,
-// 		longTime: Parsed.durations.longTime || 15,
-// 	},
-// 	breaks: {
-// 		short: Parsed.breaks.short && true,
-// 		long: Parsed.breaks.long && true,
-// 		pomodoroCounts: Parsed.breaks.pomodoroCounts || 4,
-// 		autoStart: Parsed.breaks.autoStart && true,
-// 	},
-// 	timer: {
-// 		isActive: false,
-// 		currentPomodoroCount: 1,
-// 		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
-// 		currentTimer: 'Pomodoro',
-// 	},
-// 	showAlert: Parsed.showAlert && true,
-// }
-
-const state: ISettingsState = {
+let state: ISettingsState = {
 	durations: {
 		pomodoroTime: 25,
 		breakTime: 5,
@@ -56,8 +24,40 @@ const state: ISettingsState = {
 		currentTime: 25 * 60,
 		currentTimer: 'Pomodoro',
 	},
-	showAlert: true,
+	showAlert: false,
 }
+
+async function updateState() {
+	await getStorageData().then(data => {
+		if (data.Settings !== undefined && data.Settings !== null) {
+			const newState: ISettingsState = {
+				durations: {
+					pomodoroTime: data.Settings.durations.pomodoroTime || 25,
+					breakTime: data.Settings.durations.breakTime || 5,
+					longTime: data.Settings.durations.longTime || 15,
+				},
+				breaks: {
+					short: data.Settings.breaks.short && true,
+					long: data.Settings.breaks.long && true,
+					pomodoroCounts: data.Settings.breaks.pomodoroCounts || 4,
+					autoStart: data.Settings.breaks.autoStart && true,
+				},
+				timer: {
+					isActive: false,
+					currentPomodoroCount: 1,
+					currentTime: data.Settings.durations.pomodoroTime * 60 || 25 * 60,
+					currentTimer: 'Pomodoro',
+				},
+				showAlert: data.Settings.showAlert && false,
+			}
+			state = newState
+		}
+		updateTimerChangeBtn()
+		updateSettingsPopup()
+	})
+}
+updateState()
+
 // // ============= //
 // // === Timer === //
 // // ============= //
@@ -89,7 +89,7 @@ export const changeTimer = () => {
 		state.timer.currentTime = state.durations.pomodoroTime * 60
 	}
 	state.timer.isActive = false
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 	updateTimerChangeBtn()
 }
 
@@ -146,7 +146,7 @@ export const updateTime = () => {
 				break
 		}
 	}
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 	updateTimerChangeBtn()
 	updateTimerButton()
 }
@@ -156,7 +156,7 @@ export const toggleRunTimer = () => {
 	audio.play()
 
 	state.timer.isActive = !state.timer.isActive
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 	updateTimerButton()
 }
 
@@ -171,7 +171,7 @@ export const changePomodoroTime = (newPomodoroTime: number) => {
 			state.timer.currentTime = newPomodoroTime * 60
 		}
 	}
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 	updateTimerChangeBtn()
 }
 export const changeBreakTime = (newShortTime: number) => {
@@ -182,7 +182,7 @@ export const changeBreakTime = (newShortTime: number) => {
 			state.timer.currentTime = newShortTime * 60
 		}
 	}
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 	updateTimerChangeBtn()
 }
 export const changeLongTime = (newLongTime: number) => {
@@ -193,7 +193,7 @@ export const changeLongTime = (newLongTime: number) => {
 			state.timer.currentTime = newLongTime * 60
 		}
 	}
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 	updateTimerChangeBtn()
 }
 
@@ -202,15 +202,15 @@ export const changeLongTime = (newLongTime: number) => {
 // // ============== //
 export const toggleBreak = () => {
 	state.breaks.short = !state.breaks.short
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 }
 export const toggleLongBreak = () => {
 	state.breaks.long = !state.breaks.long
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 }
 export const toggleAutoStart = () => {
 	state.breaks.autoStart = !state.breaks.autoStart
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 }
 export const changePomodoroCount = (newCount: string) => {
 	if (Number(newCount) > 0) {
@@ -218,13 +218,13 @@ export const changePomodoroCount = (newCount: string) => {
 	} else {
 		state.breaks.pomodoroCounts = 1
 	}
-	localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+	updateStorageData()
 }
 
 // // =================== //
 // // === GET'S STATE === //
 // // =================== //
-export const getState = () => {
+export const getSettingsState = () => {
 	return state
 }
 // Durations
@@ -276,6 +276,8 @@ export const getTimerCurrentTimer = () => {
 	return state.timer.currentTimer
 }
 
+// Timer HTML update
+
 const timerChangeTimeTime = document.getElementById('timer__button-time')
 const timerChangeTimeTitle = document.getElementById('timer__button-title')
 
@@ -291,4 +293,63 @@ const updateTimerButton = () => {
 	const timerButtonInitisActive = getTimerIsActive()
 	timerTimePause.style.display = timerButtonInitisActive ? 'block' : 'none'
 	timerTimeRun.style.display = timerButtonInitisActive ? 'none' : 'block'
+}
+
+// Settings POPUP HTML update
+
+//** Durations
+const durationPomodoro = document.getElementById(
+	'settingsDurations-Pomodoro'
+)! as HTMLInputElement
+const durationBreak = document.getElementById(
+	'settingsDurations-Break'
+)! as HTMLInputElement
+const durationLong = document.getElementById(
+	'settingsDurations-LongBreak'
+)! as HTMLInputElement
+
+//** Breaks
+// Break
+const breakShortBreak = document.getElementById('settingsBreaks-Break')
+const breakShortBreakIcon = document.getElementById('settingsBreaks-BreakIcon')
+// Long break
+const breakLongBreak = document.getElementById('settingsBreaks-LongBreak')
+const breakLongBreakIcon = document.getElementById(
+	'settingsBreaks-LongBreakIcon'
+)
+// Pomodoro counts
+const breakPomodoroCounts = document.getElementById(
+	'settingsBreaks-PomodoroCounts'
+)! as HTMLInputElement
+// Auto start next pomodoro
+const breakAutoStart = document.getElementById('settingsBreaks-AutoStart')
+const breakAutoStartIcon = document.getElementById(
+	'settingsBreaks-AutoStartIcon'
+)
+//** Themes
+const themesLight = document.getElementById('settingsThemes-Light')
+const themesLightIcon = document.getElementById('settingsThemes-LightIcon')
+const themesDark = document.getElementById('settingsThemes-Dark')
+const themesDarkIcon = document.getElementById('settingsThemes-DarkIcon')
+
+const updateSettingsPopup = () => {
+	// Durations
+	durationPomodoro.value = String(getDurationsPomodoroTime())
+	durationBreak.value = String(getDurationsBreakTime())
+	durationLong.value = String(getDurationsLongTime())
+	// Breaks
+	breakShortBreakIcon.style.visibility = getBreaksShort() ? 'visible' : 'hidden'
+	// Long Break
+	breakLongBreakIcon.style.visibility = getBreaksLong() ? 'visible' : 'hidden'
+	// Pomodoro counts
+	breakPomodoroCounts.value = String(getBreaksPomodoroCounts())
+	// Auto start next pomodoro
+	breakAutoStartIcon.style.visibility = getBreaksAutoStart()
+		? 'visible'
+		: 'hidden'
+	//** Themes
+	const isLight = getThemeState() === 'light' ? true : false
+	themesLightIcon.style.visibility = isLight ? 'visible' : 'hidden'
+	const isDark = getThemeState() === 'dark' ? true : false
+	themesDarkIcon.style.visibility = isDark ? 'visible' : 'hidden'
 }

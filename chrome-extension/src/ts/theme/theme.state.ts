@@ -5,13 +5,11 @@ const state: IThemeState = {
 	theme: 'dark',
 }
 async function updateState() {
-	const test = await getStorageData()
 	await getStorageData().then(data => {
-		console.log('data', data)
-		console.log('data', data.theme)
-		state.theme = data.theme
+		elementsClearTheme()
+		state.theme = data.Theme
+		elementsAddTheme()
 	})
-	console.log(test)
 }
 updateState()
 export const toggleThemeState = () => {

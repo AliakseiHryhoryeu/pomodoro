@@ -44,3 +44,14 @@ export const emptySettingsState: ISettingsState = {
 	},
 	showAlert: true,
 }
+
+export const storageFolder = 'Settings'
+
+export interface ISettingsStorageState {
+	Settings: {
+		durations: IDurations
+		breaks: IBreaks
+		timer: ITimer
+		showAlert: boolean
+	}
+}
