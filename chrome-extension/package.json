@@ -24,10 +24,8 @@
 		"start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
 		"stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json"
 	},
-	"dependencies": {
-		"@types/chrome": "^0.0.206"
-	},
 	"devDependencies": {
+		"@types/chrome": "^0.0.206",
 		"@babel/polyfill": "7.12.1",
 		"babel-loader": "8.2.5",
 		"clean-webpack-plugin": "4.0.0",

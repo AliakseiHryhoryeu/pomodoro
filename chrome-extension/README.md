@@ -2,20 +2,20 @@
 
 Extension for Google Chrome - Pomodoro, breaks, breaks durations and App Theme can be edited, data saved in Chrome Storage.
 
-## Build
-
-npm run build
-yarn build
-
-npm run dev - for debugging
-yarn dev
-
 ## Chrome extension
 
 - HTML/SCSS
 - TypeScript/JavaScript
 - Webpack
 - Chrome Storage
+
+## Build
+
+npm run start - for debugging
+yarn start
+
+npm run build
+yarn build
 
 ## Figma
 

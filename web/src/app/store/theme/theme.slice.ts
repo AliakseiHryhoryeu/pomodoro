@@ -3,12 +3,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IThemeState } from './theme.types'
 
 const LocalStorageFolder = 'Theme'
-const LocalStorage_theme = JSON.parse(
-	localStorage.getItem(LocalStorageFolder) || '{}'
-)
+const getParsed = () => {
+	let Parsed: IThemeState = JSON.parse(localStorage.getItem(LocalStorageFolder))
+	if (typeof Parsed == undefined || Parsed == null) {
+		Parsed = { theme: 'dark' }
+	}
+	return Parsed
+}
+const Parsed: IThemeState = getParsed()
 
 const initialState: IThemeState = {
-	theme: LocalStorage_theme || 'light',
+	theme: Parsed.theme || 'light',
 }
 
 export const themeSlice = createSlice({

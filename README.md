@@ -1,13 +1,11 @@
 # Pomodoro timer
 
-## Short Description
-
-Pomodoro app, data can save in local storage,
+Pomodoro Apps - Web app, chrome extension, React Native App
 
 ## Web Application
 
 - React
-- Redux, Redux Toolkit
+- Redux Toolkit
 - TypeScript
 - Webpack
 
@@ -37,9 +35,7 @@ https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
 https://pomodoro11.vercel.app/
 
-![Pomodoro-preview-dark-1](./preview/preview-dark.jpg)
-![Pomodoro-preview-dark-1](./preview/preview-light.jpg)
-![Pomodoro-preview-dark-1](./preview/preview-dark-1.jpg)
-![Pomodoro-preview-dark-2](./preview/preview-dark-2.jpg)
-![Pomodoro-preview-light-1](./preview/preview-light-1.jpg)
-![Pomodoro-preview-light-2](./preview/preview-light-2.jpg)
+![Pomodoro-preview-dark-1](./.preview/preview-dark.jpg)
+![Pomodoro-preview-dark-1](./.preview/preview-light.jpg)
+![Pomodoro-preview-dark-2](./.preview/preview-dark-2.jpg)
+![Pomodoro-preview-light-2](./.preview/preview-light-2.jpg)
