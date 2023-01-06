@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useTypedSelector } from 'app/hooks/useAppSelector'
+import { useTypedSelector } from 'app/hooks/useTypedSelector'
 import { useFormik } from 'formik'
 
 import { Header } from 'app/components'

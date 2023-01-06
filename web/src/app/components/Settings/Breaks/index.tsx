@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { useActions } from 'app/hooks/useActions'
-import { useTypedSelector } from 'app/hooks/useAppSelector'
+import { useTypedSelector } from 'app/hooks/useTypedSelector'
 import { RootState } from 'app/store'
 import { CheckIcon } from '../img/CheckIcon'
 

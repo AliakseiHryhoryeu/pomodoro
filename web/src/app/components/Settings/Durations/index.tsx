@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { useTypedSelector } from 'app/hooks/useAppSelector'
+import { useTypedSelector } from 'app/hooks/useTypedSelector'
 import { RootState } from 'app/store'
 import { useActions } from 'app/hooks/useActions'
 

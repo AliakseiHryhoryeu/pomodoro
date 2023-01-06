@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
 
-import { useTypedSelector } from 'app/hooks/useAppSelector'
+import { useTypedSelector } from 'app/hooks/useTypedSelector'
 import { useActions } from 'app/hooks/useActions'
 import { RootState } from 'app/store'
 

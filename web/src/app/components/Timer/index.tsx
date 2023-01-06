@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import classNames from 'classnames'
 
 import { useActions } from 'app/hooks/useActions'
-import { useTypedSelector } from 'app/hooks/useAppSelector'
+import { useTypedSelector } from 'app/hooks/useTypedSelector'
 import { RootState } from 'app/store'
 
 // import { Alert } from '../Alert/intex'
