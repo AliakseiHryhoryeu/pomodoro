@@ -218,39 +218,8 @@ export const settingsSlice = createSlice({
 			state.showAlert = false
 			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
-		// Update state from LocalStorage
-		// 	updateState: (state, action: PayloadAction<{}>) => {
-		// 		getStorageData().then(data => {
-		// 			if (data.Settings !== undefined && data.Settings !== null) {
-		// 				const newState: ISettingsState = {
-		// 					durations: {
-		// 						pomodoroTime: data.Settings.durations.pomodoroTime || 25,
-		// 						breakTime: data.Settings.durations.breakTime || 5,
-		// 						longTime: data.Settings.durations.longTime || 15,
-		// 					},
-		// 					breaks: {
-		// 						short: data.Settings.breaks.short && true,
-		// 						long: data.Settings.breaks.long && true,
-		// 						pomodoroCounts: data.Settings.breaks.pomodoroCounts || 4,
-		// 						autoStart: data.Settings.breaks.autoStart && true,
-		// 					},
-		// 					timer: {
-		// 						isActive: false,
-		// 						currentPomodoroCount: 1,
-		// 						currentTime: data.Settings.durations.pomodoroTime * 60 || 25 * 60,
-		// 						currentTimer: 'Pomodoro',
-		// 					},
-		// 					showAlert: data.Settings.showAlert && false,
-		// 				}
-		// 				state = newState
-		// 			}
-		// 		})
-		// 	},
-		// },
 	},
 })
-
-async function updateState() {}
 
 export default settingsSlice.reducer
 
@@ -258,41 +227,3 @@ export const settingsReducer = settingsSlice.reducer
 export const settingsActions = settingsSlice.actions
 
 export const selectCurrentList = (state: RootState) => state.user.activeUser
-
-// //  Get data from storage
-// export async function getStorageData(): Promise<ISettingsStorageState> {
-// 	return new Promise<ISettingsStorageState>(
-// 		(resolve: (result: any) => void, reject: (reason: any) => void) => {
-// 			const test = chrome.storage.local.get([storageFolder]).then(
-// 				onfulfilled => {
-// 					resolve(onfulfilled)
-// 				},
-// 				error => {
-// 					reject(error)
-// 				}
-// 			)
-// 		}
-// 	)
-// }
-// //  Save data in storage
-// export const updateStorageData = () => {
-// 	const themeState = getSettingsState()
-// 	const promise = new Promise<ISettingsStorageState>(
-// 		(resolve: (result: any) => void, reject: (reason: any) => void) => {
-// 			const test = chrome.storage.local
-// 				.set({ [storageFolder]: themeState })
-// 				.then(
-// 					onfulfilled => {
-// 						resolve(onfulfilled)
-// 					},
-// 					error => {
-// 						reject(error)
-// 					}
-// 				)
-// 		}
-// 	)
-// 	promise.then((val: ISettingsStorageState) => {
-// 		return val
-// 	})
-// 	return promise
-// }

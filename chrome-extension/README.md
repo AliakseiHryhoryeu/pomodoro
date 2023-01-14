@@ -12,9 +12,11 @@ Extension for Google Chrome - Pomodoro, breaks, breaks durations and App Theme c
 ## Build
 
 npm run start - for debugging
+
 yarn start
 
 npm run build
+
 yarn build
 
 ## Figma
