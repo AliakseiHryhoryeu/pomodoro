@@ -1,8 +1,8 @@
 {
 	"name": "Pomodoro timer",
 	"version": "1.0.0",
-	"description": "Pomodoro timer, source code - https://github.com/AliakseiHryhoryeu/pomodoro/tree/main/chrome-extension",
-	"permissions": ["storage", "fontSettings"],
+	"description": "Pomodoro time management assistant",
+	"permissions": ["storage"],
 	"action": {
 		"default_icon": {
 			"16": "./img/icon-16.png",
