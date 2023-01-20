@@ -35,6 +35,7 @@ https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
 https://pomodoro11.vercel.app/
 
+![Pomodoro-1](./.preview/preview-1.jpg)
 ![Pomodoro-preview-dark-1](./.preview/preview-dark.jpg)
 ![Pomodoro-preview-dark-1](./.preview/preview-light.jpg)
 ![Pomodoro-preview-dark-2](./.preview/preview-dark-2.jpg)
