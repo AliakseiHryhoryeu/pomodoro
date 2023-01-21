@@ -29,7 +29,7 @@ https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
 ## Chrome Web Store
 
-.....
+https://chrome.google.com/webstore/detail/pomodoro-timer/ecfahmjaaikpolggmimbeobegomfgpeb
 
 ## Web
 
