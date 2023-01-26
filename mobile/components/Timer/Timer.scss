@@ -1,0 +1,47 @@
+.timer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	flex-grow: 1;
+	padding: 20px 0px;
+	background: var(--Dark-bg-white);
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+	&__time {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		cursor: pointer;
+
+		min-height: 260px;
+		max-height: 300px;
+		height: 100%;
+		min-width: 260px;
+		max-width: 300px;
+		width: 100%;
+		margin-bottom: 40px;
+		border: 6px solid #399fff;
+		border-radius: 50%;
+		color: var(--Dark-font-color);
+		&-title {
+			font-size: 24px;
+			font-weight: normal;
+		}
+		&-time {
+			font-size: 60px;
+			font-weight: bold;
+		}
+		&-count {
+			font-size: 24px;
+			font-weight: normal;
+		}
+	}
+}
