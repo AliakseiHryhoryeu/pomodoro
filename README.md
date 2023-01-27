@@ -16,24 +16,27 @@ Pomodoro Apps - Web app, chrome extension, React Native App
 - Webpack
 - Chrome Storage
 
-## Mobile - maybe later
+## Mobile - in process
 
 - React Native
-- Redux, Redux Toolkit
+- Redux Toolkit
 - TypeScript
-- Expo
 
 ## Figma
 
 https://www.figma.com/file/KlVsemPIeBHVVdnhfKybUr/Pomodoro-app
 
+## Web
+
+https://pomodoro11.vercel.app/
+
 ## Chrome Web Store
 
 https://chrome.google.com/webstore/detail/pomodoro-timer/ecfahmjaaikpolggmimbeobegomfgpeb
 
-## Web
+## Google Play
 
-https://pomodoro11.vercel.app/
+...
 
 ![Pomodoro-1](./.preview/preview-1.jpg)
 ![Pomodoro-preview-dark-1](./.preview/preview-dark.jpg)
