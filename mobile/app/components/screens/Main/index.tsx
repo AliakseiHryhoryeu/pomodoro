@@ -6,7 +6,7 @@ import { Header, Timer } from '../../ui'
 // import { Text, View } from './components/Themed'
 // import { RootTabScreenProps } from '../../../../types'
 
-export function Main({ navigate }) {
+export function Main() {
 	return (
 		<>
 			<Header />

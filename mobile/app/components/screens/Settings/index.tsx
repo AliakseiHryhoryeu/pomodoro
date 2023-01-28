@@ -1,13 +1,9 @@
 import React, { FC } from 'react'
 
 import { StyleSheet, View, Text } from 'react-native'
-
+import { SettingsUI } from '../../ui/'
 export const Settings: FC = () => {
-	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>Main Screen</Text>
-		</View>
-	)
+	return <SettingsUI />
 }
 
 const styles = StyleSheet.create({

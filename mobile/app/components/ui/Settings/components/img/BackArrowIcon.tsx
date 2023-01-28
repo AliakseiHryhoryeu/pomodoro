@@ -1,21 +1,20 @@
 import React, { FC } from 'react'
+import { Svg, G, Path } from 'react-native-svg'
 
 export const BackArrowIcon: FC = props => {
 	return (
-		<svg
-			version='1.0'
-			xmlns='http://www.w3.org/2000/svg'
+		<Svg
 			width='30px'
 			height='30px'
 			viewBox='0 0 512.000000 512.000000'
 			preserveAspectRatio='xMidYMid meet'
 		>
-			<g
+			<G
 				transform='translate(0.000000,512.000000) scale(0.100000,-0.100000)'
 				fill='#000000'
 				stroke='none'
 			>
-				<path
+				<Path
 					d='M2058 4727 c-31 -13 -74 -38 -95 -55 -77 -62 -1882 -1878 -1907
 -1920 -38 -61 -60 -154 -52 -225 14 -132 -40 -73 1014 -1129 795 -796 975
 -971 1020 -994 78 -39 202 -46 285 -14 89 34 153 90 191 169 28 60 31 75 31
@@ -25,7 +24,7 @@ export const BackArrowIcon: FC = props => {
 95 49 576 576 c665 664 634 624 634 795 0 89 -3 106 -28 156 -15 31 -50 78
 -77 103 -72 68 -126 89 -235 93 -77 3 -98 0 -147 -20z'
 				/>
-			</g>
-		</svg>
+			</G>
+		</Svg>
 	)
 }

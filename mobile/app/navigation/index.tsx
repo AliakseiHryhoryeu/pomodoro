@@ -38,7 +38,11 @@ function RootNavigator() {
 			/>
 
 			<Stack.Group screenOptions={{ presentation: 'modal' }}>
-				<Stack.Screen name='Settings' component={Settings} />
+				<Stack.Screen
+					name='Settings'
+					component={Settings}
+					options={{ headerShown: false }}
+				/>
 			</Stack.Group>
 			<Stack.Screen
 				name='NotFound'

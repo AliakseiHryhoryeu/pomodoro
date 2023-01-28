@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 
+import { useNavigation } from '@react-navigation/native'
+
 // import { useTypedSelector } from 'app/hooks/useTypedSelector'
 // import { useActions } from 'app/hooks/useActions'
 // import { RootState } from 'app/store'
@@ -16,6 +18,7 @@ import { ToggleTheme } from './ToggleTheme'
 import { Tomato } from './img/Tomato'
 
 export const Header: FC = () => {
+	const { navigate } = useNavigation()
 	// const dispatch = useDispatch()
 
 	// const allActions = useActions()
@@ -40,7 +43,11 @@ export const Header: FC = () => {
 				<View style={styled.theme}>
 					<ToggleTheme />
 				</View>
-				<TouchableOpacity onPress={() => {}}>
+				<TouchableOpacity
+					onPress={() => {
+						navigate('Settings')
+					}}
+				>
 					<SettingsIcon />
 				</TouchableOpacity>
 			</View>
