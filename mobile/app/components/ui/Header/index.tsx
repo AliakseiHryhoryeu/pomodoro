@@ -57,8 +57,8 @@ export const Header: FC = () => {
 
 const styled = StyleSheet.create({
 	header: {
-		paddingTop: 30,
-		paddingBottom: 6,
+		paddingTop: 34,
+		paddingBottom: 12,
 		paddingHorizontal: 4,
 		display: 'flex',
 		flexDirection: 'row',

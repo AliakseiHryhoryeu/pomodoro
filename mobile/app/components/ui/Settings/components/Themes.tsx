@@ -1,41 +1,128 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
+import {
+	StyleSheet,
+	View,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	Dimensions,
+	Switch,
+} from 'react-native'
 
-import { useTypedSelector } from 'app/hooks/useTypedSelector'
-import { useActions } from 'app/hooks/useActions'
-import { RootState } from 'app/store'
+// import { useTypedSelector } from 'app/hooks/useTypedSelector'
+// import { useActions } from 'app/hooks/useActions'
+// import { RootState } from 'app/store'
 
 import { CheckIcon } from './img/CheckIcon'
 
 export const Themes: FC = props => {
-	const { theme } = useTypedSelector((state: RootState) => {
-		return {
-			theme: state.theme.theme,
-		}
-	})
+	const [longBreak, toggleLong] = useState(true)
 
-	const allActions = useActions()
+	// const { theme } = useTypedSelector((state: RootState) => {
+	// 	return {
+	// 		theme: state.theme.theme,
+	// 	}
+	// })
+	// const allActions = useActions()
+
 	return (
-		<div className='settings__block'>
-			<div className='settings__block-wrapper'>
-				<div className='settings__block-title'>Themes</div>
-				<div
-					className='settings__theme'
-					id='settingsThemes-Light'
-					onClick={() => allActions.changeThemeToLight({})}
+		<View style={styled.block}>
+			<View style={styled.wrapper}>
+				<Text style={styled.title}>Themes</Text>
+				<TouchableOpacity
+					style={styled.inputBlock}
+					onPress={() => toggleLong(!longBreak)}
+					// onClick={() => allActions.changeThemeToLight({})}
 				>
-					<div className='settings__theme-title'>Light</div>
-					{theme === 'light' && <CheckIcon />}
-				</div>
-				<div
-					className='settings__theme'
-					onClick={() => allActions.changeThemeToDark({})}
+					<Text style={styled.inputTitle}>Light</Text>
+					<Switch
+						trackColor={{ false: '#092c3e', true: '#0083ff' }}
+						thumbColor={longBreak ? '#f4f3f4' : '#f4f3f4'}
+						ios_backgroundColor='grey'
+						style={styled.switch}
+						onValueChange={() => toggleLong(!longBreak)}
+						value={longBreak}
+					/>
+					{/* {theme === 'light' && <CheckIcon />} */}
+					{/* <CheckIcon /> */}
+				</TouchableOpacity>
+				<TouchableOpacity
+					style={styled.inputBlock}
+					onPress={() => toggleLong(!longBreak)}
+					// onClick={() => allActions.changeThemeToDark({})}
 				>
-					<div className='settings__theme-title' id='settingsThemes-Dark'>
-						Dark
-					</div>
-					{theme === 'dark' && <CheckIcon />}
-				</div>
-			</div>
-		</div>
+					<Text style={styled.inputTitle}>Dark</Text>
+					<Switch
+						trackColor={{ false: '#092c3e', true: '#0083ff' }}
+						thumbColor={longBreak ? '#f4f3f4' : '#f4f3f4'}
+						ios_backgroundColor='grey'
+						style={styled.switch}
+						onValueChange={() => toggleLong(!longBreak)}
+						value={longBreak}
+					/>
+					{/* {theme === 'dark' && <CheckIcon />} */}
+					{/* <CheckIcon /> */}
+				</TouchableOpacity>
+			</View>
+		</View>
 	)
 }
+
+let ScreenWidht = Dimensions.get('window').width
+
+const styled = StyleSheet.create({
+	block: {
+		paddingTop: 10,
+		paddingBottom: 20,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'flex-start',
+		alignItems: 'flex-start',
+		width: ScreenWidht,
+		backgroundColor: '#e6faff',
+	},
+	wrapper: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-around',
+		alignItems: 'center',
+		width: ScreenWidht,
+	},
+	title: {
+		alignSelf: 'center',
+		fontSize: 22,
+		fontWeight: '600',
+	},
+	break: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#0083ff',
+		borderRadius: 6,
+		height: 90,
+		width: 90,
+	},
+	durationsTitle: {
+		fontSize: 16,
+		color: '#000000',
+		fontWeight: '700',
+	},
+	inputBlock: {
+		width: ScreenWidht,
+		paddingHorizontal: 20,
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
+	inputTitle: {
+		fontSize: 20,
+		maxWidth: 200,
+		paddingVertical: 6,
+		// fontColor: '#000000',
+	},
+
+	switch: {
+		transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
+	},
+})

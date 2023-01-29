@@ -4,8 +4,8 @@ import { Svg, G, Path } from 'react-native-svg'
 export const BackArrowIcon: FC = props => {
 	return (
 		<Svg
-			width='30px'
-			height='30px'
+			width='28px'
+			height='28px'
 			viewBox='0 0 512.000000 512.000000'
 			preserveAspectRatio='xMidYMid meet'
 		>

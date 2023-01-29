@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Dimensions } from 'react-native'
 
 // import { useTypedSelector } from 'app/hooks/useTypedSelector'
 // import { useActions } from 'app/hooks/useActions'
@@ -7,8 +7,8 @@ import { StyleSheet, View, Text } from 'react-native'
 
 import { SettingsHeader } from './components/SettingsHeader'
 import { Durations } from './components/Durations'
-// import { Breaks } from './Breaks'
-// import { Themes } from './Themes'
+import { Breaks } from './components/Breaks'
+import { Themes } from './components/Themes'
 
 // import './Settings.scss'
 
@@ -24,12 +24,16 @@ export const SettingsUI: FC = props => {
 		<View style={styled.settings}>
 			<SettingsHeader />
 			<Durations />
-			{/* <Breaks />
-			<Themes /> */}
+			<Breaks />
+			<Themes />
 		</View>
 	)
 }
+let ScreenHeight = Dimensions.get('window').height
 
 const styled = StyleSheet.create({
-	settings: {},
+	settings: {
+		minHeight: ScreenHeight,
+		backgroundColor: '#e6faff',
+	},
 })

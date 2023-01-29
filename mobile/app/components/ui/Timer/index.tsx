@@ -6,7 +6,8 @@ import {
 	TouchableOpacity,
 	Dimensions,
 } from 'react-native'
-import { TimerButton } from './TimerButton'
+import { TimerButton } from './components/TimerButton'
+import { ChangeTime } from './components/ChangeTime'
 
 // import { useActions } from 'app/hooks/useActions'
 // import { useTypedSelector } from 'app/hooks/useTypedSelector'
@@ -15,7 +16,6 @@ import { TimerButton } from './TimerButton'
 // import { Alert } from '../Alert/intex'
 
 // import './Timer.scss'
-// import { ChangeTime } from './ChangeTime/intex'
 // import { TimerButton } from './TimerButton'
 
 export const Timer: FC = props => {
@@ -34,7 +34,7 @@ export const Timer: FC = props => {
 	return (
 		<View style={styled.timer}>
 			<TimerButton />
-			{/* <ChangeTime /> */}
+			<ChangeTime />
 		</View>
 	)
 }

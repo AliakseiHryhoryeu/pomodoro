@@ -16,6 +16,20 @@ export const SettingsHeader: FC = props => {
 	)
 }
 const styled = StyleSheet.create({
-	header: {},
-	title: {},
+	header: {
+		paddingTop: 34,
+		paddingBottom: 12,
+		paddingHorizontal: 4,
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+		backgroundColor: '#e6faff',
+	},
+
+	title: {
+		fontSize: 20,
+		fontWeight: '600',
+		paddingLeft: 6,
+	},
 })
