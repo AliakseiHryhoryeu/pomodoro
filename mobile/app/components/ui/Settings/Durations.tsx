@@ -1,28 +1,21 @@
 import React, { FC, useState } from 'react'
 import { StyleSheet, View, Text, TextInput, Dimensions } from 'react-native'
 
-// import { useTypedSelector } from 'app/hooks/useTypedSelector'
-// import { RootState } from 'app/store'
-// import { useActions } from 'app/hooks/useActions'
+import { useTypedSelector } from '../../../hooks/useTypedSelector'
+import { RootState } from '../../../store'
+import { useActions } from '../../../hooks/useActions'
 
 export const Durations: FC = () => {
-	const [pomodoroTime, setPomodoroTime] = useState('12')
-	// const { pomodoroTime, breakTime, longBreak } = useTypedSelector(
-	// 	(state: RootState) => {
-	// 		return {
-	// 			pomodoroTime: state.settings.durations.pomodoroTime,
-	// 			breakTime: state.settings.durations.breakTime,
-	// 			longBreak: state.settings.durations.longTime,
-	// 		}
-	// 	}
-	// )
-
-	// const allActions = useActions()
-	// const handleInputChange = (text: string) => {
-	// 	if (/^\d+$/.test(text)) {
-	// 		setPomodoroTime(text)
-	// 	}
-	// }
+	const { pomodoroTime, breakTime, longBreak } = useTypedSelector(
+		(state: RootState) => {
+			return {
+				pomodoroTime: state.settings.durations.pomodoroTime,
+				breakTime: state.settings.durations.breakTime,
+				longBreak: state.settings.durations.longTime,
+			}
+		}
+	)
+	const allActions = useActions()
 
 	return (
 		<View style={styled.block}>
@@ -30,17 +23,14 @@ export const Durations: FC = () => {
 			<View style={styled.wrapper}>
 				<View style={styled.durationsBlock}>
 					<TextInput
-						keyboardType='number-pad'
+						keyboardType='numeric'
 						style={styled.input}
-						// value={pomodoroTime}
-						value={'1'}
-						// placeholder={pomodoroTime}
-						onChange={
-							e => {}
-							// allActions.changeBreakTime({
-							// 	newShortTime: Number(e.target.value),
-							// })
-						}
+						value={`${pomodoroTime}`}
+						onChangeText={value => {
+							allActions.changePomodoroTime({
+								newPomodoroTime: Number(value),
+							})
+						}}
 					/>
 
 					<Text style={styled.durationsTitle}>Pomodoro</Text>
@@ -48,30 +38,28 @@ export const Durations: FC = () => {
 				<View style={styled.durationsBlock}>
 					<TextInput
 						style={styled.input}
-						keyboardType='number-pad'
+						keyboardType='numeric'
 						// value={breakTime}
-						value={'111'}
-						onChange={
-							e => {}
-							// allActions.changeBreakTime({
-							// 	newShortTime: Number(e.target.value),
-							// })
-						}
+						value={`${breakTime}`}
+						onChangeText={value => {
+							allActions.changeBreakTime({
+								newShortTime: Number(value),
+							})
+						}}
 					/>
 					<Text style={styled.durationsTitle}>Break</Text>
 				</View>
 				<View style={styled.durationsBlock}>
 					<TextInput
 						style={styled.input}
-						keyboardType='number-pad'
+						keyboardType='numeric'
 						// value={longBreak}
-						value={'11'}
-						onChange={
-							e => {}
-							// allActions.changeLongTime({
-							// 	newLongTime: Number(e.target.value),
-							// })
-						}
+						value={`${longBreak}`}
+						onChangeText={value => {
+							allActions.changeLongTime({
+								newLongTime: Number(value),
+							})
+						}}
 					/>
 					<Text style={styled.durationsTitle}>Long break</Text>
 				</View>

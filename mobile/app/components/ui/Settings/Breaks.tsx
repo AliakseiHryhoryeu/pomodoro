@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import {
 	StyleSheet,
 	View,
@@ -9,27 +9,22 @@ import {
 	Switch,
 } from 'react-native'
 
-// import { useActions } from 'app/hooks/useActions'
-// import { useTypedSelector } from 'app/hooks/useTypedSelector'
-// import { RootState } from 'app/store'
-import { CheckIcon } from './img/CheckIcon'
+import { useActions } from '../../../hooks/useActions'
+import { useTypedSelector } from '../../../hooks/useTypedSelector'
+import { RootState } from '../../../store'
 
 export const Breaks: FC = props => {
-	const [break1, toggleBreak] = useState(true)
-	const [longBreak, toggleLong] = useState(true)
-	const [autoStart, toggleStart] = useState(true)
-
-	// const { shortBreak, longBreak, pomodoroCounts, autoStart } = useTypedSelector(
-	// 	(state: RootState) => {
-	// 		return {
-	// 			shortBreak: state.settings.breaks.short,
-	// 			longBreak: state.settings.breaks.long,
-	// 			autoStart: state.settings.breaks.autoStart,
-	// 			pomodoroCounts: state.settings.breaks.pomodoroCounts,
-	// 		}
-	// 	}
-	// )
-	// const allActions = useActions()
+	const { shortBreak, longBreak, pomodoroCounts, autoStart } = useTypedSelector(
+		(state: RootState) => {
+			return {
+				shortBreak: state.settings.breaks.short,
+				longBreak: state.settings.breaks.long,
+				autoStart: state.settings.breaks.autoStart,
+				pomodoroCounts: state.settings.breaks.pomodoroCounts,
+			}
+		}
+	)
+	const allActions = useActions()
 
 	return (
 		<View style={styled.block}>
@@ -37,64 +32,69 @@ export const Breaks: FC = props => {
 				<Text style={styled.title}>Breaks</Text>
 				<TouchableOpacity
 					style={styled.inputBlock}
-					onPress={() => toggleLong(!longBreak)}
-					// onClick={() => allActions.toggleBreak({})}
+					onPress={() => {
+						allActions.toggleBreak({})
+					}}
 				>
 					<Text style={styled.inputTitle}>Break</Text>
 					<Switch
 						trackColor={{ false: '#092c3e', true: '#0083ff' }}
-						thumbColor={longBreak ? '#f4f3f4' : '#f4f3f4'}
+						thumbColor={shortBreak ? '#f4f3f4' : '#f4f3f4'}
 						ios_backgroundColor='grey'
 						style={styled.switch}
-						onValueChange={() => toggleLong(!longBreak)}
-						value={longBreak}
+						onValueChange={() => {
+							allActions.toggleBreak({})
+						}}
+						value={shortBreak}
 					/>
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={styled.inputBlock}
-					onPress={() => toggleLong(!longBreak)}
-
-					// onClick={() => allActions.toggleLongBreak({})}
+					onPress={() => {
+						allActions.toggleLongBreak({})
+					}}
 				>
 					<Text style={styled.inputTitle}>Long break</Text>
 					<Switch
 						trackColor={{ false: '#092c3e', true: '#0083ff' }}
-						thumbColor={longBreak ? '#f4f3f4' : '#f4f3f4'}
+						thumbColor={true ? '#f4f3f4' : '#f4f3f4'}
 						ios_backgroundColor='grey'
 						style={styled.switch}
-						onValueChange={() => toggleLong(!longBreak)}
+						onValueChange={() => {
+							allActions.toggleLongBreak({})
+						}}
 						value={longBreak}
 					/>
 				</TouchableOpacity>
 				<View style={styled.inputBlock}>
 					<Text style={styled.inputTitle}>Pomodoro counts</Text>
 					<TextInput
+						keyboardType='numeric'
 						style={styled.input}
-						// type='number'
-						// value={pomodoroCounts}
-						value={'1212'}
-						onChange={
-							e => {}
-							// allActions.changePomodoroCount({ newCount: e.target.value })
-						}
+						value={`${pomodoroCounts}`}
+						onChangeText={e => {
+							allActions.changePomodoroCount({ newCount: e })
+						}}
 					/>
 				</View>
 				<TouchableOpacity
 					style={styled.inputBlock}
-					onPress={() => toggleLong(!longBreak)}
-
-					// onClick={() => allActions.toggleAutoStart({})}
+					onPress={() => {
+						allActions.toggleAutoStart({})
+					}}
 				>
 					<Text style={styled.inputTitle}>
 						Auto start next pomodoro session
 					</Text>
 					<Switch
 						trackColor={{ false: '#092c3e', true: '#0083ff' }}
-						thumbColor={longBreak ? '#f4f3f4' : '#f4f3f4'}
+						thumbColor={autoStart ? '#f4f3f4' : '#f4f3f4'}
 						ios_backgroundColor='grey'
 						style={styled.switch}
-						onValueChange={() => toggleLong(!longBreak)}
-						value={longBreak}
+						onValueChange={() => {
+							allActions.toggleAutoStart({})
+						}}
+						value={autoStart}
 					/>
 				</TouchableOpacity>
 			</View>
@@ -148,23 +148,17 @@ const styled = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-
-		// color: '#ffffff',
-		// fontSize: 34,
-		// fontWeight: '600',
 	},
 	inputTitle: {
 		fontSize: 20,
 		maxWidth: 200,
 		paddingVertical: 6,
-		// fontColor: '#000000',
 	},
 
-	input: {},
-	inputClick: {
-		// color: '#ffffff',
-		// fontSize: 34,
-		// fontWeight: '600',
+	input: {
+		fontSize: 24,
+		paddingVertical: 4,
+		paddingHorizontal: 10,
 	},
 	switch: {
 		transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],

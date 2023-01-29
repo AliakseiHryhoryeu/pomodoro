@@ -9,23 +9,27 @@ import {
 	Dimensions,
 } from 'react-native'
 
-// import { useActions } from 'app/hooks/useActions'
-// import { useTypedSelector } from 'app/hooks/useTypedSelector'
-// import { RootState } from 'app/store'
+import { useActions } from '../../../../hooks/useActions'
+import { useTypedSelector } from '../../../../hooks/useTypedSelector'
+import { RootState } from '../../../../store'
 // import './ChangeTime.scss'
 
 export const TimerButton: FC = () => {
-	// const { isActive } = useTypedSelector((state: RootState) => {
-	// 	return {
-	// 		isActive: state.settings.timer.isActive,
-	// 	}
-	// })
-	// const allActions = useActions()
+	const { isActive } = useTypedSelector((state: RootState) => {
+		return {
+			isActive: state.settings.timer.isActive,
+		}
+	})
+	const allActions = useActions()
 	return (
-		<TouchableOpacity style={styled.timer}>
-			<TimerRunIcon />
-			{/* {isActive && <TimerPauseIcon />}
-			{!isActive && <TimerRunIcon />} */}
+		<TouchableOpacity
+			style={styled.timer}
+			onPress={() => {
+				allActions.toggleRunTimer({})
+			}}
+		>
+			{isActive && <TimerPauseIcon />}
+			{!isActive && <TimerRunIcon />}
 		</TouchableOpacity>
 	)
 }

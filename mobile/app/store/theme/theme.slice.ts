@@ -2,18 +2,22 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { IThemeState } from './theme.types'
 
-const LocalStorageFolder = 'Theme'
-const getParsed = () => {
-	let Parsed: IThemeState = JSON.parse(localStorage.getItem(LocalStorageFolder))
-	if (typeof Parsed == undefined || Parsed == null) {
-		Parsed = { theme: 'dark' }
-	}
-	return Parsed
-}
-const Parsed: IThemeState = getParsed()
+// const LocalStorageFolder = 'Theme'
+// const getParsed = () => {
+// 	let Parsed: IThemeState = JSON.parse(localStorage.getItem(LocalStorageFolder))
+// 	if (typeof Parsed == undefined || Parsed == null) {
+// 		Parsed = { theme: 'dark' }
+// 	}
+// 	return Parsed
+// }
+// const Parsed: IThemeState = getParsed()
+
+// const initialState: IThemeState = {
+// 	theme: Parsed.theme || 'light',
+// }
 
 const initialState: IThemeState = {
-	theme: Parsed.theme || 'light',
+	theme: 'light',
 }
 
 export const themeSlice = createSlice({
@@ -26,15 +30,15 @@ export const themeSlice = createSlice({
 			} else {
 				state.theme = 'dark'
 			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
 		},
 		changeThemeToLight: (state, action: PayloadAction<{}>) => {
 			state.theme = 'light'
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
 		},
 		changeThemeToDark: (state, action: PayloadAction<{}>) => {
 			state.theme = 'dark'
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state.theme))
 		},
 	},
 })

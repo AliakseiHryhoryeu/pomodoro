@@ -1,44 +1,65 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ISettingsState, emptySettingsState } from './settings.types'
-import btnSound from 'assets/audio/btnSound.mp3'
-import btnSound2 from 'assets/audio/btnSound-2.mp3'
-import endPomodoroSound from 'assets/audio/endPomodoro.mp3'
+// import { Audio } from 'expo-av'
 
-import type { RootState } from 'app/store'
+import { ISettingsState, emptySettingsState } from './settings.types'
+// import btnSound from '../../../assets/audio/btnSound-2.mp3'
+// import btnSound2 from '../../../assets/audio/btnSound-2.mp3'
+// import endPomodoroSound from '../../../assets/audio/btnSound-2.mp3'
 
 // Get last settings from Local Storage
-const LocalStorageFolder = 'Settings'
-const getParsed = () => {
-	let Parsed: ISettingsState = JSON.parse(
-		localStorage.getItem(LocalStorageFolder)
-	)
-	if (typeof Parsed == undefined || Parsed == null) {
-		Parsed = emptySettingsState
-	}
-	return Parsed
-}
-const Parsed: ISettingsState = getParsed()
+// const LocalStorageFolder = 'Settings'
+// const getParsed = () => {
+// 	let Parsed: ISettingsState = JSON.parse(
+// 		localStorage.getItem(LocalStorageFolder)
+// 	)
+// 	if (typeof Parsed == undefined || Parsed == null) {
+// 		Parsed = emptySettingsState
+// 	}
+// 	return Parsed
+// }
+// const Parsed: ISettingsState = getParsed()
+
+// const initialState: ISettingsState = {
+// 	durations: {
+// 		pomodoroTime: Parsed.durations.pomodoroTime || 25,
+// 		breakTime: Parsed.durations.breakTime || 5,
+// 		longTime: Parsed.durations.longTime || 15,
+// 	},
+// 	breaks: {
+// 		short: Parsed.breaks.short && true,
+// 		long: Parsed.breaks.long && true,
+// 		pomodoroCounts: Parsed.breaks.pomodoroCounts || 4,
+// 		autoStart: Parsed.breaks.autoStart && true,
+// 	},
+// 	timer: {
+// 		isActive: false,
+// 		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
+// 		currentPomodoroCount: 1,
+// 		currentTimer: 'Pomodoro',
+// 	},
+// 	showAlert: Parsed.showAlert && true,
+// }
 
 const initialState: ISettingsState = {
 	durations: {
-		pomodoroTime: Parsed.durations.pomodoroTime || 25,
-		breakTime: Parsed.durations.breakTime || 5,
-		longTime: Parsed.durations.longTime || 15,
+		pomodoroTime: 25,
+		breakTime: 5,
+		longTime: 15,
 	},
 	breaks: {
-		short: Parsed.breaks.short && true,
-		long: Parsed.breaks.long && true,
-		pomodoroCounts: Parsed.breaks.pomodoroCounts || 4,
-		autoStart: Parsed.breaks.autoStart && true,
+		short: true,
+		long: true,
+		pomodoroCounts: 4,
+		autoStart: true,
 	},
 	timer: {
 		isActive: false,
-		currentTime: Parsed.durations.pomodoroTime * 60 || 25 * 60,
+		currentTime: 25 * 60,
 		currentPomodoroCount: 1,
 		currentTimer: 'Pomodoro',
 	},
-	showAlert: Parsed.showAlert && true,
+	showAlert: true,
 }
 
 export const settingsSlice = createSlice({
@@ -49,8 +70,8 @@ export const settingsSlice = createSlice({
 		// === Timer === //
 		// ============= //
 		changeTimer: (state, action: PayloadAction<{}>) => {
-			const audio = new Audio(btnSound)
-			audio.play()
+			// const audio = new Audio(btnSound)
+			// audio.play(() => {})
 
 			if (state.timer.currentTimer === 'Pomodoro') {
 				if (state.breaks.short) {
@@ -76,20 +97,20 @@ export const settingsSlice = createSlice({
 				state.timer.currentTime = state.durations.pomodoroTime * 60
 			}
 			state.timer.isActive = false
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 		updateTime: (state, action: PayloadAction<{}>) => {
 			if (state.timer.isActive) {
 				state.timer.currentTime -= 1
 			}
 			if (state.timer.currentTime <= 0) {
-				const endBreakAudio = new Audio(btnSound2)
-				const endPomodoroAudio = new Audio(endPomodoroSound)
+				// const endBreakAudio = new Sound(btnSound2)
+				// const endPomodoroAudio = new Sound(endPomodoroSound)
 
 				switch (state.timer.currentTimer) {
 					case 'Pomodoro':
 						state.timer.currentPomodoroCount++
-						endPomodoroAudio.play()
+						// endPomodoroAudio.play(() => {})
 
 						if (state.breaks.short) {
 							state.timer.currentTimer = 'Short break'
@@ -103,7 +124,7 @@ export const settingsSlice = createSlice({
 						}
 						break
 					case 'Short break':
-						endBreakAudio.play()
+						// endBreakAudio.play(() => {})
 
 						if (
 							state.timer.currentPomodoroCount >= state.breaks.pomodoroCounts
@@ -121,7 +142,7 @@ export const settingsSlice = createSlice({
 						}
 						break
 					case 'Long break':
-						endBreakAudio.play()
+						// endBreakAudio.play(() => {})
 						state.timer.currentTimer = 'Pomodoro'
 						state.timer.currentTime = state.durations.pomodoroTime * 60
 						state.timer.currentPomodoroCount = 1
@@ -134,15 +155,22 @@ export const settingsSlice = createSlice({
 				}
 			}
 
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 
 		toggleRunTimer: (state, action: PayloadAction<{}>) => {
-			const audio = new Audio(btnSound2)
-			audio.play()
+			// const audio = new Sound(btnSound2)
+			// var audio = new Sound(btnSound2, Sound.MAIN_BUNDLE, error => {
+			// 	if (error) {
+			// 		console.log('failed to load the sound', error)
+			// 		return
+			// 	}
+			// })
+			// audio.play()
+			// playSound()
 
 			state.timer.isActive = !state.timer.isActive
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 
 		// ================= //
@@ -159,7 +187,7 @@ export const settingsSlice = createSlice({
 					state.timer.currentTime = action.payload.newPomodoroTime * 60
 				}
 			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 		changeBreakTime: (
 			state,
@@ -172,7 +200,7 @@ export const settingsSlice = createSlice({
 					state.timer.currentTime = action.payload.newShortTime * 60
 				}
 			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 		changeLongTime: (state, action: PayloadAction<{ newLongTime: number }>) => {
 			const currentTimer = state.timer.currentTimer
@@ -182,7 +210,7 @@ export const settingsSlice = createSlice({
 					state.timer.currentTime = action.payload.newLongTime * 60
 				}
 			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 
 		// ============== //
@@ -190,15 +218,15 @@ export const settingsSlice = createSlice({
 		// ============== //
 		toggleBreak: (state, action: PayloadAction<{}>) => {
 			state.breaks.short = !state.breaks.short
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 		toggleLongBreak: (state, action: PayloadAction<{}>) => {
 			state.breaks.long = !state.breaks.long
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 		toggleAutoStart: (state, action: PayloadAction<{}>) => {
 			state.breaks.autoStart = !state.breaks.autoStart
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 		changePomodoroCount: (
 			state,
@@ -209,14 +237,14 @@ export const settingsSlice = createSlice({
 			} else {
 				state.breaks.pomodoroCounts = 1
 			}
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 		// ============= //
 		// === Alert === //
 		// ============= //
 		hideAlert: (state, action: PayloadAction<{}>) => {
 			state.showAlert = false
-			localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
+			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
 		},
 	},
 })
@@ -225,5 +253,3 @@ export default settingsSlice.reducer
 
 export const settingsReducer = settingsSlice.reducer
 export const settingsActions = settingsSlice.actions
-
-export const selectCurrentList = (state: RootState) => state.user.activeUser

@@ -9,21 +9,21 @@ import {
 	Switch,
 } from 'react-native'
 
-// import { useTypedSelector } from 'app/hooks/useTypedSelector'
-// import { useActions } from 'app/hooks/useActions'
-// import { RootState } from 'app/store'
+import { useTypedSelector } from '../../../hooks/useTypedSelector'
+import { useActions } from '../../../hooks/useActions'
+import { RootState } from '../../../store'
 
 import { CheckIcon } from './img/CheckIcon'
 
 export const Themes: FC = props => {
 	const [longBreak, toggleLong] = useState(true)
 
-	// const { theme } = useTypedSelector((state: RootState) => {
-	// 	return {
-	// 		theme: state.theme.theme,
-	// 	}
-	// })
-	// const allActions = useActions()
+	const { theme } = useTypedSelector((state: RootState) => {
+		return {
+			theme: state.theme.theme,
+		}
+	})
+	const allActions = useActions()
 
 	return (
 		<View style={styled.block}>
@@ -31,7 +31,9 @@ export const Themes: FC = props => {
 				<Text style={styled.title}>Themes</Text>
 				<TouchableOpacity
 					style={styled.inputBlock}
-					onPress={() => toggleLong(!longBreak)}
+					onPress={() => {
+						allActions.changeThemeToLight({})
+					}}
 					// onClick={() => allActions.changeThemeToLight({})}
 				>
 					<Text style={styled.inputTitle}>Light</Text>
@@ -40,16 +42,15 @@ export const Themes: FC = props => {
 						thumbColor={longBreak ? '#f4f3f4' : '#f4f3f4'}
 						ios_backgroundColor='grey'
 						style={styled.switch}
-						onValueChange={() => toggleLong(!longBreak)}
-						value={longBreak}
+						onValueChange={() => {
+							allActions.changeThemeToLight({})
+						}}
+						value={theme === 'light' ? true : false}
 					/>
-					{/* {theme === 'light' && <CheckIcon />} */}
-					{/* <CheckIcon /> */}
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={styled.inputBlock}
-					onPress={() => toggleLong(!longBreak)}
-					// onClick={() => allActions.changeThemeToDark({})}
+					onPress={() => allActions.changeThemeToDark({})}
 				>
 					<Text style={styled.inputTitle}>Dark</Text>
 					<Switch
@@ -57,11 +58,11 @@ export const Themes: FC = props => {
 						thumbColor={longBreak ? '#f4f3f4' : '#f4f3f4'}
 						ios_backgroundColor='grey'
 						style={styled.switch}
-						onValueChange={() => toggleLong(!longBreak)}
-						value={longBreak}
+						onValueChange={() => {
+							allActions.changeThemeToDark({})
+						}}
+						value={theme === 'dark' ? true : false}
 					/>
-					{/* {theme === 'dark' && <CheckIcon />} */}
-					{/* <CheckIcon /> */}
 				</TouchableOpacity>
 			</View>
 		</View>

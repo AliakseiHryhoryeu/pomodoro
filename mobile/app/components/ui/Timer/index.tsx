@@ -9,9 +9,9 @@ import {
 import { TimerButton } from './components/TimerButton'
 import { ChangeTime } from './components/ChangeTime'
 
-// import { useActions } from 'app/hooks/useActions'
-// import { useTypedSelector } from 'app/hooks/useTypedSelector'
-// import { RootState } from 'app/store'
+import { useActions } from '../../../hooks/useActions'
+import { useTypedSelector } from '../../../hooks/useTypedSelector'
+import { RootState } from '../../../store'
 
 // import { Alert } from '../Alert/intex'
 
@@ -19,18 +19,17 @@ import { ChangeTime } from './components/ChangeTime'
 // import { TimerButton } from './TimerButton'
 
 export const Timer: FC = props => {
-	// const { theme, showAlert } = useTypedSelector((state: RootState) => {
-	// 	return {
-	// 		theme: state.theme.theme,
-	// 		showAlert: state.settings.showAlert,
-	// 	}
-	// })
-	// const allActions = useActions()
-	// useEffect(() => {
-	// 	setInterval(() => {
-	// 		allActions.updateTime({})
-	// 	}, 1000)
-	// }, [])
+	const { theme } = useTypedSelector((state: RootState) => {
+		return {
+			theme: state.theme.theme,
+		}
+	})
+	const allActions = useActions()
+	useEffect(() => {
+		setInterval(() => {
+			allActions.updateTime({})
+		}, 1000)
+	}, [])
 	return (
 		<View style={styled.timer}>
 			<TimerButton />
