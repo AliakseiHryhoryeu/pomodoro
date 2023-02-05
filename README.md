@@ -36,7 +36,7 @@ https://chrome.google.com/webstore/detail/pomodoro-timer/ecfahmjaaikpolggmimbeob
 
 ## Google Play
 
-...
+https://play.google.com/store/apps/details?id=com.aliaksei.hryhoryeu.PomodoroTimer&pli=1
 
 ![Pomodoro-1](./.preview/preview-1.jpg)
 ![Pomodoro-preview-dark-1](./.preview/preview-dark.jpg)
