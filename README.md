@@ -16,7 +16,7 @@ Pomodoro Apps - Web app, chrome extension, React Native App
 - Webpack
 - Chrome Storage
 
-## Mobile - in process
+## Mobile
 
 - React Native
 - Redux Toolkit
