@@ -1,40 +1,39 @@
 {
-  "expo": {
-    "name": "Pomodoro timer",
-    "slug": "PomodoroTimer",
-    "version": "0.0.1",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#f0feff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#f0feff"
-      },
-      "package": "com.aliaksei.hryhoryeu.PomodoroTimer"
-    },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "ef43453a-d50c-4078-aac2-60c8495883bc"
-      }
-    }
-  }
+	"expo": {
+		"name": "Pomodoro timer",
+		"slug": "PomodoroTimer",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon.png",
+		"scheme": "myapp",
+		"userInterfaceStyle": "automatic",
+		"splash": {
+			"image": "./assets/images/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#f0feff"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#f0feff"
+			},
+			"package": "com.aliaksei.hryhoryeu.PomodoroTimer",
+			"versionCode": 2
+		},
+		"web": {
+			"favicon": "./assets/images/favicon.png"
+		},
+		"extra": {
+			"eas": {
+				"projectId": "ef43453a-d50c-4078-aac2-60c8495883bc"
+			}
+		}
+	}
 }

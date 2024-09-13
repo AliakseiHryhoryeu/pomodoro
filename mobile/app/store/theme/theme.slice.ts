@@ -15,6 +15,7 @@ import { IThemeState } from './theme.types'
 // const initialState: IThemeState = {
 // 	theme: Parsed.theme || 'light',
 // }
+// Later need to do take storage data from storage
 
 const initialState: IThemeState = {
 	theme: 'light',

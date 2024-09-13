@@ -1,24 +1,22 @@
 import React, { FC, useState } from 'react'
-import { StyleSheet, View, Text, Switch, TouchableOpacity } from 'react-native'
-
-// import { useTypedSelector } from 'app/hooks/useTypedSelector'
-// import { useActions } from 'app/hooks/useActions'
-// import { RootState } from 'app/store'
+import { StyleSheet, Switch, TouchableOpacity } from 'react-native'
 
 import { SunIcon } from './img/SunIcon'
 import { MoonIcon } from './img/MoonIcon'
+import { useActions } from '../../../../hooks/useActions'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../../store'
 
-export const ToggleTheme: FC = props => {
+export const ToggleTheme: FC = (props) => {
+	const { toggleTheme } = useActions()
+
 	const [isActive, updateActive] = useState(true)
 	const toggleSwitch = () => {
 		updateActive(!isActive)
+		toggleTheme({})
 	}
-	// const allActions = useActions()
-	// const { theme } = useTypedSelector((state: RootState) => {
-	// 	return {
-	// 		theme: state.theme.theme,
-	// 	}
-	// })
+
+	const theme = useSelector((state: RootState) => state.theme.theme)
 
 	return (
 		<TouchableOpacity onPress={() => toggleSwitch()} style={styled.toggleTheme}>

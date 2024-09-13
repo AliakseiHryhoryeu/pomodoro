@@ -1,21 +1,29 @@
 import React, { FC } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
 // import { useActions } from 'app/hooks/useActions'
 import { BackArrowIcon } from './img/BackArrowIcon'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store'
+import { colors } from '../../../constants/Colors'
 
-export const SettingsHeader: FC = props => {
+export const SettingsHeader: FC = (props) => {
 	const { navigate } = useNavigation()
+	const theme = useSelector((state: RootState) => state.theme.theme)
+	const currentStyles = theme === 'dark' ? darkStyles : lightStyles
 
 	return (
-		<TouchableOpacity style={styled.header} onPress={() => navigate('Root')}>
+		<TouchableOpacity
+			style={currentStyles.header}
+			onPress={() => navigate('Root')}
+		>
 			<BackArrowIcon />
-			<Text style={styled.title}>Settings</Text>
+			<Text style={currentStyles.title}>Settings</Text>
 		</TouchableOpacity>
 	)
 }
-const styled = StyleSheet.create({
+const lightStyles = StyleSheet.create({
 	header: {
 		paddingTop: 34,
 		paddingBottom: 12,
@@ -24,12 +32,34 @@ const styled = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-		backgroundColor: '#e6faff',
+		backgroundColor: colors.light.backgroundWhite,
+		color: colors.light.fontColor,
 	},
 
 	title: {
 		fontSize: 20,
 		fontWeight: '600',
 		paddingLeft: 6,
+		color: colors.light.fontColor,
+	},
+})
+
+const darkStyles = StyleSheet.create({
+	header: {
+		paddingTop: 34,
+		paddingBottom: 12,
+		paddingHorizontal: 4,
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+		backgroundColor: colors.dark.backgroundWhite,
+	},
+
+	title: {
+		fontSize: 20,
+		fontWeight: '600',
+		paddingLeft: 6,
+		color: colors.dark.fontColor,
 	},
 })

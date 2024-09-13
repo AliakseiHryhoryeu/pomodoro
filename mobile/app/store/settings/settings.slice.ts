@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-// import { Audio } from 'expo-av'
+import { Audio } from 'expo-av'
 
 import { ISettingsState, emptySettingsState } from './settings.types'
-// import btnSound from '../../../assets/audio/btnSound-2.mp3'
-// import btnSound2 from '../../../assets/audio/btnSound-2.mp3'
-// import endPomodoroSound from '../../../assets/audio/btnSound-2.mp3'
+import btnSound from '../../../assets/audio/btnSound.mp3'
+import btnSound2 from '../../../assets/audio/btnSound-2.mp3'
+import endPomodoroSound from '../../../assets/audio/endPomodoro.mp3'
 
 // Get last settings from Local Storage
 // const LocalStorageFolder = 'Settings'
@@ -70,8 +69,7 @@ export const settingsSlice = createSlice({
 		// === Timer === //
 		// ============= //
 		changeTimer: (state, action: PayloadAction<{}>) => {
-			// const audio = new Audio(btnSound)
-			// audio.play(() => {})
+			playSoundbtnSound()
 
 			if (state.timer.currentTimer === 'Pomodoro') {
 				if (state.breaks.short) {
@@ -110,7 +108,7 @@ export const settingsSlice = createSlice({
 				switch (state.timer.currentTimer) {
 					case 'Pomodoro':
 						state.timer.currentPomodoroCount++
-						// endPomodoroAudio.play(() => {})
+						playSoundEndPomodoro()
 
 						if (state.breaks.short) {
 							state.timer.currentTimer = 'Short break'
@@ -124,7 +122,7 @@ export const settingsSlice = createSlice({
 						}
 						break
 					case 'Short break':
-						// endBreakAudio.play(() => {})
+						playSoundbtnSound()
 
 						if (
 							state.timer.currentPomodoroCount >= state.breaks.pomodoroCounts
@@ -142,7 +140,7 @@ export const settingsSlice = createSlice({
 						}
 						break
 					case 'Long break':
-						// endBreakAudio.play(() => {})
+						playSoundbtnSound()
 						state.timer.currentTimer = 'Pomodoro'
 						state.timer.currentTime = state.durations.pomodoroTime * 60
 						state.timer.currentPomodoroCount = 1
@@ -159,15 +157,7 @@ export const settingsSlice = createSlice({
 		},
 
 		toggleRunTimer: (state, action: PayloadAction<{}>) => {
-			// const audio = new Sound(btnSound2)
-			// var audio = new Sound(btnSound2, Sound.MAIN_BUNDLE, error => {
-			// 	if (error) {
-			// 		console.log('failed to load the sound', error)
-			// 		return
-			// 	}
-			// })
-			// audio.play()
-			// playSound()
+			playSoundbtnSound2()
 
 			state.timer.isActive = !state.timer.isActive
 			// localStorage.setItem(LocalStorageFolder, JSON.stringify(state))
@@ -253,3 +243,33 @@ export default settingsSlice.reducer
 
 export const settingsReducer = settingsSlice.reducer
 export const settingsActions = settingsSlice.actions
+
+const playSoundEndPomodoro = async (): Promise<void> => {
+	try {
+		const { sound } = await Audio.Sound.createAsync(endPomodoroSound)
+
+		await sound.playAsync()
+	} catch (error) {
+		console.log('Error playing sound:', error)
+	}
+}
+
+const playSoundbtnSound2 = async (): Promise<void> => {
+	try {
+		const { sound } = await Audio.Sound.createAsync(btnSound2)
+
+		await sound.playAsync()
+	} catch (error) {
+		console.log('Error playing sound:', error)
+	}
+}
+
+const playSoundbtnSound = async (): Promise<void> => {
+	try {
+		const { sound } = await Audio.Sound.createAsync(btnSound)
+
+		await sound.playAsync()
+	} catch (error) {
+		console.log('Error playing sound:', error)
+	}
+}

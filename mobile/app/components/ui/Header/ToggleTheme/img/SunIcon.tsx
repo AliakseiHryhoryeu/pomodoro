@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Svg, G, Path } from 'react-native-svg'
 
-export const SunIcon: FC = props => {
+export const SunIcon: FC = (props) => {
 	return (
 		<Svg width='34' height='34' viewBox='0 0 512 512'>
 			<G id='sun'>

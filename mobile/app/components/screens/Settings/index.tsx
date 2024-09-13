@@ -1,24 +1,19 @@
 import React, { FC } from 'react'
 
-import { StyleSheet, View, Text, Dimensions } from 'react-native'
+import { StyleSheet, View, Dimensions } from 'react-native'
 
 import { SettingsHeader, Durations, Breaks, Themes } from '../../ui/Settings/'
-
-// import { useTypedSelector } from 'app/hooks/useTypedSelector'
-// import { useActions } from 'app/hooks/useActions'
-// import { RootState } from 'app/store'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store'
+import { colors } from '../../../constants/Colors'
+const { height: SCREEN_HEIGHT } = Dimensions.get('window')
 
 export const Settings: FC = () => {
-	// const { theme } = useTypedSelector((state: RootState) => {
-	// 	return {
-	// 		theme: state.theme.theme,
-	// 	}
-	// })
-
-	// const allActions = useActions()
+	const theme = useSelector((state: RootState) => state.theme.theme)
+	const currentStyles = theme === 'dark' ? darkStyles : lightStyles
 
 	return (
-		<View style={styled.settings}>
+		<View style={currentStyles.settings}>
 			<SettingsHeader />
 			<Durations />
 			<Breaks />
@@ -29,9 +24,18 @@ export const Settings: FC = () => {
 
 let ScreenHeight = Dimensions.get('window').height
 
-const styled = StyleSheet.create({
+const lightStyles = StyleSheet.create({
 	settings: {
 		minHeight: ScreenHeight,
-		backgroundColor: '#e6faff',
+		backgroundColor: colors.light.backgroundWhite,
+		height: SCREEN_HEIGHT,
+	},
+})
+
+const darkStyles = StyleSheet.create({
+	settings: {
+		minHeight: ScreenHeight,
+		backgroundColor: colors.dark.backgroundWhite,
+		height: SCREEN_HEIGHT,
 	},
 })

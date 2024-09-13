@@ -2,11 +2,9 @@ import React, { FC } from 'react'
 
 import { StyleSheet, View, Text } from 'react-native'
 import { Header, Timer } from '../../ui'
+import { colors } from '../../../constants/Colors'
 
-// import { Text, View } from './components/Themed'
-// import { RootTabScreenProps } from '../../../../types'
-
-export function Main() {
+export const Main: FC = () => {
 	return (
 		<>
 			<Header />
@@ -22,9 +20,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
+		backgroundColor: colors.light.backgroundWhite,
 	},
 	title: {
 		fontSize: 20,
 		fontWeight: 'bold',
+		color: colors.light.fontColor,
 	},
 })

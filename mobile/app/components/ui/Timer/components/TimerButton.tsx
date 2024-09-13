@@ -1,25 +1,18 @@
 import React, { FC } from 'react'
 import { TimerRunIcon } from './img/TimerRunIcon'
 import { TimerPauseIcon } from './img/TimerPauseIcon'
-import {
-	StyleSheet,
-	View,
-	Text,
-	TouchableOpacity,
-	Dimensions,
-} from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 
 import { useActions } from '../../../../hooks/useActions'
-import { useTypedSelector } from '../../../../hooks/useTypedSelector'
 import { RootState } from '../../../../store'
+import { useSelector } from 'react-redux'
 // import './ChangeTime.scss'
 
 export const TimerButton: FC = () => {
-	const { isActive } = useTypedSelector((state: RootState) => {
-		return {
-			isActive: state.settings.timer.isActive,
-		}
-	})
+	const isActive = useSelector(
+		(state: RootState) => state.settings.timer.isActive
+	)
+
 	const allActions = useActions()
 	return (
 		<TouchableOpacity

@@ -1,7 +1,15 @@
 import React, { FC } from 'react'
 import { Svg, G, Path } from 'react-native-svg'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../../store'
+import { colors } from '../../../../constants/Colors'
 
-export const BackArrowIcon: FC = props => {
+export const BackArrowIcon: FC = (props) => {
+	const theme = useSelector((state: RootState) => state.theme.theme)
+
+	const currentIconStyle =
+		theme === 'dark' ? colors.dark.fontColor : colors.light.fontColor
+
 	return (
 		<Svg
 			width='28px'
@@ -11,7 +19,7 @@ export const BackArrowIcon: FC = props => {
 		>
 			<G
 				transform='translate(0.000000,512.000000) scale(0.100000,-0.100000)'
-				fill='#000000'
+				fill={currentIconStyle}
 				stroke='none'
 			>
 				<Path

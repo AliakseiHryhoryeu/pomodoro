@@ -9,7 +9,7 @@ export const store = configureStore({
 		settings: settingsReducer,
 		theme: themeReducer,
 	},
-	middleware: getDefaultMiddleware => getDefaultMiddleware(),
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 })
 
 setupListeners(store.dispatch)

@@ -1,48 +1,34 @@
 import React, { FC } from 'react'
-
+import { useSelector } from 'react-redux'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-// import { useTypedSelector } from 'app/hooks/useTypedSelector'
-// import { useActions } from 'app/hooks/useActions'
-// import { RootState } from 'app/store'
-
-// import { Settings, Burger } from 'app/components'
-// import { ToggleTheme } from 'app/components/'
-
-// import mainLogo from 'assets/img/pomodoro.png'
-
 import { SettingsIcon } from './img/SettionsIcon'
-
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
-import { ToggleTheme } from './ToggleTheme'
 import { Tomato } from './img/Tomato'
+
+import { ToggleTheme } from './ToggleTheme'
+import { RootState } from '../../../store'
+
+import { colors } from '../../../constants/Colors.ts'
 
 export const Header: FC = () => {
 	const { navigate } = useNavigation()
-	// const dispatch = useDispatch()
+	const theme = useSelector((state: RootState) => state.theme.theme)
 
-	// const allActions = useActions()
+	const currentStyles = theme === 'dark' ? darkStyles : lightStyles
 
-	// const { settingsVisible, BurgerVisible, theme } = useTypedSelector(
-	// 	(state: RootState) => {
-	// 		return {
-	// 			settingsVisible: state.user.settingsVisible,
-	// 			BurgerVisible: state.user.burgerVisible,
-	// 			theme: state.theme.theme,
-	// 		}
-	// 	}
-	// )
 	return (
-		<View style={styled.header}>
-			<TouchableOpacity style={styled.logo}>
+		<View style={currentStyles.header}>
+			<TouchableOpacity style={currentStyles.logo}>
 				<Tomato />
-				<Text style={styled.title}>Pomodoro</Text>
+				<Text style={currentStyles.title}>Pomodoro</Text>
 			</TouchableOpacity>
 
-			<View style={styled.nav}>
-				<View style={styled.theme}>
+			<View style={currentStyles.nav}>
+				<View style={currentStyles.theme}>
 					<ToggleTheme />
 				</View>
+
 				<TouchableOpacity
 					onPress={() => {
 						navigate('Settings')
@@ -55,7 +41,7 @@ export const Header: FC = () => {
 	)
 }
 
-const styled = StyleSheet.create({
+const lightStyles = StyleSheet.create({
 	header: {
 		paddingTop: 34,
 		paddingBottom: 12,
@@ -63,7 +49,7 @@ const styled = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		backgroundColor: '#e6faff',
+		backgroundColor: colors.light.backgroundWhite,
 	},
 	logo: {
 		display: 'flex',
@@ -73,6 +59,37 @@ const styled = StyleSheet.create({
 	title: {
 		fontSize: 20,
 		fontWeight: '600',
+		color: colors.light.fontColor, // Light text color
+	},
+	nav: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	theme: {
+		paddingRight: 8,
+	},
+})
+
+const darkStyles = StyleSheet.create({
+	header: {
+		paddingTop: 34,
+		paddingBottom: 12,
+		paddingHorizontal: 4,
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		backgroundColor: colors.dark.backgroundWhite,
+	},
+	logo: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	title: {
+		fontSize: 20,
+		fontWeight: '600',
+		color: colors.dark.fontColor,
 	},
 	nav: {
 		display: 'flex',
