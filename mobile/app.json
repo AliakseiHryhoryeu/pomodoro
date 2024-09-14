@@ -2,11 +2,12 @@
 	"expo": {
 		"name": "Pomodoro timer",
 		"slug": "PomodoroTimer",
-		"version": "1.0.0",
+		"version": "1.0.00",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
 		"scheme": "myapp",
 		"userInterfaceStyle": "automatic",
+		"sdkVersion": "33.0.0",
 		"splash": {
 			"image": "./assets/images/splash.png",
 			"resizeMode": "contain",
@@ -24,8 +25,8 @@
 				"foregroundImage": "./assets/images/adaptive-icon.png",
 				"backgroundColor": "#f0feff"
 			},
-			"package": "com.aliaksei.hryhoryeu.PomodoroTimer",
-			"versionCode": 2
+			"versionCode": 6,
+			"package": "com.aliaksei.hryhoryeu.PomodoroTimer"
 		},
 		"web": {
 			"favicon": "./assets/images/favicon.png"
