@@ -7,9 +7,9 @@ import { useTypedSelector } from 'app/hooks/useTypedSelector'
 import { useActions } from 'app/hooks/useActions'
 import { RootState } from 'app/store'
 
-import './Burger.scss'
+import './Burger.css'
 
-export const Burger: FC = props => {
+export const Burger: FC = (props) => {
 	const dispatch = useDispatch()
 	const allActions = useActions()
 

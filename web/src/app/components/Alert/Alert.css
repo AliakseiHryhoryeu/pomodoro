@@ -1,0 +1,37 @@
+.alert {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background: #ffea00;
+	margin-top: 8px;
+	max-width: 400px;
+	padding: 6px 0px;
+}
+
+.alert__wrapper {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	cursor: pointer;
+	width: 100%;
+	max-width: 400px;
+}
+
+.alert__text {
+	display: block;
+	padding-left: 10px;
+	font-size: 30px;
+	align-content: center;
+	max-width: 200px;
+	width: 100%;
+}
+
+.alert__close {
+	cursor: pointer;
+	padding: 10px;
+}
+
+.alert__close:hover {
+	background: #fff179;
+}

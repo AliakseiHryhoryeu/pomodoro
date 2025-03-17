@@ -7,7 +7,7 @@ import { RootState } from 'app/store'
 
 import { ChangeTimeIcon } from './ChangeTimeIcon'
 
-import './ChangeTime.scss'
+import './ChangeTime.css'
 
 export const ChangeTime: FC = () => {
 	const { theme, currentTimer, currentTime } = useTypedSelector(

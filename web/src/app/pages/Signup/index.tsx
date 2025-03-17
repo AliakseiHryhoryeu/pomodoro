@@ -13,7 +13,7 @@ import { useSignUpMutation } from 'app/store/user/user.api'
 
 import { signupSchema } from './validation'
 
-import './Signup.scss'
+import './Signup.css'
 
 export const Signup: FC = () => {
 	const navigate = useNavigate()
@@ -36,7 +36,7 @@ export const Signup: FC = () => {
 			password: '',
 		},
 		validationSchema: signupSchema,
-		onSubmit: values => {
+		onSubmit: (values) => {
 			signupRequest({
 				email: values.email,
 				password: values.password,

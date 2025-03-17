@@ -12,7 +12,7 @@ import { useLoginMutation } from 'app/store/user/user.api'
 // import appleIcon from 'assets/img/Apple-icon.svg'
 import { loginSchema } from './validation'
 
-import './Login.scss'
+import './Login.css'
 
 export const Login: FC = () => {
 	const navigate = useNavigate()
@@ -34,7 +34,7 @@ export const Login: FC = () => {
 			password: '',
 		},
 		validationSchema: loginSchema,
-		onSubmit: values => {
+		onSubmit: (values) => {
 			loginRequest({
 				email: values.email,
 				password: values.password,

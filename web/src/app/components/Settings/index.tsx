@@ -10,9 +10,9 @@ import { Durations } from './Durations'
 import { Breaks } from './Breaks'
 import { Themes } from './Themes'
 
-import './Settings.scss'
+import './Settings.css'
 
-export const Settings: FC = props => {
+export const Settings: FC = (props) => {
 	const { theme } = useTypedSelector((state: RootState) => {
 		return {
 			theme: state.theme.theme,

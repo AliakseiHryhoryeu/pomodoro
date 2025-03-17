@@ -1,0 +1,86 @@
+.burger {
+	display: flex;
+	align-items: flex-start;
+	justify-content: start;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.burger__bg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.burger__bg:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.burger__main {
+	z-index: 1000;
+	background-color: var(--Dark-bg-dark);
+	height: 100%;
+	width: 70%;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: start;
+	padding: 30px 20px;
+	font-size: 30px;
+}
+
+.burger__main ul {
+	width: 100%;
+}
+
+.burger__main ul li a {
+	display: block;
+	width: 100%;
+	padding: 4px 10px;
+	cursor: pointer;
+}
+
+/* Light theme */
+.burger-light .burger__bg:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.burger-light .burger__main {
+	background-color: var(--Light-bg-white);
+	font-size: 30px;
+}
+
+.burger-light .burger__main ul li a {
+	color: var(--Light-font-color);
+	text-decoration: none;
+}
+
+.burger-light .burger__main ul li:hover {
+	background-color: var(--Light-bg-white-hover);
+}
+
+/* Dark theme */
+.burger-dark .burger__bg:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.burger-dark .burger__main {
+	background-color: var(--Dark-bg-dark);
+	font-size: 30px;
+}
+
+.burger-dark .burger__main ul li a {
+	color: var(--Dark-font-color);
+	text-decoration: none;
+}
+
+.burger-dark .burger__main ul li:hover {
+	background-color: var(--Dark-bg-dark-hover);
+}

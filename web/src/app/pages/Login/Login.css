@@ -1,0 +1,160 @@
+.login {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: #f3fbfc;
+}
+
+.login__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self: center;
+	flex-grow: 3;
+	max-width: 600px;
+}
+
+.login__form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.login__title {
+	text-align: center;
+	padding-bottom: 2rem;
+	font-weight: 600;
+	font-size: 2rem;
+}
+
+.login__social {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 400px;
+	border: 1px solid #e5e5e5;
+	padding: 12px 0px;
+	margin: 6px 0px;
+	cursor: pointer;
+}
+
+.login__social-icon {
+	height: 18px;
+	width: 18px;
+	margin-right: 10px;
+}
+
+.login__social-text {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.login__social-last {
+	margin-bottom: 32px;
+}
+
+.login__input {
+	display: flex;
+	flex-direction: column;
+	max-width: 400px;
+	min-width: 385px;
+	padding: 0 0.5rem;
+	min-height: 3rem;
+	margin-bottom: 0.5rem;
+	background: #f3fbfc;
+	border: 1px solid #e5e5e5;
+	border-radius: 2px;
+}
+
+.login__input-label {
+	font-size: 14px;
+}
+
+.login__input-input {
+	background-color: inherit;
+	border: none;
+	font-size: 14px;
+	padding: 10px 0px;
+}
+
+.login__button {
+	height: 3rem;
+	width: 100%;
+	max-width: 400px;
+	cursor: pointer;
+	margin: 0.5rem 0;
+	border: none;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 16px;
+}
+
+.login__button:hover {
+	background-color: #091795b3;
+}
+
+.login__text {
+	align-items: center;
+	max-width: 400px;
+	min-width: 400px;
+	margin-bottom: 16px;
+}
+
+.login__text a {
+	text-decoration: underline;
+}
+
+.login__text-ml5 {
+	margin-left: 5px;
+}
+
+.login__text-underline {
+	text-decoration: underline;
+	margin: 0px 4px;
+	cursor: pointer;
+}
+
+.btn-login {
+	background-color: #091795;
+	color: #fff;
+}
+
+@media (min-width: 768px) {
+	.login__form {
+		padding: 2rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.login__container {
+		max-width: none;
+	}
+
+	.login__form {
+		width: 100vw;
+	}
+
+	.login__input {
+		max-width: none;
+		min-width: auto;
+		width: 90%;
+	}
+
+	.login__button {
+		max-width: none;
+		width: 90%;
+	}
+
+	.login__text {
+		max-width: none;
+		min-width: auto;
+		width: 90%;
+	}
+}

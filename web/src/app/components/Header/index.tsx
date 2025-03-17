@@ -15,7 +15,7 @@ import mainLogo from 'assets/img/pomodoro.png'
 import { MenuBurgerIcon } from './img/MenuBurgerIcon'
 import { SettingsIcon } from './img/SettionsIcon'
 
-import './Header.scss'
+import './Header.css'
 
 export const Header: FC = () => {
 	const dispatch = useDispatch()
@@ -51,7 +51,7 @@ export const Header: FC = () => {
 							<li>
 								<ToggleTheme />
 							</li>
-							<li onClick={() => dispatch(allActions.settingsShow)}>
+							<li onClick={() => dispatch(allActions.settingsShow())}>
 								<SettingsIcon />
 							</li>
 						</ul>

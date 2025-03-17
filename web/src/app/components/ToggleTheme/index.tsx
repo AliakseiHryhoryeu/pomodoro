@@ -8,9 +8,9 @@ import { RootState } from 'app/store'
 import { SunIcon } from './img/SunIcon'
 import { MoonIcon } from './img/MoonIcon'
 
-import './ToggleTheme.scss'
+import './ToggleTheme.css'
 
-export const ToggleTheme: FC = props => {
+export const ToggleTheme: FC = (props) => {
 	const allActions = useActions()
 	const { theme } = useTypedSelector((state: RootState) => {
 		return {

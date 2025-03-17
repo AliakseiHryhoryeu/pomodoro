@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { AlertIcon } from './AlertIcon'
 
-import './Alert.scss'
+import './Alert.css'
 
 type AlertProps = {
 	text: string

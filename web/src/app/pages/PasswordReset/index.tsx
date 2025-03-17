@@ -2,13 +2,14 @@ import React, { FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTypedSelector } from 'app/hooks/useTypedSelector'
 import { useFormik } from 'formik'
+import { useActions } from 'app/hooks/useActions'
 
 import { RootState } from 'app/store'
 import { Header } from 'app/components'
 
 import { passwordResetSchema } from './validation'
 
-import './PasswordReset.scss'
+import './PasswordReset.css'
 
 export const PasswordReset: FC = () => {
 	const navigate = useNavigate()
@@ -27,7 +28,7 @@ export const PasswordReset: FC = () => {
 			email: '',
 		},
 		validationSchema: passwordResetSchema,
-		onSubmit: values => {
+		onSubmit: (values) => {
 			navigate('/', { replace: true })
 		},
 	})

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { Header, Timer } from 'app/components'
 
-import './Main.scss'
+import './Main.css'
 
 export const Main: FC = () => {
 	return (

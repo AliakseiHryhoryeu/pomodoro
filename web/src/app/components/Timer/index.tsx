@@ -7,11 +7,11 @@ import { RootState } from 'app/store'
 
 // import { Alert } from '../Alert/intex'
 
-import './Timer.scss'
+import './Timer.css'
 import { ChangeTime } from './ChangeTime/intex'
 import { TimerButton } from './TimerButton'
 
-export const Timer: FC = props => {
+export const Timer: FC = (props) => {
 	const { theme, showAlert } = useTypedSelector((state: RootState) => {
 		return {
 			theme: state.theme.theme,

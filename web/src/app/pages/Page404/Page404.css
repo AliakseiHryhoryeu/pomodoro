@@ -1,0 +1,30 @@
+.page404 {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
+
+.page404__main {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-grow: 4;
+	background: #f0fcff;
+}
+
+.page404__text {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
+	text-align: center;
+	font-weight: 400;
+	font-size: var(--h1-font-size);
+}
+
+.page404__text span {
+	font-weight: 600;
+	font-size: var(--big-font-size);
+}

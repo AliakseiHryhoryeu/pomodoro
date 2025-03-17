@@ -1,0 +1,145 @@
+.signup {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: var(--auth-color);
+}
+
+.signup__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self: center;
+	flex-grow: 3;
+	max-width: 600px;
+}
+
+.signup__form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.signup__title {
+	text-align: center;
+	padding-bottom: var(--mb-2);
+	font-weight: 600;
+	font-size: var(--h1-font-size);
+}
+
+.signup__social {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 400px;
+	border: 1px solid #e5e5e5;
+	padding: 12px 0px;
+	margin: 6px 0px;
+	cursor: pointer;
+}
+
+.signup__social-icon {
+	height: 18px;
+	width: 18px;
+	margin-right: 10px;
+}
+
+.signup__social-text {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.signup__social-last {
+	margin-bottom: 32px;
+}
+
+.signup__input {
+	display: flex;
+	flex-direction: column;
+	max-width: 400px;
+	min-width: 385px;
+	padding: 0 var(--mb-0-5);
+	min-height: 3rem;
+	margin-bottom: var(--mb-0-5);
+	background: var(--auth-color);
+	border: 1px solid #e5e5e5;
+	border-radius: 2px;
+}
+
+.signup__input-label {
+	font-size: 14px;
+}
+
+.signup__input-input {
+	background-color: inherit;
+	border: none;
+	font-size: 14px;
+	padding: 10px 0px;
+}
+
+.signup__button {
+	height: var(--btn-height);
+	width: 100%;
+	max-width: 400px;
+	cursor: pointer;
+	margin: var(--mb-0-5) 0;
+	border: none;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 16px;
+}
+
+.signup__button:hover {
+	background-color: rgba(9, 23, 149, 0.7);
+}
+
+.signup__text {
+	align-items: center;
+	max-width: 400px;
+	min-width: 400px;
+	margin-bottom: 16px;
+}
+
+.signup__text a {
+	text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+	.signup__form {
+		padding: 2rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.signup__container {
+		max-width: none;
+	}
+
+	.signup__form {
+		width: 100vw;
+	}
+
+	.signup__input {
+		max-width: none;
+		min-width: auto;
+		width: 90%;
+	}
+
+	.signup__button {
+		max-width: none;
+		width: 90%;
+	}
+
+	.signup__text {
+		max-width: none;
+		min-width: auto;
+		width: 90%;
+	}
+}

@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Header } from 'app/components'
 
-import './Page404.scss'
+import './Page404.css'
 
 export const Page404: FC = () => {
 	return (
