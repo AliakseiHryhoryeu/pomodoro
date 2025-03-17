@@ -144,6 +144,18 @@
 	font-weight: 600;
 }
 
+.settings__durations-title {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--Dark-button-color);
+}
+
+.settings__durations-time {
+	font-size: 40px;
+	font-weight: 700;
+	color: var(--Dark-font-color);
+}
+
 /* Light theme */
 .settings-light .settings__bg:hover {
 	background: rgba(0, 0, 0, 0.2);
@@ -203,6 +215,14 @@
 	color: var(--Light-font-color);
 }
 
+.settings-light .settings__durations-title {
+	color: var(--Light-button-color);
+}
+
+.settings-light .settings__durations-time {
+	color: var(--Light-button-color);
+}
+
 /* Dark theme */
 .settings-dark .settings__bg:hover {
 	background: rgba(255, 255, 255, 0.03);
@@ -259,6 +279,14 @@
 }
 
 .settings-dark .settings__theme input {
+	color: var(--Dark-font-color);
+}
+
+.settings-dark .settings__durations-title {
+	color: var(--Dark-button-color);
+}
+
+.settings-dark .settings__durations-time {
 	color: var(--Dark-font-color);
 }
 
